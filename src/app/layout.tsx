@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { outfit, inter } from "@/lib/fonts";
+import { spaceGrotesk, inter, jetbrainsMono } from "@/lib/fonts";
 import { createMetadata } from "@/lib/metadata";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Header from "@/components/layout/Header";
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"

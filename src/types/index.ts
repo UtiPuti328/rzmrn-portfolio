@@ -1,4 +1,18 @@
-export interface Project {
+export type ProjectType = "visual" | "system";
+
+export type ProjectCategory =
+  | "commercial"
+  | "music-video"
+  | "motion-design"
+  | "documentary"
+  | "social"
+  | "branding"
+  | "ai-automation"
+  | "content-pipeline"
+  | "live-production"
+  | "bot-system";
+
+interface ProjectBase {
   slug: string;
   title: string;
   client: string;
@@ -11,15 +25,24 @@ export interface Project {
   tags: string[];
   featured: boolean;
   order: number;
+  stack?: string[];
+  status?: "completed" | "ongoing" | "archived";
 }
 
-export type ProjectCategory =
-  | "commercial"
-  | "music-video"
-  | "motion-design"
-  | "documentary"
-  | "social"
-  | "branding";
+export interface VisualProject extends ProjectBase {
+  type: "visual";
+  role: string;
+  deliverable: string;
+}
+
+export interface SystemProject extends ProjectBase {
+  type: "system";
+  architecture: string;
+  metrics: string;
+  repo?: string;
+}
+
+export type Project = VisualProject | SystemProject;
 
 export interface CaseStudyFrontmatter {
   title: string;

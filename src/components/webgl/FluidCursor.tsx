@@ -11,7 +11,7 @@ export default function FluidCursor() {
         rainbow={false}
         distortion={0.5}
         blend={5}
-        fluidColor="#2563EB"
+        fluidColor="#3B82F6"
         pressure={0.8}
         densityDissipation={0.96}
         velocityDissipation={0.98}

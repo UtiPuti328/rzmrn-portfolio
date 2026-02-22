@@ -2,18 +2,19 @@
 
 @theme inline {
   /* Colors */
-  --color-background: #0A0A0A;
-  --color-surface: #141414;
-  --color-border: #1F1F1F;
-  --color-text-primary: #FAFAFA;
-  --color-text-secondary: #A0A0A0;
-  --color-text-muted: #666666;
-  --color-accent: #2563EB;
-  --color-accent-hover: #3B82F6;
+  --color-background: #050505;
+  --color-surface: #0A0A0A;
+  --color-border: #1A1A1A;
+  --color-text-primary: #EDEDED;
+  --color-text-secondary: #737373;
+  --color-text-muted: #4A4A4A;
+  --color-accent: #3B82F6;
+  --color-accent-hover: #60A5FA;
 
   /* Fonts */
-  --font-heading: var(--font-outfit);
+  --font-heading: var(--font-space-grotesk);
   --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
 
   /* Spacing (8px grid) */
   --spacing-unit: 8px;
@@ -64,4 +65,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
+}
+
+/* Reduced motion: disable glitch animations */
+@media (prefers-reduced-motion: reduce) {
+  .glitch-hover,
+  .glitch-hover * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .glitch-scanline {
+    display: none !important;
+  }
 }

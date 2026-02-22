@@ -11,7 +11,7 @@ export default function Footer() {
           RZMRN
         </Link>
 
-        <p className="text-sm text-text-muted">
+        <p className="font-mono text-sm text-text-muted">
           &copy; {new Date().getFullYear()} RZMRN. All rights reserved.
         </p>
       </div>
