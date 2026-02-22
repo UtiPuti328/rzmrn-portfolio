@@ -24,7 +24,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "RZMRN",
-              jobTitle: "Creative Director — Motion, Post-Production & AI Automation",
+              jobTitle: "Filmmaker & Creative Director — Motion, Post-Production & AI",
               url: "https://rzmrn.com",
               sameAs: [],
               knowsAbout: [

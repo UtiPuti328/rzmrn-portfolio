@@ -11,10 +11,10 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 298, suffix: "", label: "Projects Delivered" },
-  { value: 150, suffix: "+", label: "Client Reviews" },
-  { value: 8, suffix: "+", label: "Major Brands" },
+  { value: 15, suffix: "+", label: "Years in Production" },
+  { value: 1000, suffix: "+", label: "Projects Shipped" },
+  { value: 298, suffix: "", label: "Fiverr Deliveries" },
+  { value: 150, suffix: "+", label: "5-Star Reviews" },
 ];
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {

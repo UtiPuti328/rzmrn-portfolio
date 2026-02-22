@@ -3,10 +3,11 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/motion/FadeIn";
+import TerminalProof from "@/components/ui/TerminalProof";
 import { useScrambleText } from "@/hooks/useScrambleText";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
-const SUBTITLE = "Creative Director — Motion / Post-Production / AI";
+const SUBTITLE = "Filmmaker & Creative Director — Motion / Post / AI";
 const SUBTITLE_REDUCED = SUBTITLE;
 
 export default function Hero() {
@@ -33,59 +34,62 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-[70vh] items-center border-b border-border">
       <Container>
-        <div className="max-w-5xl">
-          {/* IDE comment prefix + headline */}
-          <div className="flex items-baseline gap-4">
-            <span className="font-mono text-lg text-text-muted select-none md:text-2xl">
-              {"//"}
-            </span>
-            <h1 className="font-heading text-[clamp(3rem,10vw,10rem)] leading-[0.9] tracking-tighter">
-              {prefersReducedMotion ? "RZMRN" : headline.displayText}
-              {headline.isScrambling && (
-                <span className="ml-1 inline-block w-[3px] animate-pulse bg-accent align-middle" style={{ height: "0.8em" }} />
-              )}
-            </h1>
+        <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
+          {/* Left: headline + subtitle + CTA */}
+          <div className="max-w-3xl">
+            <div className="flex items-baseline gap-4">
+              <span className="font-mono text-lg text-text-muted select-none md:text-2xl">
+                {"//"}
+              </span>
+              <h1 className="font-heading text-[clamp(3rem,10vw,10rem)] leading-[0.9] tracking-tighter">
+                {prefersReducedMotion ? "RZMRN" : headline.displayText}
+                {headline.isScrambling && (
+                  <span className="ml-1 inline-block w-[3px] animate-pulse bg-accent align-middle" style={{ height: "0.8em" }} />
+                )}
+              </h1>
+            </div>
+
+            <div className="mt-8 max-w-2xl">
+              <p className="text-xl leading-relaxed text-text-secondary md:text-2xl">
+                {prefersReducedMotion ? SUBTITLE_REDUCED : subtitle.displayText}
+                {subtitle.isScrambling && (
+                  <span className="ml-1 inline-block w-[2px] animate-pulse bg-accent align-middle" style={{ height: "1em" }} />
+                )}
+              </p>
+            </div>
+
+            <FadeIn delay={1.2}>
+              <p className="mt-4 font-mono text-sm text-text-muted">
+                Directing / Cinematography / Editing / Motion Design / Color Grading / AI Automation
+              </p>
+            </FadeIn>
+
+            <div
+              className="mt-12 flex items-center gap-4 transition-opacity duration-500"
+              style={{ opacity: showCta ? 1 : 0 }}
+            >
+              <Link
+                href="#work"
+                className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover"
+              >
+                View Work
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:border-text-muted"
+              >
+                Get in Touch
+              </Link>
+            </div>
           </div>
 
-          {/* Subtitle with scramble */}
-          <div className="mt-8 max-w-2xl">
-            <p className="text-xl leading-relaxed text-text-secondary md:text-2xl">
-              {prefersReducedMotion ? SUBTITLE_REDUCED : subtitle.displayText}
-              {subtitle.isScrambling && (
-                <span className="ml-1 inline-block w-[2px] animate-pulse bg-accent align-middle" style={{ height: "1em" }} />
-              )}
-            </p>
-          </div>
-
-          {/* Capabilities line */}
-          <FadeIn delay={1.2}>
-            <p className="mt-4 font-mono text-sm text-text-muted">
-              Video Editing / Motion Design / Color Grading / AI Automation / Content Pipelines
-            </p>
+          {/* Right: terminal proof block */}
+          <FadeIn delay={1.6} className="shrink-0">
+            <TerminalProof />
           </FadeIn>
-
-          {/* CTA buttons */}
-          <div
-            className="mt-12 flex items-center gap-4 transition-opacity duration-500"
-            style={{ opacity: showCta ? 1 : 0 }}
-          >
-            <Link
-              href="#work"
-              className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover"
-            >
-              View Work
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:border-text-muted"
-            >
-              Get in Touch
-            </Link>
-          </div>
         </div>
       </Container>
 
-      {/* Scroll indicator */}
       <FadeIn delay={2.0} className="absolute bottom-10 left-1/2 -translate-x-1/2">
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs uppercase tracking-widest text-text-muted">
