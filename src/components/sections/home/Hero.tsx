@@ -32,11 +32,12 @@ export default function Hero() {
   const showCta = prefersReducedMotion || subtitle.hasCompleted;
 
   return (
-    <section className="relative flex min-h-[70vh] items-center border-b border-border">
+    <section className="relative flex min-h-[70vh] items-center border-b border-border pb-24">
       <Container>
-        <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
-          {/* Left: headline + subtitle + CTA */}
-          <div className="max-w-3xl">
+        {/* Desktop: side-by-side | Mobile: stacked */}
+        <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-12">
+          {/* Left column: headline + subtitle + CTA */}
+          <div className="min-w-0 flex-1">
             <div className="flex items-baseline gap-4">
               <span className="font-mono text-lg text-text-muted select-none md:text-2xl">
                 {"//"}
@@ -83,19 +84,19 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: terminal proof block */}
-          <FadeIn delay={1.6} className="shrink-0">
+          {/* Right column (desktop) / Below CTA (mobile): terminal */}
+          <FadeIn delay={1.6} className="w-full shrink-0 md:w-auto">
             <TerminalProof />
           </FadeIn>
         </div>
       </Container>
 
-      <FadeIn delay={2.0} className="absolute bottom-10 left-1/2 -translate-x-1/2">
+      <FadeIn delay={2.0} className="absolute bottom-6 left-1/2 -translate-x-1/2">
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs uppercase tracking-widest text-text-muted">
             Scroll
           </span>
-          <div className="h-12 w-px bg-border" />
+          <div className="h-10 w-px bg-border" />
         </div>
       </FadeIn>
     </section>

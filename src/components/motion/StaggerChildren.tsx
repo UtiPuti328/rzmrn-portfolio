@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 
 interface StaggerChildrenProps {
   children: React.ReactNode;
@@ -15,24 +15,40 @@ export default function StaggerChildren({
   stagger = 0.1,
   delay = 0,
 }: StaggerChildrenProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const items = container.querySelectorAll("[data-stagger-item]");
+          items.forEach((item, i) => {
+            const el = item as HTMLElement;
+            const itemDelay = delay + i * stagger;
+            setTimeout(() => {
+              el.style.transition =
+                "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
+              el.style.opacity = "1";
+              el.style.transform = "translateY(0)";
+            }, itemDelay * 1000);
+          });
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-80px" }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [stagger, delay]);
+
   return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: stagger,
-            delayChildren: delay,
-          },
-        },
-      }}
-    >
+    <div ref={ref} className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -44,18 +60,12 @@ export function StaggerItem({
   className?: string;
 }) {
   return (
-    <motion.div
+    <div
+      data-stagger-item
       className={className}
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-        },
-      }}
+      style={{ opacity: 0, transform: "translateY(30px)" }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
