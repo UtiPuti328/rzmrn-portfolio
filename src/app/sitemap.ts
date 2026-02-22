@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getAllSlugs } from "@/data/projects";
 
+export const dynamic = "force-static";
+
 const BASE_URL = "https://rzmrn.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
