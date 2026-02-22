@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
 import Badge from "@/components/ui/Badge";
 import { useParallaxTilt } from "@/hooks/useParallaxTilt";
 import type { Project } from "@/types";
@@ -49,11 +48,19 @@ export default function ExpandableCard({
   onToggle,
 }: ExpandableCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
   const { ref: tiltRef, handleMouseMove, handleMouseLeave } = useParallaxTilt({
     maxTilt: 5,
     maxShift: 8,
     smoothing: 0.05,
   });
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, [isExpanded]);
 
   useEffect(() => {
     if (isExpanded && cardRef.current) {
@@ -79,17 +86,12 @@ export default function ExpandableCard({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded, handleKeyDown]);
 
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onToggle(isExpanded ? null : project.slug);
-  };
-
   return (
     <div ref={cardRef}>
-      <a
-        href={`/projects/${project.slug}`}
-        onClick={handleClick}
-        className="group block cursor-pointer"
+      <button
+        onClick={() => onToggle(isExpanded ? null : project.slug)}
+        className="group block w-full cursor-pointer text-left"
+        aria-expanded={isExpanded}
       >
         <div
           ref={tiltRef}
@@ -132,91 +134,87 @@ export default function ExpandableCard({
             {project.title}
           </h3>
         </div>
-      </a>
+      </button>
 
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="mt-4 border border-border bg-surface/50 p-6">
-              <p className="text-text-secondary leading-relaxed">
-                {project.description}
-              </p>
+      {/* Expandable detail panel — CSS transition */}
+      <div
+        className="overflow-hidden transition-[height,opacity] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        style={{
+          height: isExpanded ? contentHeight : 0,
+          opacity: isExpanded ? 1 : 0,
+        }}
+      >
+        <div ref={contentRef}>
+          <div className="mt-4 border border-border bg-surface/50 p-6">
+            <p className="text-text-secondary leading-relaxed">
+              {project.description}
+            </p>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <Badge key={tag}>{tag}</Badge>
-                ))}
-              </div>
-
-              {project.type === "visual" && (
-                <div className="mt-4 grid grid-cols-2 gap-4 border-t border-border pt-4">
-                  <div>
-                    <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
-                      Role
-                    </span>
-                    <p className="mt-1 text-sm text-text-primary">
-                      {project.role}
-                    </p>
-                  </div>
-                  <div>
-                    <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
-                      Deliverable
-                    </span>
-                    <p className="mt-1 text-sm text-text-primary">
-                      {project.deliverable}
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {project.type === "system" && (
-                <div className="mt-4 grid grid-cols-2 gap-4 border-t border-border pt-4">
-                  <div>
-                    <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
-                      Architecture
-                    </span>
-                    <p className="mt-1 text-sm text-text-primary">
-                      {project.architecture}
-                    </p>
-                  </div>
-                  <div>
-                    <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
-                      Metrics
-                    </span>
-                    <p className="mt-1 text-sm text-text-primary">
-                      {project.metrics}
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              <div className="mt-6 flex items-center gap-4">
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="inline-flex items-center gap-2 bg-accent px-5 py-2.5 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover"
-                >
-                  View Full Project
-                </Link>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onToggle(null);
-                  }}
-                  className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-medium uppercase tracking-wider text-text-muted transition-colors hover:text-text-primary"
-                >
-                  Close
-                </button>
-              </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <Badge key={tag}>{tag}</Badge>
+              ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+            {project.type === "visual" && (
+              <div className="mt-4 grid grid-cols-2 gap-4 border-t border-border pt-4">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                    Role
+                  </span>
+                  <p className="mt-1 text-sm text-text-primary">
+                    {project.role}
+                  </p>
+                </div>
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                    Deliverable
+                  </span>
+                  <p className="mt-1 text-sm text-text-primary">
+                    {project.deliverable}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {project.type === "system" && (
+              <div className="mt-4 grid grid-cols-2 gap-4 border-t border-border pt-4">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                    Architecture
+                  </span>
+                  <p className="mt-1 text-sm text-text-primary">
+                    {project.architecture}
+                  </p>
+                </div>
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                    Metrics
+                  </span>
+                  <p className="mt-1 text-sm text-text-primary">
+                    {project.metrics}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="mt-6 flex items-center gap-4">
+              <Link
+                href={`/projects/${project.slug}`}
+                className="inline-flex items-center gap-2 bg-accent px-5 py-2.5 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover"
+              >
+                View Full Project
+              </Link>
+              <button
+                onClick={() => onToggle(null)}
+                className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-medium uppercase tracking-wider text-text-muted transition-colors hover:text-text-primary"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

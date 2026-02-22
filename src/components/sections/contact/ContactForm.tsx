@@ -84,6 +84,17 @@ export default function ContactForm() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot — hidden from humans, catches bots */}
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="_gotcha">Don&apos;t fill this out</label>
+                <input
+                  id="_gotcha"
+                  name="_gotcha"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div>
                 <label
                   htmlFor="name"

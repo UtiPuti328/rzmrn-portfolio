@@ -12,7 +12,7 @@ export default function HomeCTA() {
           animation="words"
           className="font-heading text-4xl font-semibold tracking-tight md:text-6xl"
         >
-          Lets make something together
+          Let&apos;s make something together
         </AnimatedText>
         <FadeIn delay={0.2}>
           <p className="mx-auto mt-6 max-w-lg text-lg text-text-secondary">

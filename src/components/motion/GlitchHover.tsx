@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useCallback } from "react";
-import { gsap } from "gsap";
+import { gsap } from "@/lib/gsap";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface GlitchHoverProps {

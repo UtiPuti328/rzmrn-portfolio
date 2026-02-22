@@ -44,6 +44,7 @@ export const mdxComponents: MDXComponents = {
         alt={props.alt ?? ""}
         width={1440}
         height={810}
+        sizes="(max-width: 768px) 100vw, (max-width: 1440px) 90vw, 1440px"
         className="w-full rounded-none"
       />
       {props.alt && (
