@@ -6,6 +6,9 @@ import FadeIn from "@/components/motion/FadeIn";
 import { useScrambleText } from "@/hooks/useScrambleText";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
+const SUBTITLE = "Creative Director — Motion / Post-Production / AI";
+const SUBTITLE_REDUCED = SUBTITLE;
+
 export default function Hero() {
   const prefersReducedMotion = useMediaQuery(
     "(prefers-reduced-motion: reduce)"
@@ -13,15 +16,15 @@ export default function Hero() {
 
   const headline = useScrambleText({
     text: "RZMRN",
-    duration: 1000,
-    delay: 200,
+    duration: 500,
+    delay: 100,
     autoStart: !prefersReducedMotion,
   });
 
   const subtitle = useScrambleText({
-    text: "Creative Technologist. Motion Director. Systems Architect.",
-    duration: 800,
-    delay: 1200,
+    text: SUBTITLE,
+    duration: 400,
+    delay: 600,
     autoStart: !prefersReducedMotion,
   });
 
@@ -45,24 +48,29 @@ export default function Hero() {
           </div>
 
           {/* Subtitle with scramble */}
-          <div className="mt-8 max-w-xl">
+          <div className="mt-8 max-w-2xl">
             <p className="text-xl leading-relaxed text-text-secondary md:text-2xl">
-              {prefersReducedMotion
-                ? "Creative Technologist. Motion Director. Systems Architect."
-                : subtitle.displayText}
+              {prefersReducedMotion ? SUBTITLE_REDUCED : subtitle.displayText}
               {subtitle.isScrambling && (
                 <span className="ml-1 inline-block w-[2px] animate-pulse bg-accent align-middle" style={{ height: "1em" }} />
               )}
             </p>
           </div>
 
-          {/* CTA buttons — fade in after scramble completes */}
+          {/* Capabilities line */}
+          <FadeIn delay={1.2}>
+            <p className="mt-4 font-mono text-sm text-text-muted">
+              Video Editing / Motion Design / Color Grading / AI Automation / Content Pipelines
+            </p>
+          </FadeIn>
+
+          {/* CTA buttons */}
           <div
             className="mt-12 flex items-center gap-4 transition-opacity duration-500"
             style={{ opacity: showCta ? 1 : 0 }}
           >
             <Link
-              href="/projects"
+              href="#work"
               className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover"
             >
               View Work
@@ -78,7 +86,7 @@ export default function Hero() {
       </Container>
 
       {/* Scroll indicator */}
-      <FadeIn delay={2.5} className="absolute bottom-10 left-1/2 -translate-x-1/2">
+      <FadeIn delay={2.0} className="absolute bottom-10 left-1/2 -translate-x-1/2">
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs uppercase tracking-widest text-text-muted">
             Scroll

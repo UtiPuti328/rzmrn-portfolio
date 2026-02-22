@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
@@ -6,7 +7,7 @@ import CaseContext from "@/components/sections/case-study/CaseContext";
 import CaseResult from "@/components/sections/case-study/CaseResult";
 import CaseNav from "@/components/sections/case-study/CaseNav";
 import { getCaseStudy, getCaseStudySlugs } from "@/lib/mdx";
-import { getProjectBySlug, projects } from "@/data/projects";
+import { getProjectBySlug, getAllSlugs, projects } from "@/data/projects";
 import { createMetadata } from "@/lib/metadata";
 
 interface CaseStudyPageProps {
@@ -14,7 +15,10 @@ interface CaseStudyPageProps {
 }
 
 export async function generateStaticParams() {
-  return getCaseStudySlugs().map((slug) => ({ slug }));
+  const mdxSlugs = getCaseStudySlugs();
+  const dataSlugs = getAllSlugs();
+  const allSlugs = [...new Set([...mdxSlugs, ...dataSlugs])];
+  return allSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -55,7 +59,19 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   return (
     <article>
       {/* Hero */}
-      <section className="flex min-h-[70vh] items-end pb-16 pt-32">
+      <section className="relative flex min-h-[70vh] items-end pb-16 pt-32">
+        {project?.thumbnail && (
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src={project.thumbnail}
+              alt={title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+          </div>
+        )}
         <Container>
           <div className="flex flex-wrap items-center gap-3 text-sm text-text-muted">
             {client && <span>{client}</span>}
@@ -84,6 +100,64 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           )}
         </Container>
       </section>
+
+      {/* Project details (for non-MDX projects) */}
+      {!caseStudy && project && (
+        <section className="py-16">
+          <Container>
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+              {project.type === "visual" && (
+                <>
+                  <div>
+                    <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                      Role
+                    </span>
+                    <p className="mt-2 text-text-primary">{project.role}</p>
+                  </div>
+                  <div>
+                    <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                      Deliverable
+                    </span>
+                    <p className="mt-2 text-text-primary">
+                      {project.deliverable}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                      Status
+                    </span>
+                    <p className="mt-2 capitalize text-text-primary">
+                      {project.status}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Video or thumbnail */}
+            <div className="mt-16 relative aspect-video overflow-hidden bg-surface">
+              {project.videoLoop ? (
+                <video
+                  src={project.videoLoop}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={project.thumbnail}
+                  alt={title}
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              )}
+            </div>
+          </Container>
+        </section>
+      )}
 
       {/* Context details */}
       {caseStudy && (

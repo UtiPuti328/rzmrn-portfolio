@@ -4,6 +4,16 @@ import { useState, type FormEvent } from "react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
+const PROJECT_TYPES = [
+  "Commercial / TV Spot",
+  "Music Video",
+  "Motion Design",
+  "Brand Film",
+  "Event / Live Production",
+  "AI / Automation",
+  "Other",
+];
+
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
@@ -17,14 +27,10 @@ export default function ContactForm() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://formspree.io/f/hello@rzmrn.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.get("name"),
-          email: data.get("email"),
-          message: data.get("message"),
-        }),
+        body: data,
+        headers: { Accept: "application/json" },
       });
 
       if (!res.ok) throw new Error("Failed to send");
@@ -64,65 +70,101 @@ export default function ContactForm() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label
-                htmlFor="name"
-                className="mb-2 block text-sm uppercase tracking-wider text-text-muted"
-              >
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                className="w-full border border-border bg-transparent px-4 py-3 text-text-primary transition-colors focus:border-accent focus:outline-none"
-              />
+          <div>
+            {/* Terminal header */}
+            <div className="mb-6 border border-border bg-surface/50 px-4 py-3">
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
+                <span className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
+                <span className="ml-3 font-mono text-xs text-text-muted">
+                  ~/contact — new-inquiry
+                </span>
+              </div>
             </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="mb-2 block text-sm uppercase tracking-wider text-text-muted"
-              >
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="w-full border border-border bg-transparent px-4 py-3 text-text-primary transition-colors focus:border-accent focus:outline-none"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block text-sm uppercase tracking-wider text-text-muted"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={6}
-                className="w-full resize-none border border-border bg-transparent px-4 py-3 text-text-primary transition-colors focus:border-accent focus:outline-none"
-              />
-            </div>
-            <Button type="submit" disabled={status === "sending"}>
-              {status === "sending"
-                ? "Sending..."
-                : status === "sent"
-                  ? "Sent!"
-                  : "Send Message"}
-            </Button>
-            {status === "error" && (
-              <p className="text-sm text-red-500">
-                Something went wrong. Please try again.
-              </p>
-            )}
-          </form>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-sm uppercase tracking-wider text-text-muted"
+                >
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  className="w-full border border-border bg-transparent px-4 py-3 text-text-primary transition-colors focus:border-accent focus:outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-sm uppercase tracking-wider text-text-muted"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  className="w-full border border-border bg-transparent px-4 py-3 text-text-primary transition-colors focus:border-accent focus:outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="project-type"
+                  className="mb-2 block text-sm uppercase tracking-wider text-text-muted"
+                >
+                  Project Type
+                </label>
+                <select
+                  id="project-type"
+                  name="project-type"
+                  className="w-full appearance-none border border-border bg-transparent px-4 py-3 text-text-primary transition-colors focus:border-accent focus:outline-none"
+                >
+                  <option value="" className="bg-surface text-text-muted">
+                    Select project type...
+                  </option>
+                  {PROJECT_TYPES.map((type) => (
+                    <option key={type} value={type} className="bg-surface">
+                      {type}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="mb-2 block text-sm uppercase tracking-wider text-text-muted"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={6}
+                  className="w-full resize-none border border-border bg-transparent px-4 py-3 text-text-primary transition-colors focus:border-accent focus:outline-none"
+                />
+              </div>
+              <Button type="submit" disabled={status === "sending"}>
+                {status === "sending"
+                  ? "Sending..."
+                  : status === "sent"
+                    ? "Sent!"
+                    : "Send Message"}
+              </Button>
+              {status === "error" && (
+                <p className="text-sm text-red-500">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+            </form>
+          </div>
         </div>
       </Container>
     </section>

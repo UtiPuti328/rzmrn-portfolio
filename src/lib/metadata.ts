@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const SITE_URL = "https://rzmrn.com";
 const SITE_NAME = "RZMRN";
 const SITE_DESCRIPTION =
-  "RZMRN — Director of Post-Production & Motion Designer. Cinematic editing, motion graphics, and visual storytelling.";
+  "RZMRN — Director of Post-Production & Motion Designer. Cinematic editing, motion graphics, visual storytelling & AI-driven content automation.";
 
 export function createMetadata(overrides: Partial<Metadata> = {}): Metadata {
   const title = overrides.title

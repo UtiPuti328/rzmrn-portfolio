@@ -58,7 +58,7 @@ export default function TerminalProof() {
       </div>
       <div className="mt-2 border-t border-border pt-2">
         <a
-          href="https://www.fiverr.com/maksymbeiev"
+          href="https://www.fiverr.com/maksbeiev/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-text-muted transition-colors hover:text-accent"

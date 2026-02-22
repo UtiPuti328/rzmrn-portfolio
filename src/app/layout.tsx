@@ -24,7 +24,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "RZMRN",
-              jobTitle: "Director of Post-Production & Motion Designer",
+              jobTitle: "Creative Director — Motion, Post-Production & AI Automation",
               url: "https://rzmrn.com",
               sameAs: [],
               knowsAbout: [
@@ -33,6 +33,8 @@ export default function RootLayout({
                 "Color Grading",
                 "Visual Effects",
                 "Post-Production",
+                "AI Automation",
+                "Content Pipelines",
               ],
             }),
           }}

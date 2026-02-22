@@ -32,7 +32,14 @@ export default function AboutTeaser() {
                 commercials, music videos, documentaries, and brand films.
               </p>
             </FadeIn>
-            <FadeIn delay={0.3}>
+            <FadeIn delay={0.25}>
+              <p className="mt-6 text-lg leading-relaxed text-text-secondary">
+                Now building AI-driven content pipelines — automating
+                research, production workflows, and multi-agent systems that
+                turn creative ideas into delivered assets faster.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.35}>
               <div className="mt-8">
                 <Button href="/about" variant="ghost">
                   More About Me &rarr;

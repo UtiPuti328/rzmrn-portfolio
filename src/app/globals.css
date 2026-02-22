@@ -67,6 +67,18 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
+/* Dot grid background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--color-text-muted) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.02;
+}
+
 /* Reduced motion: disable glitch animations */
 @media (prefers-reduced-motion: reduce) {
   .glitch-hover,
