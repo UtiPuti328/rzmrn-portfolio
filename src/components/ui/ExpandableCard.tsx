@@ -50,11 +50,11 @@ export default function ExpandableCard({
 }: ExpandableCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const { ref: tiltRef, handleMouseMove, handleMouseLeave } = useParallaxTilt({
-    maxTilt: 8,
-    maxShift: 12,
+    maxTilt: 5,
+    maxShift: 8,
+    smoothing: 0.05,
   });
 
-  // Scroll into view when expanded
   useEffect(() => {
     if (isExpanded && cardRef.current) {
       setTimeout(() => {
@@ -63,7 +63,6 @@ export default function ExpandableCard({
     }
   }, [isExpanded]);
 
-  // Escape to close
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape" && isExpanded) {
@@ -87,7 +86,6 @@ export default function ExpandableCard({
 
   return (
     <div ref={cardRef}>
-      {/* Collapsed: clickable card */}
       <a
         href={`/projects/${project.slug}`}
         onClick={handleClick}
@@ -97,27 +95,25 @@ export default function ExpandableCard({
           ref={tiltRef}
           onMouseMove={isExpanded ? undefined : handleMouseMove}
           onMouseLeave={isExpanded ? undefined : handleMouseLeave}
-          className="relative aspect-video overflow-hidden bg-surface will-change-transform transition-shadow duration-[--duration-normal] hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]"
+          className="relative aspect-video overflow-hidden bg-surface transition-shadow duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]"
         >
           <Image
             src={project.thumbnail}
             alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-transform duration-[--duration-slow] ease-[--ease-expo-out] group-hover:scale-[1.05]"
+            className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.03]"
           />
-          <div className="absolute inset-0 bg-background/20 transition-colors duration-[--duration-normal] group-hover:bg-background/50" />
+          <div className="absolute inset-0 bg-background/0 transition-[background-color] duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:bg-background/35" />
 
-          {/* Tags: top-left on hover */}
-          <div className="absolute top-4 left-4 flex gap-2 opacity-0 transition-all duration-[--duration-normal] group-hover:opacity-100">
+          <div className="absolute top-4 left-4 flex gap-2 opacity-0 transition-opacity duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:opacity-100">
             {project.tags.slice(0, 3).map((tag) => (
               <Badge key={tag}>{tag}</Badge>
             ))}
           </div>
 
-          {/* Meta: bottom on hover (hidden when expanded) */}
           {!isExpanded && (
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4 pt-8 opacity-0 transition-opacity duration-[--duration-normal] group-hover:opacity-100">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4 pt-8 opacity-0 transition-opacity duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:opacity-100">
               <ProjectMeta project={project} />
             </div>
           )}
@@ -132,13 +128,12 @@ export default function ExpandableCard({
               {project.category.replace("-", " ")}
             </span>
           </div>
-          <h3 className="mt-1 font-heading text-2xl font-semibold tracking-tight transition-colors group-hover:text-accent">
+          <h3 className="mt-1 font-heading text-2xl font-semibold tracking-tight transition-colors duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-accent">
             {project.title}
           </h3>
         </div>
       </a>
 
-      {/* Expanded panel */}
       <AnimatePresence>
         {isExpanded && (
           <motion.div
@@ -153,14 +148,12 @@ export default function ExpandableCard({
                 {project.description}
               </p>
 
-              {/* Tags */}
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <Badge key={tag}>{tag}</Badge>
                 ))}
               </div>
 
-              {/* Role/Deliverable details */}
               {project.type === "visual" && (
                 <div className="mt-4 grid grid-cols-2 gap-4 border-t border-border pt-4">
                   <div>
@@ -203,7 +196,6 @@ export default function ExpandableCard({
                 </div>
               )}
 
-              {/* Actions */}
               <div className="mt-6 flex items-center gap-4">
                 <Link
                   href={`/projects/${project.slug}`}

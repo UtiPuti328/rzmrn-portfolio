@@ -15,7 +15,7 @@ export default function ProjectsGrid() {
   const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
 
   return (
-    <section className="py-32">
+    <section className="py-20">
       <Container>
         <FadeIn>
           <div className="flex items-end justify-between">

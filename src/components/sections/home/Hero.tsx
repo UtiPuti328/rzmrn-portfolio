@@ -31,7 +31,7 @@ export default function Hero() {
   const showCta = prefersReducedMotion || subtitle.hasCompleted;
 
   return (
-    <section className="relative flex min-h-screen items-center border-b border-border">
+    <section className="relative flex min-h-[70vh] items-center border-b border-border">
       <Container>
         <div className="max-w-5xl">
           {/* IDE comment prefix + headline */}
