@@ -3,11 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import Badge from "@/components/ui/Badge";
+import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import { useParallaxTilt } from "@/hooks/useParallaxTilt";
-import { projects } from "@/data/projects";
+import {
+  getCaseStudyProjects,
+  getVisualPortfolioProjects,
+} from "@/data/projects";
 import type { Project } from "@/types";
 
-function ProjectCard({ project }: { project: Project }) {
+function VisualCard({ project }: { project: Project }) {
   const { ref, handleMouseMove, handleMouseLeave } = useParallaxTilt({
     maxTilt: 5,
     maxShift: 8,
@@ -15,10 +19,7 @@ function ProjectCard({ project }: { project: Project }) {
   });
 
   return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className="group block"
-    >
+    <Link href={`/projects/${project.slug}`} className="group block">
       <div
         ref={ref}
         onMouseMove={handleMouseMove}
@@ -58,13 +59,43 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default function ProjectsPageContent() {
-  const sorted = [...projects].sort((a, b) => a.order - b.order);
+  const caseStudies = getCaseStudyProjects();
+  const visualProjects = getVisualPortfolioProjects();
 
   return (
-    <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
-      {sorted.map((project) => (
-        <ProjectCard key={project.slug} project={project} />
-      ))}
-    </div>
+    <>
+      {/* Case Studies */}
+      <div className="mt-16">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-text-muted">
+          Case Studies
+        </h2>
+        <div className="mt-6 grid grid-cols-1 gap-10 md:grid-cols-2">
+          {caseStudies.map(
+            (project) =>
+              project.caseStudy && (
+                <CaseStudyCard
+                  key={project.slug}
+                  project={project}
+                  caseStudy={project.caseStudy}
+                />
+              )
+          )}
+        </div>
+      </div>
+
+      {/* Visual Portfolio */}
+      {visualProjects.length > 0 && (
+        <div className="mt-24">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-text-muted">
+            Visual Portfolio
+          </h2>
+          <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {visualProjects.map((project) => (
+              <VisualCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 }

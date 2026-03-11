@@ -10,7 +10,10 @@ export type ProjectCategory =
   | "ai-automation"
   | "content-pipeline"
   | "live-production"
-  | "bot-system";
+  | "bot-system"
+  | "infrastructure";
+
+export type ProjectTrack = "production" | "systems" | "hybrid";
 
 interface ProjectBase {
   slug: string;
@@ -33,6 +36,7 @@ export interface VisualProject extends ProjectBase {
   type: "visual";
   role: string;
   deliverable: string;
+  caseStudy?: CaseStudyData;
 }
 
 export interface SystemProject extends ProjectBase {
@@ -40,9 +44,22 @@ export interface SystemProject extends ProjectBase {
   architecture: string;
   metrics: string;
   repo?: string;
+  caseStudy?: CaseStudyData;
 }
 
 export type Project = VisualProject | SystemProject;
+
+export interface CaseStudyData {
+  track: ProjectTrack;
+  headline: string;
+  subtitle: string;
+  metrics: CaseStudyMetric[];
+  challenge: string;
+  approach: string;
+  result: string;
+  role: string;
+  stackTags: string[];
+}
 
 export interface CaseStudyFrontmatter {
   title: string;

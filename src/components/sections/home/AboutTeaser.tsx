@@ -14,29 +14,29 @@ export default function AboutTeaser() {
               animation="words"
               className="font-heading text-4xl font-semibold tracking-tight md:text-5xl"
             >
-              Conflict of physics and digital
+              I don&apos;t just cut video. I build systems.
             </AnimatedText>
           </div>
           <div className="flex flex-col justify-center">
             <FadeIn delay={0.1}>
               <p className="text-lg leading-relaxed text-text-secondary">
-                I work at the intersection of cinematic craft and digital
-                experimentation. Every project starts with a question: what
-                happens when you push physical media through a digital pipeline —
-                or vice versa?
+                Director of Post-Production and Motion Designer, engineering
+                high-end visual stories and the technical workflows behind them.
+                From EdTech course productions to automotive commercials for
+                Mazda and Lotus.
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="mt-6 text-lg leading-relaxed text-text-secondary">
-                15+ years of editing, motion design, and post-production across
-                commercials, music videos, documentaries, and brand films.
+                Custom AI and automation pipelines integrated into
+                post-production — eliminating routine bottlenecks so the focus
+                stays entirely on the creative work.
               </p>
             </FadeIn>
             <FadeIn delay={0.25}>
               <p className="mt-6 text-lg leading-relaxed text-text-secondary">
-                Now building AI-driven content pipelines — automating
-                research, production workflows, and multi-agent systems that
-                turn creative ideas into delivered assets faster.
+                Based in Poland, available for remote commercial projects, brand
+                films, and motion design commissions globally.
               </p>
             </FadeIn>
             <FadeIn delay={0.35}>

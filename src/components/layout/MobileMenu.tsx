@@ -19,10 +19,12 @@ export default function MobileMenu() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = "mobile-menu";
 
-  // Close on route change
-  useEffect(() => {
+  // Close on route change (derive during render, not in effect)
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setIsOpen(false);
-  }, [pathname]);
+  }
 
   // Lock body scroll when open
   useEffect(() => {

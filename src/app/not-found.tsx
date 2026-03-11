@@ -11,7 +11,10 @@ export default function NotFound() {
   return (
     <section className="flex min-h-screen items-center">
       <Container className="text-center">
-        <h1 className="font-heading text-7xl font-bold tracking-tight md:text-9xl">
+        <p className="font-mono text-sm text-text-muted">
+          $ cd /page — not found
+        </p>
+        <h1 className="mt-4 font-heading text-7xl font-bold tracking-tight md:text-9xl">
           404
         </h1>
         <p className="mt-4 text-lg text-text-secondary">

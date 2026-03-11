@@ -5,7 +5,9 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Projects",
   description:
-    "Selected works in cinematic editing, motion design, and visual storytelling.",
+    "Case studies in AI systems, content production pipelines, and visual storytelling.",
+  path: "/projects",
+  ogImage: "/og/projects.jpg",
 });
 
 export default function ProjectsPage() {
@@ -16,8 +18,8 @@ export default function ProjectsPage() {
           Projects
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-text-secondary">
-          A curated selection of commercial, music video, and motion design
-          work.
+          AI systems, production pipelines, and visual work — case studies and
+          portfolio.
         </p>
 
         <ProjectsPageContent />

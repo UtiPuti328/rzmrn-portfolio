@@ -1,5 +1,5 @@
 import Hero from "@/components/sections/home/Hero";
-import ProjectsGrid from "@/components/sections/home/ProjectsGrid";
+import WorkShowcase from "@/components/sections/home/WorkShowcase";
 import Stats from "@/components/sections/home/Stats";
 import AboutTeaser from "@/components/sections/home/AboutTeaser";
 import HomeCTA from "@/components/sections/home/HomeCTA";
@@ -9,7 +9,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Divider />
-      <ProjectsGrid />
+      <WorkShowcase />
       <Divider />
       <Stats />
       <Divider />

@@ -6,9 +6,20 @@ import MDXContent from "@/components/mdx/MDXContent";
 import CaseContext from "@/components/sections/case-study/CaseContext";
 import CaseResult from "@/components/sections/case-study/CaseResult";
 import CaseNav from "@/components/sections/case-study/CaseNav";
+import CaseStudyLayout from "@/components/sections/case-study/CaseStudyLayout";
+import InteractiveSlot from "@/components/interactive/InteractiveSlot";
 import { getCaseStudy, getCaseStudySlugs } from "@/lib/mdx";
-import { getProjectBySlug, getAllSlugs, projects } from "@/data/projects";
+import {
+  getProjectBySlug,
+  getAllSlugs,
+  getCaseStudyProjects,
+  projects,
+} from "@/data/projects";
 import { createMetadata } from "@/lib/metadata";
+
+const SLUG_TAGLINES: Record<string, string> = {
+  "short-form-reels": "The work speaks for itself",
+};
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
@@ -28,28 +39,62 @@ export async function generateMetadata({
   const caseStudy = getCaseStudy(slug);
   const project = getProjectBySlug(slug);
 
-  const title = caseStudy?.frontmatter.title ?? project?.title ?? slug;
+  const title =
+    project?.caseStudy?.headline ??
+    caseStudy?.frontmatter.title ??
+    project?.title ??
+    slug;
   const description =
-    caseStudy?.frontmatter.description ?? project?.description;
+    project?.caseStudy?.subtitle ??
+    caseStudy?.frontmatter.description ??
+    project?.description;
 
-  return createMetadata({ title, description });
+  return createMetadata({
+    title,
+    description,
+    path: `/projects/${slug}`,
+    ogImage: `/og/${slug}.jpg`,
+  });
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
-  const caseStudy = getCaseStudy(slug);
+  const mdxCaseStudy = getCaseStudy(slug);
   const project = getProjectBySlug(slug);
 
-  if (!caseStudy && !project) notFound();
+  if (!mdxCaseStudy && !project) notFound();
 
-  const title = caseStudy?.frontmatter.title ?? project?.title ?? slug;
+  // Case study from TypeScript data — new layout
+  if (project?.caseStudy) {
+    const caseStudies = getCaseStudyProjects();
+    const currentIndex = caseStudies.findIndex((p) => p.slug === slug);
+    const prev = currentIndex > 0 ? caseStudies[currentIndex - 1] : undefined;
+    const next =
+      currentIndex < caseStudies.length - 1
+        ? caseStudies[currentIndex + 1]
+        : undefined;
+
+    return (
+      <CaseStudyLayout
+        project={project}
+        caseStudy={project.caseStudy}
+        prev={prev}
+        next={next}
+        interactiveComponent={<InteractiveSlot slug={slug} />}
+        tagline={SLUG_TAGLINES[slug]}
+      />
+    );
+  }
+
+  // Legacy: MDX case study or visual project
+  const title = mdxCaseStudy?.frontmatter.title ?? project?.title ?? slug;
   const description =
-    caseStudy?.frontmatter.description ?? project?.description;
-  const client = caseStudy?.frontmatter.client ?? project?.client;
-  const year = caseStudy?.frontmatter.year ?? project?.year;
-  const tags = caseStudy?.frontmatter.tags ?? project?.tags ?? [];
+    mdxCaseStudy?.frontmatter.description ?? project?.description;
+  const client = mdxCaseStudy?.frontmatter.client ?? project?.client;
+  const year = mdxCaseStudy?.frontmatter.year ?? project?.year;
+  const tags = mdxCaseStudy?.frontmatter.tags ?? project?.tags ?? [];
 
-  // Prev/next navigation
+  // Prev/next navigation for non-case-study projects
   const sorted = [...projects].sort((a, b) => a.order - b.order);
   const currentIndex = sorted.findIndex((p) => p.slug === slug);
   const prev = currentIndex > 0 ? sorted[currentIndex - 1] : undefined;
@@ -103,7 +148,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       </section>
 
       {/* Project details (for non-MDX projects) */}
-      {!caseStudy && project && (
+      {!mdxCaseStudy && project && (
         <section className="py-16">
           <Container>
             <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
@@ -161,26 +206,26 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       )}
 
       {/* Context details */}
-      {caseStudy && (
+      {mdxCaseStudy && (
         <CaseContext
-          role={caseStudy.frontmatter.role}
-          duration={caseStudy.frontmatter.duration}
-          tools={caseStudy.frontmatter.tools}
+          role={mdxCaseStudy.frontmatter.role}
+          duration={mdxCaseStudy.frontmatter.duration}
+          tools={mdxCaseStudy.frontmatter.tools}
         />
       )}
 
       {/* MDX Content */}
-      {caseStudy && (
+      {mdxCaseStudy && (
         <section className="py-16">
           <Container>
-            <MDXContent source={caseStudy.content} />
+            <MDXContent source={mdxCaseStudy.content} />
           </Container>
         </section>
       )}
 
       {/* Metrics */}
-      {caseStudy?.frontmatter.metrics && (
-        <CaseResult metrics={caseStudy.frontmatter.metrics} />
+      {mdxCaseStudy?.frontmatter.metrics && (
+        <CaseResult metrics={mdxCaseStudy.frontmatter.metrics} />
       )}
 
       {/* Prev/Next navigation */}

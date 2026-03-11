@@ -25,6 +25,7 @@ export function useParallaxTilt({
   const rafId = useRef<number>(0);
   const isHovering = useRef(false);
   const isAnimating = useRef(false);
+  const animateFn = useRef<() => void>(() => {});
 
   // Set initial transform on mount so perspective context is already established
   useEffect(() => {
@@ -57,7 +58,7 @@ export function useParallaxTilt({
       Math.abs(t.translateY - c.translateY);
 
     if (isHovering.current || delta > 0.01) {
-      rafId.current = requestAnimationFrame(animate);
+      rafId.current = requestAnimationFrame(animateFn.current);
     } else {
       isAnimating.current = false;
       // Snap to exact rest position
@@ -65,12 +66,17 @@ export function useParallaxTilt({
     }
   }, [perspective, smoothing]);
 
+  // Keep ref in sync with latest animate
+  useEffect(() => {
+    animateFn.current = animate;
+  }, [animate]);
+
   const startAnimation = useCallback(() => {
     if (!isAnimating.current) {
       isAnimating.current = true;
-      rafId.current = requestAnimationFrame(animate);
+      rafId.current = requestAnimationFrame(() => animateFn.current());
     }
-  }, [animate]);
+  }, []);
 
   const handleMouseMove = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {

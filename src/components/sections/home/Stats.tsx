@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/motion/FadeIn";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface StatItem {
   value: number;
@@ -18,22 +19,14 @@ const stats: StatItem[] = [
 ];
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
+  const prefersReduced = useMediaQuery("(prefers-reduced-motion: reduce)");
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReduced) {
-      setCount(target);
-      return;
-    }
+    if (!el || prefersReduced) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -58,11 +51,11 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [target]);
+  }, [target, prefersReduced]);
 
   return (
     <span ref={ref}>
-      {count}
+      {prefersReduced ? target : count}
       {suffix}
     </span>
   );

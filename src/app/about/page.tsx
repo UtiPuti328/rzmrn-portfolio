@@ -6,7 +6,9 @@ import Philosophy from "@/components/sections/about/Philosophy";
 export const metadata = createMetadata({
   title: "About",
   description:
-    "Director of Post-Production & Motion Designer with a passion for cinematic storytelling and visual experimentation.",
+    "Director of Post-Production & Motion Designer. Building systems, not just cutting video — from EdTech productions to automotive commercials, with AI-driven workflows.",
+  path: "/about",
+  ogImage: "/og/about.jpg",
 });
 
 export default function AboutPage() {
