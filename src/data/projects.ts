@@ -9,7 +9,8 @@ export const projects: Project[] = [
     category: "content-pipeline",
     type: "system",
     year: 2024,
-    thumbnail: "/images/projects/placeholder.webp",
+    thumbnail: "/images/projects/kce-thumbnail.webp",
+    videoLoop: "/images/projects/kce-thumbnail.webm",
     description:
       "AI-augmented production pipeline for a major education platform.",
     tags: ["AI Pipeline", "Production", "Automation"],
@@ -56,7 +57,7 @@ export const projects: Project[] = [
     category: "commercial",
     type: "visual",
     year: 2024,
-    thumbnail: "/images/projects/placeholder.webp",
+    thumbnail: "/images/projects/production-studio.png",
     description:
       "A one-person production studio that scaled to $50/hr through systems, not headcount.",
     tags: ["Production", "Freelance", "Scale"],
@@ -100,7 +101,7 @@ export const projects: Project[] = [
     category: "motion-design",
     type: "system",
     year: 2025,
-    thumbnail: "/images/projects/placeholder.webp",
+    thumbnail: "/images/projects/remotion.png",
     description:
       "React components that render to video. Where creative meets programmatic.",
     tags: ["Remotion", "React", "Programmatic Video"],
@@ -136,7 +137,8 @@ export const projects: Project[] = [
     category: "ai-automation",
     type: "system",
     year: 2025,
-    thumbnail: "/images/projects/placeholder.webp",
+    thumbnail: "/images/projects/multi-agent.png",
+    videoLoop: "/images/projects/multi-agent-loop.webm",
     description:
       "Multi-model agent architecture for automated research, content generation, and monitoring.",
     tags: ["Multi-Agent", "AI", "Automation"],
@@ -182,7 +184,7 @@ export const projects: Project[] = [
     category: "ai-automation",
     type: "system",
     year: 2025,
-    thumbnail: "/images/projects/placeholder.webp",
+    thumbnail: "/images/projects/archive.png",
     description:
       "Automated archive audit and cloud migration for a terabyte-scale media library.",
     tags: ["Automation", "Archive", "Cloud Migration"],
@@ -270,7 +272,7 @@ export const projects: Project[] = [
     category: "infrastructure",
     type: "system",
     year: 2025,
-    thumbnail: "/images/projects/placeholder.webp",
+    thumbnail: "/images/projects/rzmrn-platform.png",
     description:
       "AI-first ecosystem: portfolio site + autonomous intelligence platform.",
     tags: ["AI Platform", "Web", "Automation"],
@@ -316,7 +318,7 @@ export const projects: Project[] = [
     category: "motion-design",
     type: "visual",
     year: 2024,
-    thumbnail: "/images/projects/placeholder.webp",
+    thumbnail: "/images/projects/short-form.png",
     description:
       "Short-form content where production craft meets attention economy.",
     tags: ["Short-Form", "Motion Design", "After Effects"],
