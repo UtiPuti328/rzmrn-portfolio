@@ -93,21 +93,9 @@ export default function CaseStudyLayout({
                   alt={caseStudy.headline}
                   fill
                   sizes="(max-width: 768px) 100vw, 90vw"
-                  className={cn("object-cover", project.videoLoop && "opacity-20 mix-blend-screen")}
+                  className="object-cover"
                   priority
                 />
-                
-                {project.videoLoop && (
-                  <video
-                    src={project.videoLoop}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-90"
-                  />
-                )}
-
                 <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
               </div>
             ) : (

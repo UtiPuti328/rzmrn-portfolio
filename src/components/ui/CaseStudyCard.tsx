@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { useRef, useState } from "react";
 import Badge from "@/components/ui/Badge";
 import ProjectPlaceholder from "@/components/ui/ProjectPlaceholder";
 import { useParallaxTilt } from "@/hooks/useParallaxTilt";
@@ -34,24 +36,81 @@ export default function CaseStudyCard({
     smoothing: 0.05,
   });
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+
+  const hasRealThumbnail = !!project.thumbnail && !project.thumbnail.includes("placeholder");
+  const hasVideo = !!project.videoLoop;
+
+  function handleCardMouseEnter() {
+    if (videoRef.current && hasVideo) {
+      videoRef.current.play().catch(() => {});
+    }
+  }
+
+  function handleCardMouseLeave(_e: React.MouseEvent<HTMLDivElement>) {
+    handleMouseLeave();
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }
+
   return (
     <Link href={`/projects/${project.slug}`} className="group block">
       <div
         ref={ref}
         onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={handleCardMouseLeave}
+        onMouseEnter={handleCardMouseEnter}
       >
-        {/* Hero placeholder */}
-        <ProjectPlaceholder
-          title={caseStudy.headline}
-          track={caseStudy.track}
-          diagramLabel={
-            caseStudy.track === "systems" || caseStudy.track === "hybrid"
-              ? "Architecture Diagram"
-              : undefined
-          }
-          className="transition-shadow duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]"
-        />
+        {/* Hero media */}
+        {hasRealThumbnail ? (
+          <div className="relative aspect-video overflow-hidden border border-border bg-surface transition-shadow duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]">
+            {/* Static thumbnail */}
+            <Image
+              src={project.thumbnail}
+              alt={caseStudy.headline}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className={cn(
+                "object-cover transition-opacity duration-500",
+                videoReady && hasVideo ? "opacity-0" : "opacity-100"
+              )}
+            />
+
+            {/* Video loop on hover (webm only) */}
+            {hasVideo && (
+              <video
+                ref={videoRef}
+                src={project.videoLoop}
+                muted
+                loop
+                playsInline
+                preload="none"
+                onCanPlay={() => setVideoReady(true)}
+                className={cn(
+                  "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
+                  videoReady ? "opacity-100" : "opacity-0"
+                )}
+              />
+            )}
+
+            {/* Hover gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          </div>
+        ) : (
+          <ProjectPlaceholder
+            title={caseStudy.headline}
+            track={caseStudy.track}
+            diagramLabel={
+              caseStudy.track === "systems" || caseStudy.track === "hybrid"
+                ? "Architecture Diagram"
+                : undefined
+            }
+            className="transition-shadow duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]"
+          />
+        )}
 
         {/* Content */}
         <div className="mt-4">
