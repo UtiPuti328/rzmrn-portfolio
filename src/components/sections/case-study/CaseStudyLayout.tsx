@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import ProjectPlaceholder from "@/components/ui/ProjectPlaceholder";
@@ -83,18 +84,44 @@ export default function CaseStudyLayout({
             {caseStudy.subtitle}
           </p>
 
-          {/* Hero visual placeholder */}
+          {/* Hero visual */}
           <div className="mt-10">
-            <ProjectPlaceholder
-              title={caseStudy.headline}
-              track={caseStudy.track}
-              diagramLabel={
-                caseStudy.track === "systems" || caseStudy.track === "hybrid"
-                  ? "Pipeline Diagram"
-                  : undefined
-              }
-              aspect="wide"
-            />
+            {project.thumbnail && !project.thumbnail.includes("placeholder") ? (
+              <div className="relative aspect-[21/9] overflow-hidden border border-border bg-surface">
+                <Image
+                  src={project.thumbnail}
+                  alt={caseStudy.headline}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  className={cn("object-cover", project.videoLoop && "opacity-20 mix-blend-screen")}
+                  priority
+                />
+                
+                {project.videoLoop && (
+                  <video
+                    src={project.videoLoop}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-90"
+                  />
+                )}
+
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+              </div>
+            ) : (
+              <ProjectPlaceholder
+                title={caseStudy.headline}
+                track={caseStudy.track}
+                diagramLabel={
+                  caseStudy.track === "systems" || caseStudy.track === "hybrid"
+                    ? "Pipeline Diagram"
+                    : undefined
+                }
+                aspect="wide"
+              />
+            )}
           </div>
 
           {/* Stack tags */}
