@@ -137,8 +137,8 @@ export const projects: Project[] = [
     category: "ai-automation",
     type: "system",
     year: 2025,
-    thumbnail: "/images/projects/multi-agent.png",
-    videoLoop: "/images/projects/multi-agent-loop.webm",
+    thumbnail: "/images/projects/multi-agent-thumb.jpg",
+    videoLoop: "/images/projects/multi-agent-loop-v2.webm",
     description:
       "Multi-model agent architecture for automated research, content generation, and monitoring.",
     tags: ["Multi-Agent", "AI", "Automation"],
