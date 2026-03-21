@@ -118,13 +118,13 @@ export default function MobileMenu() {
         aria-modal="true"
         aria-label="Navigation menu"
         className={cn(
-          "fixed inset-0 z-40 bg-background transition-[opacity,visibility] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "fixed inset-0 z-40 bg-background/80 backdrop-blur-xl transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isOpen
             ? "visible opacity-100"
             : "invisible opacity-0"
         )}
       >
-        <nav className="flex h-full flex-col items-center justify-center gap-8">
+        <nav className="flex h-full flex-col items-center justify-start pt-32 gap-10">
           {NAV_LINKS.map((link, i) => (
             <Link
               key={link.href}
@@ -133,8 +133,8 @@ export default function MobileMenu() {
               className={cn(
                 "font-heading text-4xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                 isOpen
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-4 opacity-0",
+                  ? "translate-y-0 opacity-100 blur-none"
+                  : "translate-y-8 opacity-0 blur-sm",
                 pathname === link.href
                   ? "text-text-primary"
                   : "text-text-muted hover:text-text-primary"

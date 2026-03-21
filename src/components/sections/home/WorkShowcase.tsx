@@ -19,13 +19,13 @@ export default function WorkShowcase() {
       <Container>
         {/* Section header with two tracks */}
         <FadeIn>
-          <div className="flex items-end justify-between">
-            <h2 className="font-heading text-4xl font-semibold tracking-tight md:text-5xl">
+          <div className="flex flex-col items-center justify-center relative">
+            <h2 className="font-heading text-4xl font-semibold tracking-tight text-center md:text-5xl">
               {dict.projects.sectionTitle}
             </h2>
             <Link
               href={`/${locale}/projects`}
-              className="hidden font-mono text-sm text-text-muted transition-colors hover:text-text-primary md:block"
+              className="hidden absolute right-0 bottom-2 font-mono text-sm text-text-muted transition-colors hover:text-text-primary md:block"
             >
               {dict.projects.allProjects}
             </Link>

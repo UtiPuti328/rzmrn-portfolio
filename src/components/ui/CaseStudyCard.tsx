@@ -148,7 +148,7 @@ export default function CaseStudyCard({
           {/* Track badge */}
           <span
             className={cn(
-              "inline-block border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest",
+              "self-start inline-block border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest",
               trackColors[caseStudy.track]
             )}
           >
@@ -185,7 +185,7 @@ export default function CaseStudyCard({
           </div>
 
           {/* CTA */}
-          <span className="mt-auto pt-4 inline-block font-mono text-xs uppercase tracking-wider text-text-muted transition-colors group-hover:text-accent">
+          <span className="self-start mt-auto pt-4 inline-block font-mono text-xs uppercase tracking-wider text-text-muted transition-colors group-hover:text-accent">
             {dict.projects.viewCaseStudy}
           </span>
         </div>
