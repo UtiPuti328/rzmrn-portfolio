@@ -18,12 +18,14 @@ import {
 } from "@/data/projects";
 import { createMetadata } from "@/lib/metadata";
 
+import { getValidatedLocale } from "@/i18n/config";
+
 const SLUG_TAGLINES: Record<string, string> = {
   "short-form-reels": "The work speaks for itself",
 };
 
 interface CaseStudyPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }
 
 export async function generateStaticParams() {
@@ -36,30 +38,32 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: CaseStudyPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  const validLocale = getValidatedLocale(locale);
   const caseStudy = getCaseStudy(slug);
   const project = getProjectBySlug(slug);
 
   const title =
-    project?.caseStudy?.headline ??
+    project?.caseStudy?.headline[validLocale] ??
     caseStudy?.frontmatter.title ??
-    project?.title ??
+    project?.title[validLocale] ??
     slug;
   const description =
-    project?.caseStudy?.subtitle ??
+    project?.caseStudy?.subtitle[validLocale] ??
     caseStudy?.frontmatter.description ??
-    project?.description;
+    project?.description[validLocale];
 
   return createMetadata({
     title,
     description,
-    path: `/projects/${slug}`,
+    path: `/${validLocale}/projects/${slug}`,
     ogImage: `/og/${slug}.jpg`,
   });
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  const validLocale = getValidatedLocale(locale);
   const mdxCaseStudy = getCaseStudy(slug);
   const project = getProjectBySlug(slug);
 
@@ -88,9 +92,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   }
 
   // Legacy: MDX case study or visual project
-  const title = mdxCaseStudy?.frontmatter.title ?? project?.title ?? slug;
+  const title = mdxCaseStudy?.frontmatter.title ?? project?.title[validLocale] ?? slug;
   const description =
-    mdxCaseStudy?.frontmatter.description ?? project?.description;
+    mdxCaseStudy?.frontmatter.description ?? project?.description[validLocale];
   const client = mdxCaseStudy?.frontmatter.client ?? project?.client;
   const year = mdxCaseStudy?.frontmatter.year ?? project?.year;
   const tags = mdxCaseStudy?.frontmatter.tags ?? project?.tags ?? [];

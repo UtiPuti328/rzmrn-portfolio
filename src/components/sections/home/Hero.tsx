@@ -6,11 +6,10 @@ import FadeIn from "@/components/motion/FadeIn";
 import TerminalProof from "@/components/ui/TerminalProof";
 import { useScrambleText } from "@/hooks/useScrambleText";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-
-const SUBTITLE = "Filmmaker & Creative Director — Motion / Post / AI";
-const SUBTITLE_REDUCED = SUBTITLE;
+import { useI18n } from "@/i18n/provider";
 
 export default function Hero() {
+  const { dict, locale } = useI18n();
   const prefersReducedMotion = useMediaQuery(
     "(prefers-reduced-motion: reduce)"
   );
@@ -23,7 +22,7 @@ export default function Hero() {
   });
 
   const subtitle = useScrambleText({
-    text: SUBTITLE,
+    text: dict.hero.subtitle,
     duration: 400,
     delay: 600,
     autoStart: !prefersReducedMotion,
@@ -52,7 +51,7 @@ export default function Hero() {
 
             <div className="mt-8 max-w-2xl">
               <p className="text-xl leading-relaxed text-text-secondary md:text-2xl">
-                {prefersReducedMotion ? SUBTITLE_REDUCED : subtitle.displayText}
+                {prefersReducedMotion ? dict.hero.subtitle : subtitle.displayText}
                 {subtitle.isScrambling && (
                   <span className="ml-1 inline-block w-[2px] animate-pulse bg-accent align-middle" style={{ height: "1em" }} />
                 )}
@@ -61,7 +60,7 @@ export default function Hero() {
 
             <FadeIn delay={1.2}>
               <p className="mt-4 font-mono text-sm text-text-muted">
-                Directing / Cinematography / Editing / Motion Design / Color Grading / AI Automation
+                {dict.hero.trackLabels}
               </p>
             </FadeIn>
 
@@ -70,16 +69,16 @@ export default function Hero() {
               style={{ opacity: showCta ? 1 : 0 }}
             >
               <Link
-                href="#work"
+                href={`/${locale}#work`}
                 className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover"
               >
-                View Work
+                {dict.hero.viewWork}
               </Link>
               <Link
-                href="/contact"
+                href={`/${locale}/contact`}
                 className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:border-text-muted"
               >
-                Get in Touch
+                {dict.hero.getInTouch}
               </Link>
             </div>
           </div>
@@ -94,7 +93,7 @@ export default function Hero() {
       <FadeIn delay={2.0} className="absolute bottom-6 left-1/2 -translate-x-1/2">
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs uppercase tracking-widest text-text-muted">
-            Scroll
+            {dict.hero.scroll}
           </span>
           <div className="h-10 w-px bg-border" />
         </div>

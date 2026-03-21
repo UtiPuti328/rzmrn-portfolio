@@ -8,9 +8,11 @@ import StaggerChildren, {
 } from "@/components/motion/StaggerChildren";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import { getCaseStudyProjects } from "@/data/projects";
+import { useI18n } from "@/i18n/provider";
 
 export default function WorkShowcase() {
   const caseStudies = getCaseStudyProjects();
+  const { dict, locale } = useI18n();
 
   return (
     <section id="work" className="py-20">
@@ -19,13 +21,13 @@ export default function WorkShowcase() {
         <FadeIn>
           <div className="flex items-end justify-between">
             <h2 className="font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-              Selected Work
+              {dict.projects.sectionTitle}
             </h2>
             <Link
-              href="/projects"
+              href={`/${locale}/projects`}
               className="hidden font-mono text-sm text-text-muted transition-colors hover:text-text-primary md:block"
             >
-              ls -la ./projects &rarr;
+              {dict.projects.allProjects}
             </Link>
           </div>
         </FadeIn>
@@ -36,24 +38,24 @@ export default function WorkShowcase() {
             <div className="flex items-center gap-3">
               <span className="h-px flex-1 bg-border" />
               <span className="font-mono text-xs uppercase tracking-widest text-blue-400/70">
-                Content Production
+                {dict.projects.tracks.content}
               </span>
               <span className="h-px flex-1 bg-border" />
             </div>
             <div className="flex items-center gap-3">
               <span className="h-px flex-1 bg-border" />
               <span className="font-mono text-xs uppercase tracking-widest text-emerald-400/70">
-                AI Systems
+                {dict.projects.tracks.ai}
               </span>
               <span className="h-px flex-1 bg-border" />
             </div>
           </div>
           <div className="mt-2 grid grid-cols-1 gap-6 md:grid-cols-2">
             <p className="text-center font-mono text-[10px] uppercase tracking-wider text-text-muted">
-              Video &middot; Motion &middot; Live &middot; Post-Production
+              {dict.projects.trackSub1}
             </p>
             <p className="text-center font-mono text-[10px] uppercase tracking-wider text-text-muted">
-              Automation &middot; Multi-Agent &middot; Programmatic Video &middot; Pipeline
+              {dict.projects.trackSub2}
             </p>
           </div>
         </FadeIn>
@@ -61,7 +63,7 @@ export default function WorkShowcase() {
         {/* Bridge line */}
         <FadeIn delay={0.2}>
           <p className="mt-8 text-center font-mono text-sm text-text-secondary">
-            I produce content and build AI systems to scale it 10x
+            {dict.projects.bridge}
           </p>
         </FadeIn>
 
@@ -82,10 +84,10 @@ export default function WorkShowcase() {
         {/* Mobile link */}
         <FadeIn className="mt-12 text-center md:hidden">
           <Link
-            href="/projects"
+            href={`/${locale}/projects`}
             className="font-mono text-sm text-text-muted transition-colors hover:text-text-primary"
           >
-            ls -la ./projects &rarr;
+            {dict.projects.allProjects}
           </Link>
         </FadeIn>
       </Container>

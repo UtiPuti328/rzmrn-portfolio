@@ -10,8 +10,10 @@ import {
   getVisualPortfolioProjects,
 } from "@/data/projects";
 import type { Project } from "@/types";
+import { useI18n } from "@/i18n/provider";
 
 function VisualCard({ project }: { project: Project }) {
+  const { locale } = useI18n();
   const { ref, handleMouseMove, handleMouseLeave } = useParallaxTilt({
     maxTilt: 5,
     maxShift: 8,
@@ -19,7 +21,7 @@ function VisualCard({ project }: { project: Project }) {
   });
 
   return (
-    <Link href={`/projects/${project.slug}`} className="group block">
+    <Link href={`/${locale}/projects/${project.slug}`} className="group block">
       <div
         ref={ref}
         onMouseMove={handleMouseMove}
@@ -28,7 +30,7 @@ function VisualCard({ project }: { project: Project }) {
       >
         <Image
           src={project.thumbnail}
-          alt={project.title}
+          alt={project.title[locale]}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.03]"
@@ -48,10 +50,10 @@ function VisualCard({ project }: { project: Project }) {
           <span>{project.year}</span>
         </div>
         <h2 className="mt-1 font-heading text-2xl font-semibold tracking-tight transition-colors duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-accent">
-          {project.title}
+          {project.title[locale]}
         </h2>
         <p className="mt-2 text-sm text-text-secondary line-clamp-2">
-          {project.description}
+          {project.description[locale]}
         </p>
       </div>
     </Link>
@@ -61,13 +63,14 @@ function VisualCard({ project }: { project: Project }) {
 export default function ProjectsPageContent() {
   const caseStudies = getCaseStudyProjects();
   const visualProjects = getVisualPortfolioProjects();
+  const { locale } = useI18n();
 
   return (
     <>
       {/* Case Studies */}
       <div className="mt-16">
         <h2 className="font-mono text-xs uppercase tracking-widest text-text-muted">
-          Case Studies
+          {locale === "pl" ? "Studia Przypadk\u00f3w" : "Case Studies"}
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-10 md:grid-cols-2">
           {caseStudies.map(
@@ -87,7 +90,7 @@ export default function ProjectsPageContent() {
       {visualProjects.length > 0 && (
         <div className="mt-24">
           <h2 className="font-mono text-xs uppercase tracking-widest text-text-muted">
-            Visual Portfolio
+            {locale === "pl" ? "Portfolio Wizualne" : "Visual Portfolio"}
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {visualProjects.map((project) => (

@@ -1,9 +1,13 @@
+"use client";
+
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/motion/FadeIn";
 import AnimatedText from "@/components/motion/AnimatedText";
+import { useI18n } from "@/i18n/provider";
 
 export default function HomeCTA() {
+  const { dict, locale } = useI18n();
   return (
     <section className="py-32">
       <Container className="text-center">
@@ -12,17 +16,16 @@ export default function HomeCTA() {
           animation="words"
           className="font-heading text-4xl font-semibold tracking-tight md:text-6xl"
         >
-          Let&apos;s make something together
+          {dict.cta.title}
         </AnimatedText>
         <FadeIn delay={0.2}>
           <p className="mx-auto mt-6 max-w-lg text-lg text-text-secondary">
-            Available for commercial projects, music videos, brand films, and
-            motion design commissions.
+            {dict.cta.subtitle}
           </p>
         </FadeIn>
         <FadeIn delay={0.3}>
           <div className="mt-10">
-            <Button href="/contact">Start a Conversation</Button>
+            <Button href={`/${locale}/contact`}>{dict.cta.button}</Button>
           </div>
         </FadeIn>
       </Container>

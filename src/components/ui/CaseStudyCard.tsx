@@ -9,6 +9,7 @@ import { useParallaxTilt } from "@/hooks/useParallaxTilt";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import type { Project, CaseStudyData } from "@/types";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/i18n/provider";
 
 interface CaseStudyCardProps {
   project: Project;
@@ -21,16 +22,11 @@ const trackColors: Record<CaseStudyData["track"], string> = {
   hybrid: "border-violet-500/60 text-violet-400",
 };
 
-const trackLabels: Record<CaseStudyData["track"], string> = {
-  production: "PRODUCTION",
-  systems: "SYSTEMS",
-  hybrid: "SYSTEMS + PRODUCTION",
-};
-
 export default function CaseStudyCard({
   project,
   caseStudy,
 }: CaseStudyCardProps) {
+  const { dict, locale } = useI18n();
   const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   const supportsHover = useMediaQuery("(hover: hover) and (pointer: fine)");
   const { ref, handleMouseMove, handleMouseLeave } = useParallaxTilt({
@@ -91,7 +87,7 @@ export default function CaseStudyCard({
   }
 
   return (
-    <Link href={`/projects/${project.slug}`} className="group block">
+    <Link href={`/${locale}/projects/${project.slug}`} className="group block">
       <div
         ref={ref}
         onMouseMove={supportsHover ? handleMouseMove : undefined}
@@ -104,7 +100,7 @@ export default function CaseStudyCard({
             {/* Static thumbnail */}
             <Image
                 src={project.thumbnail}
-                alt={caseStudy.headline}
+                alt={caseStudy.headline[locale]}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className={cn(
@@ -135,7 +131,7 @@ export default function CaseStudyCard({
           </div>
         ) : (
           <ProjectPlaceholder
-            title={caseStudy.headline}
+            title={caseStudy.headline[locale]}
             track={caseStudy.track}
             diagramLabel={
               caseStudy.track === "systems" || caseStudy.track === "hybrid"
@@ -155,12 +151,12 @@ export default function CaseStudyCard({
               trackColors[caseStudy.track]
             )}
           >
-            {trackLabels[caseStudy.track]}
+            {dict.projects.tracksLabel[caseStudy.track]}
           </span>
 
           {/* Headline */}
           <h3 className="mt-2 font-heading text-2xl font-semibold tracking-tight transition-colors duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-accent">
-            {caseStudy.headline}
+            {caseStudy.headline[locale]}
           </h3>
 
           {/* Key metrics inline */}
@@ -189,7 +185,7 @@ export default function CaseStudyCard({
 
           {/* CTA */}
           <span className="mt-4 inline-block font-mono text-xs uppercase tracking-wider text-text-muted transition-colors group-hover:text-accent">
-            View Case Study &rarr;
+            {dict.projects.viewCaseStudy}
           </span>
         </div>
       </div>

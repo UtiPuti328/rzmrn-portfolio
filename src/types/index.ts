@@ -1,3 +1,8 @@
+export type TString = {
+  en: string;
+  pl: string;
+};
+
 export type ProjectType = "visual" | "system";
 
 export type ProjectCategory =
@@ -22,7 +27,7 @@ export interface ProjectVideo {
 
 interface ProjectBase {
   slug: string;
-  title: string;
+  title: TString;
   client: string;
   category: ProjectCategory;
   year: number;
@@ -30,7 +35,7 @@ interface ProjectBase {
   hero?: string;
   videoLoop?: string;
   videos?: ProjectVideo[];
-  description: string;
+  description: TString;
   tags: string[];
   featured: boolean;
   order: number;
@@ -57,13 +62,13 @@ export type Project = VisualProject | SystemProject;
 
 export interface CaseStudyData {
   track: ProjectTrack;
-  headline: string;
-  subtitle: string;
+  headline: TString;
+  subtitle: TString;
   metrics: CaseStudyMetric[];
-  challenge: string;
-  approach: string;
-  result: string;
-  role: string;
+  challenge: TString;
+  approach: TString;
+  result: TString;
+  role: TString;
   stackTags: string[];
 }
 

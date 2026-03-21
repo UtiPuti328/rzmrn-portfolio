@@ -6,6 +6,7 @@ import Link from "next/link";
 import Badge from "@/components/ui/Badge";
 import { useParallaxTilt } from "@/hooks/useParallaxTilt";
 import type { Project } from "@/types";
+import { useI18n } from "@/i18n/provider";
 
 interface ExpandableCardProps {
   project: Project;
@@ -47,6 +48,7 @@ export default function ExpandableCard({
   isExpanded,
   onToggle,
 }: ExpandableCardProps) {
+  const { locale, dict } = useI18n();
   const cardRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
@@ -101,7 +103,7 @@ export default function ExpandableCard({
         >
           <Image
             src={project.thumbnail}
-            alt={project.title}
+            alt={project.title[locale]}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.03]"
@@ -131,7 +133,7 @@ export default function ExpandableCard({
             </span>
           </div>
           <h3 className="mt-1 font-heading text-2xl font-semibold tracking-tight transition-colors duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-accent">
-            {project.title}
+            {project.title[locale]}
           </h3>
         </div>
       </button>
@@ -147,7 +149,7 @@ export default function ExpandableCard({
         <div ref={contentRef}>
           <div className="mt-4 border border-border bg-surface/50 p-6">
             <p className="text-text-secondary leading-relaxed">
-              {project.description}
+              {project.description[locale]}
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">
@@ -200,10 +202,10 @@ export default function ExpandableCard({
 
             <div className="mt-6 flex items-center gap-4">
               <Link
-                href={`/projects/${project.slug}`}
+                href={`/${locale}/projects/${project.slug}`}
                 className="inline-flex items-center gap-2 bg-accent px-5 py-2.5 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover"
               >
-                View Full Project
+                {dict.projects.viewCaseStudy}
               </Link>
               <button
                 onClick={() => onToggle(null)}

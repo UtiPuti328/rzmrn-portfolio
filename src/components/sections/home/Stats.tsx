@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/motion/FadeIn";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useI18n } from "@/i18n/provider";
 
 interface StatItem {
   value: number;
@@ -11,12 +12,6 @@ interface StatItem {
   label: string;
 }
 
-const stats: StatItem[] = [
-  { value: 15, suffix: "+", label: "Years in Production" },
-  { value: 1000, suffix: "+", label: "Projects Shipped" },
-  { value: 298, suffix: "", label: "Fiverr Deliveries" },
-  { value: 150, suffix: "+", label: "5-Star Reviews" },
-];
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const prefersReduced = useMediaQuery("(prefers-reduced-motion: reduce)");
@@ -70,6 +65,14 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 }
 
 export default function Stats() {
+  const { dict } = useI18n();
+  const stats: StatItem[] = [
+    { value: 15, suffix: "+", label: dict.stats.years },
+    { value: 1000, suffix: "+", label: dict.stats.projects },
+    { value: 298, suffix: "", label: dict.stats.deliveries },
+    { value: 150, suffix: "+", label: dict.stats.reviews },
+  ];
+
   return (
     <section className="py-24">
       <Container>
