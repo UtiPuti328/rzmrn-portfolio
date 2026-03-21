@@ -459,11 +459,11 @@ export const projects: Project[] = [
     year: 2024,
     thumbnail: "/images/projects/short-form-reels-poster.jpg",
     videos: [
-      { src: "/videos/content/yarik-edit.mp4", label: "Yarik Edit" },
+      { src: "/videos/content/yarik-edit.mp4", label: "Bangkok Reel" },
       { src: "/videos/content/motocross-reel.mp4", label: "Motocross Reel" },
       { src: "/videos/content/maveric-ride-reel.mp4", label: "Maveric Ride Reel" },
-      { src: "/videos/content/lambo-reel.mp4", label: "Lambo Reel" },
-      { src: "/videos/content/insta-bakalova.mp4", label: "Insta Bakalova" },
+      { src: "/videos/content/lambo-reel.mp4", label: "Freaking Lambo" },
+      { src: "/videos/content/insta-bakalova.mp4", label: "Around Bali" },
       { src: "/videos/content/ferrari-sf90.mp4", label: "Ferrari SF90" },
     ],
     description: {
