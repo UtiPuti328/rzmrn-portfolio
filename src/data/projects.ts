@@ -324,7 +324,7 @@ export const projects: Project[] = [
     category: "motion-design",
     type: "visual",
     year: 2024,
-    thumbnail: "/images/projects/short-form.png",
+    thumbnail: "/images/projects/short-form-reels-poster.jpg",
     videos: [
       { src: "/videos/content/yarik-edit.mp4", label: "Yarik Edit" },
       { src: "/videos/content/motocross-reel.mp4", label: "Motocross Reel" },
@@ -372,7 +372,7 @@ export const projects: Project[] = [
     category: "commercial",
     type: "visual",
     year: 2023,
-    thumbnail: "/images/projects/mazda.webp",
+    thumbnail: "/images/projects/mazda-drivetogether-poster.jpg",
     videoLoop: "/videos/content/mazda-drivetogether.mp4",
     videos: [
       { src: "/videos/content/mazda-drivetogether.mp4", label: "Mazda DriveTogether MX-5" },
@@ -393,7 +393,7 @@ export const projects: Project[] = [
     category: "commercial",
     type: "visual",
     year: 2023,
-    thumbnail: "/images/projects/lotus.webp",
+    thumbnail: "/images/projects/lotus-car-commercial-poster.jpg",
     videoLoop: "/videos/content/lotus-car-commercial.mp4",
     videos: [
       { src: "/videos/content/lotus-car-commercial.mp4", label: "Daytona Lotus Car Commercial" },
@@ -419,7 +419,11 @@ export const projects: Project[] = [
     category: "music-video",
     type: "visual",
     year: 2022,
-    thumbnail: "/images/projects/kurish.webp",
+    thumbnail: "/images/projects/kurish-gorod-music-video-poster.jpg",
+    videoLoop: "/videos/content/kurish-gorod.mp4",
+    videos: [
+      { src: "/videos/content/kurish-gorod.mp4", label: 'Kurish "Gorod"' },
+    ],
     description:
       "Full production music video from concept through delivery. Directing, cinematography planning, editing, color grading, and VFX compositing.",
     tags: ["Music Video", "Full Production", "VFX", "Color"],
@@ -436,7 +440,7 @@ export const projects: Project[] = [
     category: "motion-design",
     type: "visual",
     year: 2024,
-    thumbnail: "/images/projects/party-promo.webp",
+    thumbnail: "/images/projects/animated-event-promos-poster.jpg",
     videoLoop: "/videos/content/party-promo.mp4",
     videos: [
       { src: "/videos/content/party-promo.mp4", label: "Party Promo" },
