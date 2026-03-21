@@ -30,7 +30,7 @@ export default function StaggerChildren({
             const itemDelay = delay + i * stagger;
             setTimeout(() => {
               el.style.transition =
-                "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
+                "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
               el.style.opacity = "1";
               el.style.transform = "translateY(0)";
             }, itemDelay * 1000);

@@ -16,15 +16,15 @@ export default function Hero() {
 
   const headline = useScrambleText({
     text: "RZMRN",
-    duration: 500,
-    delay: 100,
+    duration: 350,
+    delay: 50,
     autoStart: !prefersReducedMotion,
   });
 
   const subtitle = useScrambleText({
     text: dict.hero.subtitle,
-    duration: 400,
-    delay: 600,
+    duration: 300,
+    delay: 150,
     autoStart: !prefersReducedMotion,
   });
 
@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-12">
           {/* Left column: headline + subtitle + CTA */}
           <div className="min-w-0 flex-1">
-            <div className="flex items-baseline gap-4">
+            <div className="hidden md:flex items-baseline gap-4">
               <span className="font-mono text-lg text-text-muted select-none md:text-2xl">
                 {"//"}
               </span>
@@ -49,7 +49,7 @@ export default function Hero() {
               </h1>
             </div>
 
-            <div className="mt-8 max-w-2xl">
+            <div className="mt-24 md:mt-8 max-w-2xl">
               <p className="text-xl leading-relaxed text-text-secondary md:text-2xl">
                 {prefersReducedMotion ? dict.hero.subtitle : subtitle.displayText}
                 {subtitle.isScrambling && (
@@ -58,7 +58,7 @@ export default function Hero() {
               </p>
             </div>
 
-            <FadeIn delay={1.2}>
+            <FadeIn delay={0.3}>
               <p className="mt-4 font-mono text-sm text-text-muted">
                 {dict.hero.trackLabels}
               </p>
@@ -70,13 +70,13 @@ export default function Hero() {
             >
               <Link
                 href={`/${locale}#work`}
-                className="inline-flex flex-1 sm:flex-none items-center justify-center bg-accent px-4 py-3 sm:px-6 sm:py-3 text-[11px] sm:text-sm font-medium uppercase tracking-widest text-text-primary transition-colors hover:bg-accent-hover text-center leading-tight"
+                className="inline-flex flex-1 sm:flex-none items-center justify-center bg-accent px-4 py-3 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover text-center leading-tight"
               >
                 {dict.hero.viewWork}
               </Link>
               <Link
                 href={`/${locale}/contact`}
-                className="inline-flex flex-1 sm:flex-none items-center justify-center border border-border px-4 py-3 sm:px-6 sm:py-3 text-[11px] sm:text-sm font-medium uppercase tracking-widest text-text-primary transition-colors hover:border-text-muted text-center leading-tight whitespace-pre-wrap sm:whitespace-nowrap"
+                className="inline-flex flex-1 sm:flex-none items-center justify-center border border-border px-4 py-3 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-text-primary transition-colors hover:border-text-muted text-center leading-tight whitespace-pre-wrap sm:whitespace-nowrap"
               >
                 {dict.hero.getInTouch}
               </Link>
@@ -84,13 +84,13 @@ export default function Hero() {
           </div>
 
           {/* Right column (desktop) / Below CTA (mobile): terminal */}
-          <FadeIn delay={1.6} className="w-full shrink-0 md:w-auto">
+          <FadeIn delay={0.4} className="w-full shrink-0 md:w-auto">
             <TerminalProof />
           </FadeIn>
         </div>
       </Container>
 
-      <FadeIn delay={2.0} className="absolute bottom-6 left-1/2 -translate-x-1/2">
+      <FadeIn delay={0.6} className="absolute bottom-6 left-1/2 -translate-x-1/2">
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs uppercase tracking-widest text-text-muted">
             {dict.hero.scroll}

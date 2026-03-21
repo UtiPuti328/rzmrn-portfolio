@@ -1,23 +1,26 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import type { NavLink } from "@/types";
-
-const NAV_LINKS: NavLink[] = [
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+import { useI18n } from "@/i18n/provider";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const { dict, locale } = useI18n();
   const menuRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = "mobile-menu";
+
+  const NAV_LINKS = [
+    { label: dict.nav.projects, href: `/${locale}/projects` },
+    { label: dict.nav.about, href: `/${locale}/about` },
+    { label: dict.nav.contact, href: `/${locale}/contact` },
+  ];
 
   // Close on route change (derive during render, not in effect)
   const [prevPathname, setPrevPathname] = useState(pathname);
@@ -25,6 +28,10 @@ export default function MobileMenu() {
     setPrevPathname(pathname);
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Lock body scroll when open
   useEffect(() => {
@@ -103,7 +110,8 @@ export default function MobileMenu() {
         </div>
       </button>
 
-      <div
+      {mounted && createPortal(
+        <div
         ref={menuRef}
         id={menuId}
         role="dialog"
@@ -137,7 +145,9 @@ export default function MobileMenu() {
             </Link>
           ))}
         </nav>
-      </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

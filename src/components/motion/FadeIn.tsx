@@ -23,7 +23,7 @@ export default function FadeIn({
   className,
   delay = 0,
   direction = "up",
-  duration = 0.6,
+  duration = 0.4,
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
 
