@@ -111,54 +111,64 @@ export default function MobileMenu() {
       </button>
 
       {mounted && createPortal(
-        <div
-          id={menuId}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Navigation menu"
-          className={cn(
-            "fixed inset-0 z-40 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          )}
-        >
-          {/* Stepped native blur to bypass iOS mask-image transition bugs */}
-          <div className="absolute left-0 top-0 w-full h-[55%] backdrop-blur-md" />
-          <div className="absolute left-0 top-[55%] w-full h-[5%] backdrop-blur-sm" />
-          <div className="absolute left-0 top-[60%] w-full h-[5%] backdrop-blur-[2px]" />
-
-          {/* Continuous smooth 80% gradient fade covering the stepped blurs */}
-          <div 
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(to bottom, rgba(5,5,5,0.8) 0%, rgba(5,5,5,0.8) 55%, transparent 100%)"
-            }}
-          />
-
-          <nav 
-            ref={menuRef}
-            className="relative flex h-full flex-col items-center justify-start pt-32 gap-10"
+        <>
+          {/* 
+            CURTAIN BACKGROUND 
+            Slides perfectly down from the top. Safari handles `transform` on masked+blurred layers flawlessly.
+            This avoids the infamous Safari `opacity` + `mask` jump/pop glitch.
+          */}
+          <div
+            className={cn(
+              "fixed left-0 top-0 w-full h-[100dvh] z-40 pointer-events-none transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform",
+              isOpen ? "translate-y-0" : "-translate-y-full"
+            )}
           >
-            {NAV_LINKS.map((link, i) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={cn(
-                  "font-heading text-4xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                  isOpen
-                    ? "translate-y-0 opacity-100"
-                    : "-translate-y-4 opacity-0",
-                  pathname === link.href
-                    ? "text-text-primary"
-                    : "text-text-muted hover:text-text-primary"
-                )}
-                style={{ transitionDelay: isOpen ? `${100 + i * 50}ms` : "0ms" }}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>,
+            <div 
+              className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+              style={{
+                WebkitMaskImage: "linear-gradient(to bottom, black 65%, transparent 100%)",
+                maskImage: "linear-gradient(to bottom, black 65%, transparent 100%)"
+              }}
+            />
+          </div>
+
+          {/* 
+            FOREGROUND LINKS 
+            Transition opacity safely because this layer contains strictly no CSS masks or nested blurs.
+          */}
+          <div
+            id={menuId}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+            className={cn(
+              "fixed inset-0 z-50 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            )}
+          >
+            <nav className="relative flex h-full flex-col items-center justify-start pt-32 gap-10">
+              {NAV_LINKS.map((link, i) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "font-heading text-4xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    isOpen
+                      ? "translate-y-0"
+                      : "-translate-y-4",
+                    pathname === link.href
+                      ? "text-text-primary"
+                      : "text-text-muted hover:text-text-primary"
+                  )}
+                  style={{ transitionDelay: isOpen ? `${100 + i * 50}ms` : "0ms" }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </>,
         document.body
       )}
     </div>
