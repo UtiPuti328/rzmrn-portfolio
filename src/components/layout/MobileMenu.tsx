@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -8,6 +9,7 @@ import { useI18n } from "@/i18n/provider";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { dict, locale } = useI18n();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -26,6 +28,10 @@ export default function MobileMenu() {
     setPrevPathname(pathname);
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Lock body scroll when open
   useEffect(() => {
@@ -103,6 +109,19 @@ export default function MobileMenu() {
           />
         </div>
       </button>
+
+      {/* Dim backdrop for the rest of the page */}
+      {mounted && createPortal(
+        <div
+          className={cn(
+            "fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+          )}
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />,
+        document.body
+      )}
 
       <div
         ref={menuRef}
