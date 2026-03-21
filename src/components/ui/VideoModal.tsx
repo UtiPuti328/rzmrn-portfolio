@@ -17,13 +17,35 @@ export function VideoModal({ isOpen, onClose, src, label }: VideoModalProps) {
   const [isMuted, setIsMuted] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  // local state for transitions
+  const [internalSrc, setInternalSrc] = useState(src);
+  const [internalLabel, setInternalLabel] = useState(label);
+  const [isActive, setIsActive] = useState(false);
+  const [isRendered, setIsRendered] = useState(false);
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
+    if (isOpen) {
+      setInternalSrc(src);
+      setInternalLabel(label);
+      setIsRendered(true);
+      const timer = setTimeout(() => setIsActive(true), 10);
+      return () => clearTimeout(timer);
+    } else {
+      setIsActive(false);
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, src, label]);
+
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape" && isOpen) onClose();
     };
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown);
@@ -42,27 +64,35 @@ export function VideoModal({ isOpen, onClose, src, label }: VideoModalProps) {
       videoRef.current.volume = volume;
       videoRef.current.muted = isMuted;
     }
-  }, [volume, isMuted, src]); // React to src change as well to apply volume instantly
+  }, [volume, isMuted, internalSrc]);
 
-  if (!mounted || !isOpen || !src) return null;
+  if (!mounted || !isRendered || !internalSrc) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12 animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity"
+        className={cn(
+          "absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity duration-300",
+          isActive ? "opacity-100" : "opacity-0"
+        )}
         onClick={onClose}
       />
       
-      {/* Container */}
-      <div className="relative flex w-full max-w-[420px] flex-col items-center gap-6 z-10 animate-in zoom-in-95 duration-300">
+      {/* Container (-15% roughly equates to scaling max-width from 420 to 340/360) */}
+      <div 
+        className={cn(
+          "relative flex w-full max-w-[340px] sm:max-w-[360px] flex-col items-center gap-5 z-10 transition-all duration-300",
+          isActive ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-4"
+        )}
+      >
         
         {/* Title and Close Top Bar */}
-        <div className="flex w-full items-center justify-between text-white/80">
-          <span className="font-mono text-xs uppercase tracking-widest">{label || "Video"}</span>
+        <div className="flex w-full items-center justify-between text-white/80 px-1">
+          <span className="font-mono text-xs uppercase tracking-widest">{internalLabel || "Video"}</span>
           <button
             onClick={onClose}
-            className="p-2 hover:text-white transition-colors"
+            className="p-2 -mr-2 hover:text-white transition-colors"
             aria-label="Close"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -76,7 +106,7 @@ export function VideoModal({ isOpen, onClose, src, label }: VideoModalProps) {
         <div className="relative w-full aspect-[9/16] overflow-hidden rounded-[20px] sm:rounded-[24px] border border-white/10 shadow-2xl bg-[#0a0a0a]">
           <video
             ref={videoRef}
-            src={src}
+            src={internalSrc}
             autoPlay
             loop
             playsInline
