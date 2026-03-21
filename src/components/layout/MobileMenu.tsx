@@ -120,15 +120,14 @@ export default function MobileMenu() {
             "fixed inset-0 z-40 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
             isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           )}
+          style={{ transform: "translateZ(0)" }}
         >
           {/* Gradient Glass Background */}
           <div 
-            className="absolute inset-0 bg-background/80 backdrop-blur-md will-change-opacity"
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
             style={{ 
               WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-              WebkitTransform: "translate3d(0, 0, 0)",
-              transform: "translate3d(0, 0, 0)",
+              maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)"
             }}
           />
 
