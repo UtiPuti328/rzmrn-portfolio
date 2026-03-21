@@ -118,13 +118,22 @@ export default function MobileMenu() {
         aria-modal="true"
         aria-label="Navigation menu"
         className={cn(
-          "fixed inset-0 z-40 bg-background/80 backdrop-blur-xl transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "fixed inset-0 z-40 transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isOpen
             ? "visible opacity-100"
             : "invisible opacity-0"
         )}
       >
-        <nav className="flex h-full flex-col items-center justify-start pt-32 gap-10">
+        {/* Gradient Glass Background */}
+        <div 
+          className="absolute inset-0 bg-background/85 backdrop-blur-2xl"
+          style={{ 
+            WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 100%)",
+            maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)" 
+          }}
+        />
+
+        <nav className="relative flex h-full flex-col items-center justify-start pt-36 gap-10">
           {NAV_LINKS.map((link, i) => (
             <Link
               key={link.href}
