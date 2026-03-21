@@ -117,17 +117,18 @@ export default function MobileMenu() {
           aria-modal="true"
           aria-label="Navigation menu"
           className={cn(
-            "fixed inset-0 z-40 transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            isOpen ? "visible opacity-100" : "invisible opacity-0"
+            "fixed inset-0 z-40 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           )}
         >
           {/* Gradient Glass Background */}
           <div 
-            className="absolute inset-0 bg-background/95 backdrop-blur-md will-change-[opacity,transform]"
+            className="absolute inset-0 bg-background/80 backdrop-blur-md will-change-opacity"
             style={{ 
-              WebkitMaskImage: "linear-gradient(to bottom, black 35%, transparent 80%)",
-              maskImage: "linear-gradient(to bottom, black 35%, transparent 80%)",
-              transform: "translateZ(0)"
+              WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+              maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+              WebkitTransform: "translate3d(0, 0, 0)",
+              transform: "translate3d(0, 0, 0)",
             }}
           />
 
@@ -141,7 +142,7 @@ export default function MobileMenu() {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "font-heading text-3xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  "font-heading text-4xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                   isOpen
                     ? "translate-y-0 opacity-100"
                     : "-translate-y-4 opacity-0",
