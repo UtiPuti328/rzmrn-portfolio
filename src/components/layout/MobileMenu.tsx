@@ -120,14 +120,17 @@ export default function MobileMenu() {
             "fixed inset-0 z-40 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
             isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           )}
-          style={{ transform: "translateZ(0)" }}
         >
-          {/* Gradient Glass Background */}
+          {/* Stepped native blur to bypass iOS mask-image transition bugs */}
+          <div className="absolute left-0 top-0 w-full h-[55%] backdrop-blur-md" />
+          <div className="absolute left-0 top-[55%] w-full h-[5%] backdrop-blur-sm" />
+          <div className="absolute left-0 top-[60%] w-full h-[5%] backdrop-blur-[2px]" />
+
+          {/* Continuous smooth 80% gradient fade covering the stepped blurs */}
           <div 
-            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-            style={{ 
-              WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)"
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(to bottom, rgba(5,5,5,0.8) 0%, rgba(5,5,5,0.8) 55%, transparent 100%)"
             }}
           />
 
