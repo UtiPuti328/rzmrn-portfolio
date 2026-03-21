@@ -78,6 +78,20 @@ export const dictionaries = {
       approach: "The Approach",
       result: "The Result",
       seeAlso: "See Also \u2192",
+    },
+    bentoGrid: {
+      commercial: "Commercial",
+      automotive: "Automotive",
+      event: "Event",
+      motion: "Motion",
+    },
+    terminal: {
+      projectsShipped: "Projects Shipped",
+      fiverrDeliveries: "Fiverr Deliveries",
+      fiveStarReviews: "5-Star Reviews",
+      yearsActive: "Years Active",
+      details: "details.sh",
+      file: "stats.json"
     }
   },
   pl: {
@@ -155,6 +169,20 @@ export const dictionaries = {
       approach: "Rozwi\u0105zanie",
       result: "Rezultat",
       seeAlso: "Zobacz R\u00f3wnie\u017c \u2192",
+    },
+    bentoGrid: {
+      commercial: "Zrealizowane Projekty",
+      automotive: "Klienci z USA",
+      event: "Stawka Premium",
+      motion: "Utrzymana Ocena",
+    },
+    terminal: {
+      projectsShipped: "Zrealizowane Projekty",
+      fiverrDeliveries: "Dostawy na Fiverr",
+      fiveStarReviews: "Opinie 5-Gwiazdk.",
+      yearsActive: "Lata Aktywności",
+      details: "szczegoly.sh",
+      file: "statystyki.json"
     }
   }
 };

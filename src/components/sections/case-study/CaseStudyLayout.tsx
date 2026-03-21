@@ -142,12 +142,12 @@ export default function CaseStudyLayout({
               caseStudy.metrics.length <= 3 ? "grid-cols-1 md:grid-cols-3" : "grid-cols-2 md:grid-cols-4"
             )}>
               {caseStudy.metrics.map((metric) => (
-                <div key={metric.label}>
+                <div key={metric.label.en}>
                   <p className="font-heading text-3xl font-bold text-accent md:text-4xl">
                     {metric.value}
                   </p>
                   <span className="mt-1 block font-mono text-xs uppercase tracking-wider text-text-muted">
-                    {metric.label}
+                    {metric.label[locale]}
                   </span>
                 </div>
               ))}

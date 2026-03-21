@@ -87,7 +87,7 @@ export interface CaseStudyFrontmatter {
 }
 
 export interface CaseStudyMetric {
-  label: string;
+  label: TString;
   value: string;
 }
 

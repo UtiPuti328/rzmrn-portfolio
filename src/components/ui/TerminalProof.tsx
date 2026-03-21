@@ -2,17 +2,22 @@
 
 import { useState, useRef, useEffect } from "react";
 
-const STATS = [
-  { value: "1,000+", label: "Projects Shipped" },
-  { value: "298", label: "Fiverr Deliveries" },
-  { value: "150+", label: "5-Star Reviews" },
-  { value: "15+", label: "Years Active" },
-];
+
+
+import { useI18n } from "@/i18n/provider";
 
 export default function TerminalProof() {
+  const { dict } = useI18n();
   const [isExpanded, setIsExpanded] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
+
+  const STATS = [
+    { value: "1,000+", label: dict.terminal.projectsShipped, key: "projects_shipped" },
+    { value: "298", label: dict.terminal.fiverrDeliveries, key: "fiverr_deliveries" },
+    { value: "150+", label: dict.terminal.fiveStarReviews, key: "five_star_reviews" },
+    { value: "15+", label: dict.terminal.yearsActive, key: "years_active" },
+  ];
 
   useEffect(() => {
     if (contentRef.current) {
@@ -47,10 +52,10 @@ export default function TerminalProof() {
           <div className="space-y-1 font-mono text-[12px] leading-relaxed">
             <div className="flex items-start gap-2">
               <span className="shrink-0 select-none text-accent">$</span>
-              <span className="text-text-primary">cat stats.json</span>
+              <span className="text-text-primary">cat {dict.terminal.file || "stats.json"}</span>
             </div>
             {STATS.map((stat) => (
-              <div key={stat.label} className="flex items-start gap-2">
+              <div key={stat.key} className="flex items-start gap-2">
                 <span className="shrink-0 select-none text-accent/40">{">"}</span>
                 <span className="text-text-muted">
                   {stat.label.toLowerCase().replace(/ /g, "_")}:{" "}
@@ -67,7 +72,7 @@ export default function TerminalProof() {
           >
             <span>$</span>
             <span className="underline decoration-accent/30 underline-offset-2">
-              {isExpanded ? "exit" : "./details.sh"}
+              {isExpanded ? "exit" : `./${dict.terminal.details}`}
             </span>
             <span className="text-text-muted/40">
               {isExpanded ? "↑" : "↗"}
@@ -84,7 +89,7 @@ export default function TerminalProof() {
             <div className="border-t border-border/30 px-4 py-4">
               <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                 {STATS.map((stat) => (
-                  <div key={stat.label}>
+                  <div key={stat.key}>
                     <p className="font-mono text-xl font-bold tracking-tight text-text-primary">
                       {stat.value}
                     </p>

@@ -35,22 +35,22 @@ export const projects: Project[] = [
         pl: "Wsparty przez AI pipeline produkcyjny dla dużej platformy edukacyjnej."
       },
       metrics: [
-        { value: "5,000+", label: "Active clients" },
-        { value: "221", label: "Lectures produced" },
-        { value: "22", label: "Courses delivered" },
-        { value: "40%", label: "Faster release cycle" },
+        { value: "5,000+", label: { en: "Active clients", pl: "Aktywnych Klientów" } },
+        { value: "221", label: { en: "Lectures produced", pl: "Wyprodukowane Wykłady" } },
+        { value: "22", label: { en: "Courses delivered", pl: "Dostarczone Kursy" } },
+        { value: "40%", label: { en: "Faster release cycle", pl: "Szybszy Cykl Wdrożeń" } },
       ],
       challenge: {
         en: "A major education platform needed to scale course production without scaling the team. Each course required weeks of manual work: multi-cam shoots, graphics generation, b-roll creation, quality control, file management. Everything done by hand.\n\nThe bottleneck wasn't creative — it was operational. One person was responsible for the entire production pipeline serving 5,000+ clients. The question wasn't whether to automate — it was how deep the automation could go without sacrificing quality.",
-        pl: "Jedna z czołowych platform edukacyjnych musiała przeskalować produkcję kursów bez powiększania zespołu. Każdy kurs wymagał tygodni ręcznej pracy: nagrań z wielu kamer, generowania grafik, tworzenia przebitek (b-roll), kontroli jakości i zarządzania plikami. Wszystko robione ręcznie.\n\nWąskim gardłem nie była kreatywność — lecz operacyjność. Jedna osoba odpowiadała za cały pipeline produkcyjny obsługujący ponad 5000 klientów. Pytanie nie brzmiało 'czy automatyzować', ale 'jak głęboko można to zautomatyzować bez utraty jakości'."
+        pl: "Czołowa platforma edukacyjna musiała przeskalować produkcję kursów bez powiększania zespołu. Każdy kurs wymagał tygodni żmudnej, manualnej pracy: nagrań z wielu kamer, generowania grafik, montażu przebitek, kontroli jakości i zarządzania plikami.\n\nWąskim gardłem nie była wcale kreatywność — lecz operacyjność. Piekielnie obciążona jedna osoba odpowiadała za cały proces produkcyjny obsługujący ponad 5000 klientów. Pytanie nie brzmiało „czy” automatyzować, ale jak głęboko można zaimplementować automatyzację, by nie stracić absolutnie nic na jakości."
       },
       approach: {
         en: "Built a multi-layer automation pipeline that addressed each production bottleneck:\n\nLayer 1 — Shoot optimization: AI-generated thematic green screen backgrounds that change per course, eliminating physical set changes entirely.\n\nLayer 2 — B-roll pipeline: n8n workflow analyzes each lecture transcript, extracts 6-10 key visual concepts, generates images via AI, animates through Hailuo video model, and outputs ready-to-edit animated b-roll inserts.\n\nLayer 3 — Post-production: ExtendScript batch processing in Premiere Pro for repetitive timeline operations across hundreds of lectures.\n\nLayer 4 — Quality & delivery: Structured QC checklist maintaining ISO 9001 compliance, templated export presets for consistent output.",
-        pl: "Zbudowałem wielowarstwowy pipeline automatyzacji, który rozwiązał każde wąskie gardło produkcji:\n\nWarstwa 1 — Optymalizacja nagrań: generowane przez AI tematyczne tła do green screenu, zmieniające się dla każdego kursu, całkowicie eliminujące fizyczne zmiany scenografii.\n\nWarstwa 2 — Pipeline B-roll: workflow z użyciem n8n analizuje transkrypcję każdego wykładu, wyciąga 6-10 kluczowych pojęć wizualnych, generuje obrazy przez AI, animuje je za pomocą modelu Hailuo i wypuszcza gotowe do montażu animowane przebitki.\n\nWarstwa 3 — Post-produkcja: przetwarzanie wsadowe za pomocą ExtendScript w Premiere Pro dla powtarzalnych operacji na osi czasu na przestrzeni setek wykładów.\n\nWarstwa 4 — Jakość i dostarczanie: ustrukturyzowana lista kontrolna QC utrzymująca zgodność z ISO 9001, zszablonowane presety eksportu dla spójnych wyników."
+        pl: "Zaprojektowałem i wdrożyłem wielowarstwowy system, który metodycznie eliminował każde wąskie gardło:\n\nWarstwa 1 — Optymalizacja nagrań: generowanie spersonalizowanych teł do green screenu przy pomocy AI dla każdego kursu, całkowicie eliminując potrzebę fizycznej zmiany scenografii.\n\nWarstwa 2 — Pipeline B-roll: zautomatyzowany przepływ pracy w n8n, który analizuje transkrypcje wykładów, wyciąga kluczowe pojęcia, generuje wizualizacje przez AI, następnie animuje je w modelu Hailuo i oddaje gotowe do montażu przebitki wideo.\n\nWarstwa 3 — Post-produkcja: skrypty ExtendScript do przetwarzania wsadowego w Premiere Pro, wykonujące powtarzalne operacje na osi czasu na przestrzeni setek wykładów w kilka sekund.\n\nWarstwa 4 — Jakość i dostarczanie: ustrukturyzowana kontrola (QC) gwarantująca pełną zgodność ze standardem ISO 9001 oraz ujednolicone presety renderu dla spójnych wyników."
       },
       result: {
         en: "Release cycles shortened by 40%. 221 lectures across 22 courses delivered with consistent quality. One person — full production coverage for an entire platform serving 5,000+ clients. The pipeline turned a manual bottleneck into a scalable system.",
-        pl: "Cykle wdrożeniowe skrócone o 40%. Dostarczono 221 wykładów w 22 kursach ze stałą i najwyższą jakością. Jedna osoba — pełne pokrycie produkcyjne dla całej platformy obsługującej ponad 5000 klientów. Pipeline przekształcił ręczne wąskie gardło w skalowalny system."
+        pl: "Czas produkcji skrócony o równe 40%. Dostarczyłem 221 wykładów w 22 kursach, zachowując bezkompromisową jakość. Jedna osoba skutecznie zapewniła pełne zaplecze produkcyjne dla platformy edukującej ponad 5000 klientów. Ten pipeline ostatecznie zamienił ręczne, zablokowane wąskie gardło w wybitnie skalowalny system."
       },
       role: {
         en: "Head of Content Production",
@@ -102,22 +102,22 @@ export const projects: Project[] = [
         pl: "Jednoosobowe studio produkcyjne, które przeskalowało stawki do $50/h dzięki systemom, a nie nowym pracownikom."
       },
       metrics: [
-        { value: "250+", label: "Completed projects" },
-        { value: "120", label: "US clients" },
-        { value: "$50/hr", label: "Premium tier" },
-        { value: "5★", label: "Client rating" },
+        { value: "250+", label: { en: "Completed projects", pl: "Zrealizowane Projekty" } },
+        { value: "120", label: { en: "US clients", pl: "Amerykańscy Klienci" } },
+        { value: "$50/hr", label: { en: "Premium tier", pl: "Standard Premium" } },
+        { value: "5★", label: { en: "Client rating", pl: "Ocena Klientów" } },
       ],
       challenge: {
         en: "Fiverr is a race to the bottom. Thousands of editors competing on price. The question wasn't how to get more gigs — it was how to build a sustainable production operation that scales without a team and commands premium rates.\n\nMost freelancers burn out or stagnate at low rates. The challenge: scale output and raise rates without hiring anyone, while maintaining quality that earns repeat business from US market clients.",
-        pl: "Fiverr to równia pochyła. Tysiące montażystów konkurujących tylko ceną. Pytanie nie brzmiało 'jak zdobyć więcej zleceń', ale 'jak zbudować stabilną operację produkcyjną, która skaluje się bez zespołu i pozwala narzucać stawki premium'.\n\nWiększość freelancerów wypala się zawodowo lub utyka na niskich stawkach. Wyzwanie: zwiększyć przerób i podnieść stawki bez zatrudniania kogokolwiek, utrzymując jednocześnie jakość, która gwarantuje powrót klientów z rynku amerykańskiego."
+        pl: "Fiverr to cenowa równia pochyła — tysiące montażystów konkurujących tylko o to, kto zrobi najtaniej. Moim pytaniem nie było 'jak zdobyć więcej zleceń', lecz 'jak zbudować stabilny biznes produkcyjny, który potrafi się skalować w pojedynkę i pozwala dyktować stawki premium'.\n\nWiększość freelancerów na podobnych platformach błyskawicznie się wypala lub na zawsze utyka na niskich stawkach. Prawdziwe wyzwanie: drastycznie zwiększyć przerób i podnieść stawki bez zatrudniania podwykonawców, gwarantując jakość, dzięki której amerykańscy klienci wracają latami."
       },
       approach: {
         en: "Built a systemized solo operation from the ground up:\n\nCategorized all incoming work into repeatable project types — commercial, automotive, event, motion graphics. Each category got its own template-based workflow with standardized timelines, preset libraries, and delivery specs.\n\nPackaged services into tiers: from basic editing to full-cycle production (brief → creative consulting → editing → delivery → platform adaptation). Scaled from entry-level rates to $50/hr premium tier through consistent quality and systematic upselling.\n\nEvery project refined the system. SOPs became sharper, turnaround faster, client communication more structured.",
-        pl: "Zbudowałem usystematyzowaną solową operację od podstaw:\n\nSklasyfikowałem każdą przychodzącą pracę do powtarzalnych typów projektów — reklama, motoryzacja, event, motion graphics. Każda kategoria otrzymała własny, oparty na szablonach workflow ze standaryzowanymi timeline'ami, bibliotekami presetów i specyfikacjami dostarczania.\n\nSpakietowałem usługi: od podstawowego montażu po pełny cykl produkcyjny (brief → konsulting kreatywny → montaż → dostarczenie → adaptacja na platformy). Przeszedłem z podstawowych stawek do segmentu premium ($50/godz.) dzięki spójnej jakości i regularnemu upsellingowi.\n\nKażdy projekt udoskonalał system. Procedury operacyjne (SOP) stawały się dokładniejsze, czas realizacji krótszy, a komunikacja z klientami o wiele bardziej ustrukturyzowana."
+        pl: "Zbudowałem w pełni zoptymalizowaną solową operację projektową od podstaw:\n\nSklasyfikowałem każdą przychodzącą pracę na powtarzalne formaty — np. reklamy, motoryzacja, wydarzenia relacyjne czy motion design. Każda odnoga otrzymała swój własny, oparty na szablonach zautomatyzowany przepływ pracy ze standaryzowanymi timeline'ami, bibliotekami presetów i żelazną specyfikacją.\n\nZmieniłem wyceny z zadaniowych na kompleksowe usługi: od prostego montażu po pełen cykl produkcyjny (brief → konsultacje → montaż → dystrybucja → formaty na wybrane platformy SoMe). Takie systematyczne dosprzedawanie pozwoliło mi przeskoczyć z początkowych kwot do prestiżowego pułapu 50 dolarów za godzinę.\n\nKażdy kolejny projekt kalibrował mój system. Standaryzowane procedury (SOP) ewoluowały, turnaround stawał się błyskawiczny, a komunikacja z klientami wybitnie profesjonalna i poukładana."
       },
       result: {
         en: "250+ completed projects. 120 US clients. 5-star rating maintained across the entire portfolio. One person, full production capability — proof that systems beat headcount.",
-        pl: "250+ zrealizowanych projektów. 120 klientów w Stanach Zjednoczonych. Utrzymana ocena 5 gwiazdek na całym portfolio. Jedna osoba, pełne zaplecze produkcyjne — dowód na to, że systemy wygrywają z wielkością zespołu."
+        pl: "Sfinalizowane ponad 250 projektów dla 120 wyłącznych klientów w USA i utrzymana ocena 5/5 na całym profilu portfolio. Jeden człowiek, zaplecze produkcyjne na poziomie agencji — absolutny dowód na to, że sprawne systemy wygrywają z wielkością zespołu ludzkiego."
       },
       role: {
         en: "Independent Producer",
@@ -166,21 +166,21 @@ export const projects: Project[] = [
         pl: "Komponenty React renderujące się do wideo. Miejsce, gdzie kreacja spotyka się z kodem."
       },
       metrics: [
-        { value: "< 1 min", label: "Per render" },
-        { value: "∞", label: "Parametric variations" },
-        { value: "0", label: "Manual keyframes" },
+        { value: "< 1 min", label: { en: "Per render", pl: "Czas Renderu" } },
+        { value: "∞", label: { en: "Parametric variations", pl: "Odmiany Parametryczne" } },
+        { value: "0", label: { en: "Manual keyframes", pl: "Ręczne Klatki" } },
       ],
       challenge: {
         en: "Traditional motion design is manual. Every change means reopening After Effects, adjusting keyframes, re-rendering. For data-driven content or variations at scale, this doesn't work. The timeline becomes the bottleneck.\n\nThe answer isn't faster hands — it's a programmatic approach where code replaces the timeline entirely.",
-        pl: "Tradycyjny motion design to praca manualna. Każda zmiana oznacza ponowne otwieranie After Effects, poprawianie klatek kluczowych, ponowne renderowanie. W przypadku treści opartych na danych lub tworzeniu bardzo wielu wariantów, to się nie sprawdza. Klatki kluczowe i interfejs programu stają się wąskim gardłem.\n\nOdpowiedzią wcale nie jest szybsze klikanie myszką — to podejście programistyczne, w którym kod całkowicie zastępuje klasyczną oś czasu."
+        pl: "Tradycyjny motion design to praca manualna. Każda zmiana oznacza ponowne otwieranie After Effects, poprawianie klatek kluczowych, ponowne renderowanie. W przypadku treści opartych na danych lub tworzeniu bardzo wielu wariantów, to się nie sprawdza. Klatki kluczowe i interfejs programu stają się wąskim gardłem.\n\nŚlepią uliczką jest zatrudnianie asystentów do manualnego klikania — przyszłością jest inżynieria programistyczna, w której kod w całości zastępuje konwencjonalną oś czasu."
       },
       approach: {
         en: "Remotion — React-based programmatic video. Each composition is a React component. Parameters in, video out. Change a variable, get a new render. No timeline, no keyframes.\n\nThe animations are mathematically computed, not AI-hallucinated. A lidar visualization computes actual point-cloud geometry. A telemetry HUD reads real data structures. Precision motion design through code.\n\nCompositions range from abstract data visualizations to branded identity pieces to experimental explorations — all version-controlled, all parametrically adjustable.",
-        pl: "Remotion — programowalne, responsywne wideo oparte na React. Każda kompozycja to komponent React. Podajesz parametry wejściowe, otrzymujesz gotowe wideo. Zmieniasz zmienną, dostajesz nowy render. Żadnego timeline'u, żadnych klatek kluczowych.\n\nAnimacje są wyliczane matematycznie, to nie halucynacje generatorów wideo AI. Wizualizacja lidar oblicza rzeczywistą geometrię chmury punktów. HUD z telemetrią odczytuje prawdziwe struktury danych na realnym API i wykresach. Czysta precyzja w motion designie napędzana tylko kodem.\n\nKompozycje obejmują od abstrakcyjnych wizualizacji danych, przez elementy brandingu i UI, aż po eksperymentalne eksploracje wizualne — wszystko wersjonowane tak jak kod, wszystko parametrycznie modyfikowalne."
+        pl: "Remotion — w pełni responsywne wideo oparte na frameworku React. Każda kompozycja jest traktowana jako komponent deweloperski. Podajesz argumenty wejściowe i odbierasz wyrenderowane pliki wideo. Chcesz modyfikacji? Zmieniasz tylko zmienną w kodzie. Zero timeline'u, zero ręcznego przestawiania klatek.\n\nObliczenia animacji są tu czystą matematyką — nie ma w tym losowych halucynacji generatorów sztucznej inteligencji. Przykładowo, wizualizacja radaru analizuje i przelicza prawdziwą wektorową geometrię, a wbudowany HUD telemetryczny karmi się natywnymi strukturami danych ze wskaźników REST API. To czysta precyzja i inżynieria motion designu w całości rządzona kodem.\n\nDziałania obejmują szerokie spektrum: od abstrakcyjnych przestrzeni i wizualizacji baz danych, przez wektorowe systemy identyfikacji (UI/Branding), aż po proceduralne eksperymenty wizualne. Wszystko rzetelnie wersjonowane na Gicie, jak każda porządna architektura kodu."
       },
       result: {
         en: "A production toolkit for parametric motion content. Any composition re-renders with different parameters in under a minute. Same codebase, infinite variations. This is what content production at scale looks like when code meets craft.",
-        pl: "Własny narzędziownik produkcyjny dla treści parametrycznych. Dowolna kompozycja renderuje się z nowymi parametrami, danymi tekstowymi lub wizualnymi w czasie rzeczywistym. Ta sama baza kodu, nieskończone odmiany. Tak wygląda produkcja contentu na dużą skalę, kiedy kod przejmuje kontrolę artystyczną."
+        pl: "Stworzony od zera własny framework do masowej dystrybucji proceduralnego wideo. Generowanie tej samej kompozycji z nowymi danymi zajmuje programowi ledwie kilka sekund. Jeden ujednolicony kod źródłowy zapewnia dosłownie nieskończoną ilość wariantów wizualnych wideo-reklam. Tak w praktyce wygląda skalowalna produkcja treści klasy premium, gdy za rzemiosło odpowiada deweloper operujący kodem."
       },
       role: {
         en: "Creative Technologist",
@@ -222,22 +222,22 @@ export const projects: Project[] = [
         pl: "Architektura wielu wyspecjalizowanych agentów AI do zautomatyzowanego researchu i generowania treści."
       },
       metrics: [
-        { value: "12", label: "Specialized agents" },
-        { value: "3", label: "LLM providers" },
-        { value: "30+", label: "Daily automated tasks" },
-        { value: "24/7", label: "Autonomous operation" },
+        { value: "12", label: { en: "Specialized agents", pl: "Wyspecjalizowani Agenci" } },
+        { value: "3", label: { en: "LLM providers", pl: "Dostawcy LLM" } },
+        { value: "30+", label: { en: "Daily automated tasks", pl: "Automatyczne Zadania" } },
+        { value: "24/7", label: { en: "Autonomous operation", pl: "Działanie Autonomiczne" } },
       ],
       challenge: {
         en: "Off-the-shelf AI tools solve generic problems. Scaling content production, research, and workflow automation requires specialized AI workers that understand your domain, communicate with each other, and operate without supervision.\n\nOne person can't simultaneously search for jobs, monitor market trends, generate content, manage communications, and build a portfolio. The bottleneck isn't skill — it's attention.",
-        pl: "Gotowe narzędzia AI rozwiązują bardzo ogólne problemy. Skalowanie produkcji contentu czy automatyzacja wymaga wysoce wyspecjalizowanych procesów, a nawet pracowników AI, którzy rozumieją dany obszar, komunikują się między sobą oraz działają całkowicie bez nadzoru (autonomiczne pętle).\n\nJedna osoba nie jest w stanie jednocześnie szukać najlepszych ofert czy trendów rynkowych, analizować konkurencję, generować unikalne i bardzo złożone zestawienia. Wąskim gardłem nie są tutaj umiejętności programistyczne — tylko zwykła, prozaiczna uwaga."
+        pl: "Masowe narzędzia AI z półki rozwiązują tylko najbardziej podstawowe i ogólne problemy. Próba skalowania produkcji treści czy głębokiej analizy danych wymaga silnie spersonalizowanych asystentów AI, którzy dogłębnie zrozumieją branżę, będą swobodnie wymieniać się wnioskami między sobą oraz — co najważniejsze — zaczną działać w niezależnej, autonomicznej pętli.\n\nPojedynczy człowiek nigdy nie ma czasu na ciągłe śledzenie trendów rynkowych, analizę konkurencji z lupą, jednoczesne generowanie wymagających opracowań i utrzymanie sieci kontaktów biznesowych. Prawdziwym progiem zaporowym nie są wcale kompetencje czy zaplecze graficzne — lecz najzwyklejszy czas i ludzka uwaga."
       },
       approach: {
         en: "Custom multi-agent system built from scratch:\n\nDispatcher routes tasks to specialized agents by type and complexity. 12 specialized agents, each with its own model, prompt architecture, and domain expertise.\n\n3 LLM providers — Claude, MiniMax M2.5, Gemini — chosen per task for cost/capability balance. Cron orchestration runs agents on schedule, 24/7, no human intervention.\n\nCross-model validation ensures outputs are verified by a different model (adversarial synthesis). mem0 persistent memory provides cross-session context. Telegram interface delivers results directly to messenger.\n\nThe system evolved through multiple architectural iterations, each informed by production experience.",
-        pl: "Własny, zaawansowany wieloagentowy (multi-agent) system stworzony z użyciem Node.js.\n\nDispatcher (mózg całej architektury operacji) dynamicznie rozdziela wysoce specyficzne zadania do poszczególnych asystentów, posługując się modelami wg specyfiki zadania.\n\nTrzech dostawców LLM ze względów dywersyfikacji: modele od Anthropic/Claude, chińskie modele w stylu qwen & dsb (MiniMax M2.5) i flagowy model Gemini Pro od Google, wybierany dla optymalnej ceny do poszczególnego kroku. Cała sieć uruchamia zadania na podstawie schedulera `cron` całkowicie bez udziały jakiegokolwiek frontu czy ingerencji człowieka.\n\nKrzyżowa weryfikacja zapewnia bardzo spójną ocenę danych i niwelowanie halucynacji używając drugiego oddzielnego mózgu. `mem0` po stronie persistency bazy utrzymuje wielodniowe sesje a API Telegram'u i własny prywatny bot zapewnia panel frontowy z bezpośrednim strumieniem raportów na messenger."
+        pl: "Własny, wysoce zaawansowany ekosystem wieloagentowy (Multi-Agent System) postawiony od zera na środowisku Node.js:\n\nDispatcher, pełniący funkcję rdzenia operacyjnego, nieustannie analizuje nadchodzące do platformy potrzeby i rozdziela mikro-zadania do 12 wyprofilowanych wirtualnych ekspertów, adaptując zachowanie modelu do specyfiki problemu.\n\nDla dywersyfikacji wniosków zintegrowano trzy potężne rdzenie: modele Claude od Anthropic dla architektury i logiki, błyskotliwe chińskie Minimax (M2.5/M2.7) dla gigantycznego kontekstu w tle, oraz Gemini Pro dla agregacji ogólnego researchu webowego. Cały organizm aktywuje się w określonych blokach czasowych za sprawą infrastruktury cron — całkowicie bez jakiejkolwiek ręcznej ingerencji człowieka.\n\nOprócz tego, system operacyjny regularnie uruchamia krzyżową autoweryfikację wniosków (adversarial synthesis), niwelując halucynacje LLM-ów we własnym zakresie. Pamięć mem0 odpowiada za trzymanie kilkutygodniowego kontekstu projektu, a finalne, gotowe raporty lądują prosto na moim komunikatorze Telegram poprzez prywatnego bota."
       },
       result: {
         en: "30+ daily automated tasks. Market analysis, content research, competitive intelligence, code review — all running autonomously. The human reviews and decides; the system researches and prepares.",
-        pl: "30+ codziennych w pełni zautomatyzowanych zadań. Analiza poszczególnych nisz na rynkach, inteligentna agregacja rynkowych sygnałów i analiz technicznych — wszystko całkowicie po stronie wirtualnej agencji. Moim zdaniem sztuczna inteligencja nie jest tutaj by odebrać pracę, ale wybitnie dobrze odseparować szum od decyzji."
+        pl: "Codziennie wykonywanych jest ponad 30 w pełni zautomatyzowanych mikrozadań. Analiza rynkowa, inteligentne podsumowywanie trendów webowych i weryfikacja techniczna kodu dzieją się w tle, na moich prywatnych wirtualnych serwerach. Człowiek tylko analizuje owoce tej pracy i na ich podstawie podejmuje czyste decyzje biznesowe — całą brudną robotę analityczną robi system."
       },
       role: {
         en: "AI Systems Architect",
@@ -287,22 +287,22 @@ export const projects: Project[] = [
         pl: "Zautomatyzowany audyt archiwum i migracja do chmury dla potężnej biblioteki wideo edukacyjnego."
       },
       metrics: [
-        { value: "221", label: "Lectures processed" },
-        { value: "22", label: "Courses sorted" },
-        { value: "5", label: "Automation phases" },
-        { value: "0", label: "Data loss" },
+        { value: "221", label: { en: "Lectures processed", pl: "Przetworzone Wykłady" } },
+        { value: "22", label: { en: "Courses sorted", pl: "Posortowane Kursy" } },
+        { value: "5", label: { en: "Automation phases", pl: "Fazy Automatyzacji" } },
+        { value: "0", label: { en: "Data loss", pl: "Utrata Danych" } },
       ],
       challenge: {
         en: "221 lectures across 22 courses. Scattered across drives, inconsistent naming, missing files, broken folder structures. No inventory, no verification. A legacy content archive at risk of being lost.\n\nManual sorting would take weeks and be error-prone at this volume. Any drive failure means permanent content loss.",
-        pl: "221 wykładów rozrzuconych na dziesiątkach napędów. Niespójne nazewnictwo, brakujące ścieżki i osierocone pliki, zaburzona hierarchia podfolderów, zduplikowane pliki. Zupełny brak fizycznego spisu zapasowego. Ryzyko całkowitego braku dostępności na wypadek najmniejszej awarii jakiegokolwiek z napędów w systemie.\n\nRęczne organizowanie całej tej architektury zajęłoby tygodnie — a po wdrożeniu tego procesu — podatność na ewentualny brak pliku jest bardzo realna."
+        pl: "221 gigantycznych wykładów i modułów wideo chaotycznie rozrzuconych na dziesiątkach napędów dyskowych. Niespójne nazewnictwo plików, osierocone i zduplikowane materiały oraz zagubiona hierarchia katalogów. Całkowity brak spisu inwentarza. Ryzyko bezpowrotnej utraty dorobku w przypadku chociażby najmniejszej awarii talerza dyskowego.\n\nRęczna próba uporządkowania tak zagmatwanej pajęczyny zajęłaby pojedynczemu człowiekowi kilka bolesnych tygodni pracy, oferując w zamian gigantyczny margines błędu. Brakujące pliki na zawsze pozostałyby niezauważone."
       },
       approach: {
         en: "Designed a 5-phase systematic pipeline:\n\nPhase 1 — Discovery: Python scripts crawl all storage, build complete inventory, identify duplicates and gaps.\n\nPhase 2 — Sorting: Automated categorization by course, type, sequence via filename parsing and metadata extraction.\n\nPhase 3 — Audit: Cross-reference against course manifests. Flag missing lectures, corrupt files, version conflicts.\n\nPhase 4 — Verification: Automated integrity checks — codec, resolution, duration, audio sync.\n\nPhase 5 — Cloud Sync: GoodSync deployment to OneDrive with verified mirroring and change tracking.",
-        pl: "Zaprojektowałem, jako Architect, bardzo systematyczny pięcio-etapowy proces:\n\nFaza 1 — Odnajdywanie: Skrypty napisane w Pythonie indeksujące cały rozrzucony storage na przestrzeni kilku sprzętowych dysków macierzy, budując kompletną mapę tego archiwum i wypisując brakujące bądź zdublowane moduły czy lekcje i wysyłając bardzo proste i zrozumiałe statystyki.\n\nFaza 2 — Sortowanie: Algorytm potrafi dokonać głębokiej automatycznej klasyfikacji i na nowo uporządkować podkatalogi. Przemielenie kilku lat ewolucji w formacie i spakowanie każdej jednostki w precyzyjny katalog, parsując w tym celu stare i zapomniane formaty nazewnictwa z surowymi formatami Exif i FFprobe w celu ekstrahowania informacji gdzie powinien dany plik docelowo leżeć.\n\nFaza 3 — Audyt operacyjny.\nFaza 4 — Zabezpieczenie chmurowe: Uruchamiając potężną aplikację GoodSync zabezpieczyłem mirror całej sstruktury u dedykowanego w ofercie biznesowej dostawcy dla tego typu przestrzeni."
+        pl: "Zaprojektowałem precyzyjny pięcioetapowy rurociąg skryptowy (Pipeline):\n\nFaza 1 — Odnajdywanie: Autorskie skrypty w Pythonie przeczesują masowo strukturę kilkunastu dysków przenośnych, generują gigantyczną mapę uśpionego archiwum, a następnie flagują brakujące odcinki i błyskawicznie wykrywają fizyczne duplikaty wideo.\n\nFaza 2 — Sortowanie: Algorytm potrafi dokonać głębokiej automatycznej klasyfikacji i na nowo poukładać całe drzewo podkatalogów, parsując w tym celu przestarzałe formaty z nazewnictwa oraz ekstrahując surowe metadane Exif i dane techniczne FFprobe.\n\nFaza 3 i 4 — Audyt i weryfikacja: Bezlitosny skrypt krzyżowo identyfikuje braki na macierzy z oficjalnym modelem indeksów szkoły filmowej. Następuje sprawdzanie wierności oryginalnych kodeków, rodzielczości i ewentualnych desynchronizacji dźwięku w wyjściowych plikach mp4.\n\nFaza 5 — Zabezpieczenie chmurowe: Uruchamiając potężną aplikację GoodSync, postawiłem pełny mirroring ustrukturyzowanej biblioteki w profesjonalnym i zabezpieczonym chmurowo strumieniu z MS OneDrive."
       },
       result: {
         en: "221 lectures, 22 courses — fully sorted, audited, verified, cloud-synced. Zero data loss. Process documented and repeatable for future archive operations.",
-        pl: "Ostatecznie uratowałem cały ten dorobek, archiwum jest w 100% ubezpieczone w profesjonalnym repozytorium chmurowym OneDrive od MS. Użycie metod systemowych zmniejszyło z tygodni nudnej wielokliku — do wykonania tego samego celu dzięki Pythonowi dosłownie poprzez kilka bezbłędnych przebiegów terminalowych."
+        pl: "Uratowano 221 obszernych wykładów i ułożono w idealnie skatalogowane 22 kursy — z pełnym audytem anomali i gwarancją braku utraty danych. Żmudna robota, na którą wcześniej człowiek musiałby zarezerwować miesiąc, została zastąpiona kilkoma w pełni bezbłędnymi przebiegami z mojego środowiska terminalowego."
       },
       role: {
         en: "Systems Architect",
@@ -351,22 +351,22 @@ export const projects: Project[] = [
         pl: "Kompleksowa kampania wizerunkowa dla zespołu \"Mazowsze\" — od głównego filmu promocyjnego po kampanie w warszawskim metrze."
       },
       metrics: [
-        { value: "540-seat", label: "Concert hall" },
-        { value: "150+", label: "Performers" },
-        { value: "Multi-cam", label: "Live production" },
-        { value: "Zero errors", label: "Tolerance" },
+        { value: "540-seat", label: { en: "Concert hall", pl: "Sala Koncertowa" } },
+        { value: "150+", label: { en: "Performers", pl: "Występujących" } },
+        { value: "Multi-cam", label: { en: "Live production", pl: "Transmisja Live" } },
+        { value: "Zero errors", label: { en: "Tolerance", pl: "Tolerancja Błędu" } },
       ],
       challenge: {
         en: "Państwowy Zespół Ludowy Pieśni i Tańca \"Mazowsze\" — Poland's national folk song and dance ensemble. A 540-seat hall, 150+ performers, state-level cultural institution.\n\nLive production for a state cultural institution. No second takes, no \"fix it in post.\" The stakes are reputational as much as technical — every delivery represents a national ensemble.",
-        pl: "Państwowy Zespół Ludowy Pieśni i Tańca \"Mazowsze\" — kultowa, polska instytucja kultury z salą na 540 miejsc i ponad setką artystów występujących jednoczesnie.\n\nZadanie, ze względu na poziom tej elitarnej państwowej instytucji nie pozostawiało miejsca na wtórne pomyłki. Live streaming nie ma pojęcia takiego jak 'potem to się zmontuje w postprodukcji'. Jakość każdej ze strumieniowych transmisji lub finalnego wyjścia dla agencji zewnętrznych z każdego eventu - to absolutna odpowiedzialność pod kątem wizerunkowym, artystycznym jak i po prostu pod względem bardzo technicznym (spójność sygnału sieci)."
+        pl: "Państwowy Zespół Ludowy Pieśni i Tańca „Mazowsze” — kultowa, potężna instytucja kultury z imponującą sceną na 540 miejsc oraz przeszło setką artystów występujących symultanicznie podczas jednego ujęcia.\n\nProdukcja transmisyjna (Live) oraz operatorska na tak elitarnym, państwowym poziomie nie zostawia nawet mikromilimetra marginesu na pomyłkę. W relacjach na żywo nie ma filozofii typu „później naprawimy to na spokojnie w montażu”. Perfekcja wizualna z każdego miksu musi natychmiast wychodzić we flagowej jakości na światło dzienne."
       },
       approach: {
         en: "Full-service production partnership spanning multiple formats:\n\nHero promotional video — currently featured on the organization's homepage. Multi-camera live concert production with zero-error tolerance for state events.\n\nAnimated advertising for Warsaw metro displays and central railway station digital screens. Full-cycle promotional content across all platforms. Ballet-derived animations for digital use.\n\nWorking with performers who operate at the highest level of their craft demands the same from the production team.",
-        pl: "Stworzenie niezwykle ścisłej i wszechstronnej obsługi na wielowątkowym i wielomodułowym stanowisku dla całego zespołu produkcji oraz marketingu i PR.\n\nW pełni wyreżyserowane oficjalne główne formaty marketingowe i spoty wyświetlane w social-mediach tej instytucji. Wielokamerowa transmisja wybitnie złożonych scen (składających się zarówno z orkiestry dętej i klasycznej, pełnego chóru i tańca baletologicznego).\n\nKreacja motion designu wektorowego i plakatów wideo emitowanych na banerach Dworca Głównego w Warszawie i systemie ekranów metra komunikacji publicznej. Tworzenie całego zaplecza promocyjnego.\n\nPraca z artystami w tym zespole to bezkompromisowa konieczność dorównywania im samym — perfekcyjne wyczucie w zgraniu, rytmice oraz precyzji obrazu było nie opcjonalne a po prostu bezwzględnym standardem."
+        pl: "Pełnowymiarowe reżyserskie i operatorskie wzięcie na barki produkcji audiowizualnej:\n\nWyreżyserowanie oficjalnych form marketingowych zespołu. Wielo-kamerowa, arcytrudna realizacja przeplatających się w dynamicznym układzie orkiestr dętych, chórów akustycznych oraz baletu tańczącego ludową akrobatykę.\n\nOprócz obsługi tradycyjnego wideo powierzono mi również zadanie wykreowania i wprawienia w ruch wektorowych, monumentalnych animacji reklamowych, wyświetlanych nieprzerwanie na wielkich plazmach Dworca Centralnego w Warszawie oraz na wszystkich peronach stołecznego metra.\n\nPraca operatorsko-reżyserska i montaż z tak elitarnymi w swoim fachu artystami wymaga dopasowania się pod absolutnie bezkompromisowy poziom profesjonalizmu i punktualności rzemieślniczej."
       },
       result: {
         en: "Comprehensive production for a national institution. The hero video remains their primary digital representation. Live broadcasts delivered flawlessly under zero-error conditions. Metro and railway station advertising running on Warsaw's busiest screens.",
-        pl: "Dostarczenie najwyższych form artystyczno wideo reklamowych dla państwowej wizytówki kulturowej kraju. Całkowite oddanie wizualne w tych wspaniałych spotach dla wielkich reżyserowanych scen tego zespołu. Wyłączna bezbłędnie techniczne obsługiwanie całej reżyserki streamingu na żywo."
+        pl: "Instytucja państwowa otrzymała potężny fundament wizerunkowy w formacie wideo. Wykreowany we współpracy z zespołem sztandarowy spot do dziś dumnie wita gości na głównej stronie witryny zespołu. Z kolei transmisje na żywo zostały opanowane wręcz perfekcyjnie – i to przy zerowej wyrozumiałości publiczności i streamingu na wszelkie pomyłki operacyjne realizatora obrazu."
       },
       role: {
         en: "Lead Camera / Editor / Motion Designer",
@@ -414,22 +414,22 @@ export const projects: Project[] = [
         pl: "Ekosystem Webowy stworzony pod nadzorem Claude Code: strona portfolio + całkowicie autonomiczna witryna OSINT."
       },
       metrics: [
-        { value: "60+", label: "Sources" },
-        { value: "15+", label: "Categories" },
-        { value: "2", label: "Live products" },
-        { value: "1 day", label: "Digest build time" },
+        { value: "60+", label: { en: "Sources", pl: "Źródła" } },
+        { value: "15+", label: { en: "Categories", pl: "Kategorie" } },
+        { value: "2", label: { en: "Live products", pl: "Aktywne Serwisy" } },
+        { value: "1 day", label: { en: "Digest build time", pl: "Czas Budowy Digest" } },
       ],
       challenge: {
         en: "Build a professional portfolio and a live intelligence platform simultaneously, as a one-person operation. No CMS, no templates — pure code. The answer: build the infrastructure to build itself.\n\nTwo products with different requirements — a static portfolio site and a real-time intelligence digest — both needing to deploy autonomously to the edge.",
-        pl: "Moim wyzwaniem był projekt oraz kodowanie absolutnie bez gotowych szablonów — kompletnego front-endu reprezentującego portfolio, równolegle z drugą w pełni funkcjonalną witryną agregującą potężne zestawienia sygnałów z rynku, z całkowitym zrezygnowaniem z konwencjonalnego systemu CMS z zewnątrz. Obie te produkcje dla zaledwie jednej osoby stanowiły dawniej barierę bardzo duży opóźnień i czasu.\n\nStosując moje techniki i asystentów, byłem w stanie stworzyć dwie różne domeny — obie deployowane pod chmurę Cloudflare Pages w tempie, które przypomina operacje wieloosobowej drużyny developerów."
+        pl: "Wyzwanie polegało na zaprojektowaniu i dewelopmencie dwóch komercyjnych domen od absolutnego zera do perfekcyjnego poziomu zaawansowania. Moim celem z góry było zrezygnowanie z wszelkich topornych, gotowych kreatorów stron czy powolnych CMS-ów. Tego kalibru wielowątkowe produkcje w pojedynkę zazwyczaj wiążą się z bolesnymi spowolnieniami oraz obniżeniem estetycznego standardu aplikacji webowej.\n\nNiemniej odpowiedź znalazłem wdrażając we wszystko asystentów LLM i budując solidną chmurową architekturę. Obie witryny mogły być wreszcie deployowane niemal tak szybko i tak potężnie, jak robiłyby to elitarne zespoły deweloperskie."
       },
       approach: {
         en: "Two interconnected products, one architectural philosophy:\n\nRZMRN.com (this site): Next.js 16, React 19, Tailwind v4. Static export to Cloudflare Pages. Built collaboratively with Claude Code CLI agents — architecture, components, content, deployment. No CMS, no templates — pure code.\n\nRZMRN Digest (digest.rzmrn.com): Autonomous OSINT intelligence pipeline. 60+ RSS sources across 15+ categories. MiniMax M2.5 multi-threaded analysis with adversarial critique and synthesis. mem0 persistent memory. Bilingual RU/UA output. Cyberpunk terminal UI. Auto-deploy to Cloudflare Pages. Built in one day.\n\nBoth products demonstrate the thesis: one person + AI-first architecture = output that looks like a team.",
-        pl: "Wykorzystałem dwa główne projekty dla jednego silnego filaru architektonicznego:\n\nRZMRN.com (ta witryna): Nowoczesny Next.js 16 najnowszy stack React v19 oraz Tailwind v4 z renderowaniem po stronie statycznej SSG do edge'a i repozytorium na Github. Zbudowana ze współpracy z wybitnymi agentami Claude Code CLI oraz frameworkami MCP. Brak gotowców. Czysty wektor kreatywny, design połączony z wybitną i czystą kodową skalowalnością.\n\nRZMRN Digest (digest.rzmrn.com): Autonomiczny bot, strona serwująca raporty, codzienna agregacja 60 sprawdzonych źródeł, z wielowątkową weryfikacją z LLM w formie terminalowego cyber-interfejsu.\n\nWiększość procesu, w tym architektura i kod obu projektów to wyraźny dowód: operując systemami LLM w połączeniu z odpowiednią organizacją systemową, dostarczasz na rynek to, co jeszcze 2 lata temu tworzyła w tydzień kilkuosobowa agencja z budżetami kilkukrotnie wyższymi."
+        pl: "Dwa zintegrowane produkty, spięte jedną potężną i czystą filozofią deweloperską:\n\nRZMRN.com (witryna, na której aktualnie to czytasz): Zbudowana na błyskawicznym frameworku Next.js 16, React 19 z renderowaniem szkieletowym Tailwind v4. Skompresowana jako wydmuszka statyczna i serwowana w oparciu o infrastrukturę Edge w chmurze Cloudflare Pages. Stworzona w tandemie z modelami od Anthropic; począwszy od całej architektury systemu wielojęzycznego aż po złożone, interaktywne komponenty React we front-endzie. Zero obrzydliwych gotowców – czysty kod sterowany precyzyjną ręką architekta.\n\nRZMRN Digest (digest.rzmrn.com): Potężny, całkowicie autonomiczny system AI Pipeline w modelu operacyjnym OSINT. Pętla serwerowa połyka dane bezpośrednio za pośrednictwem blisko 60 sprawdzonych kanałów i analizuje z użyciem gigantycznych modeli językowych od MiniMax (M2.5/M2.7) oraz potężnych modułów od Google. To codzienna platforma dystrybucyjna z obłędną szatą graficzną rodem z hacker-terminala web-interface’ów lat 90. Całość postawiona od pomysłu do dewelopmentu serwera produkcyjnego dosłownie w mniej niż jedną pełną dobę operacyjną."
       },
       result: {
         en: "Two live products running on edge infrastructure. The portfolio showcases the work; the digest proves the methodology. Both built, deployed, and maintained by one person with AI as a force multiplier.",
-        pl: "Dwie żywe witryny działające w bezserwerowej strukturze Edge Architecture. Portfolio jest odzwierciedleniem możliwości kreacji wizualnej, podczas gdy OSINT i Digest udowadniają zmysł automatyzacji AI oraz inżynierii operacyjnej. Projekt został tak stworzony aby jednoosobowo w nieskończoność utrzymywać je i skalować dla miliona wyświetleń, za stawkę miesięczną, która zwykle wystarcza komercyjnie na hosting CMS od Wordpress w jednym języku."
+        pl: "Oba systemy funkcjonują natywnie na serwerach architektury Edge o zasięgu globalnym. Portfolio perfekcyjnie wystawia wizualnie kreatywne referencje twórcy, a działający podrzędnie inteligentny Digest – dosadnie krzyczy o potędze logiki systemowej, jaką władam. Gigantyczne zasięgi dla setek tysięcy wejść udźwignięte dosłownie na mikroskopijnych nakładach utrzymania budżetów serwerowych – triumf automatyzacji nad wielkimi korporacyjnymi strukturami."
       },
       role: {
         en: "Architect / Builder",
@@ -489,15 +489,15 @@ export const projects: Project[] = [
       metrics: [],
       challenge: {
         en: "Short-form content is the hardest format. 3-15 seconds to communicate quality. Every frame matters. Every transition is a decision. Every beat sync is deliberate.\n\nThe question isn't how to make more content faster — it's how to compress years of production craft into moments that demand attention.",
-        pl: "Mówi się że format rolek do TikToka jest banalny i bezwartościowy. Jest całkowicie odwrotnie. Trudno zaimponować kunsztem i utrzymać ludzką uwagę, która obecnie wytrzymuje góra 3 sekundy. Każda mikrosekunda tutaj gra ogromną rolę. Brak tu miejsca na pomyłkowe puste czy drgające momenty.\n\nWiększość osób z social-mediów wstawia głośny hałas do platform. Jednak prawdziwy postęp jest wtedy kiedy przekuwa się jakość lat pracy do montażystów kinowych – we format 9:16 tak aby był on spektakularny i uzależniający, a zarazem wizualnie genialny estetycznie."
+        pl: "Istnieje powszechny, mylny stereotyp mówiący o tym, że format popularnych 'rolek' czy 'tiktoków' jest intelektualnie płytki, prozaiczny w obróbce i rzekomo banalny estetycznie. Prawda branżowa natomiast szokuje – nie istnieje dziś trudniejsza dziedzina rzemiosła obrazu od formy short-wideo. Zaledwie od 3 do 15 sekund – tylko tyle wystarcza dzisiejszej percepcji, by przesunąć kciukiem naszą dziesiątek godzin budowaną kompozycję i pochłonąć do cna ten mikrosekundowy zysk atencji widza. Każda drobna ramka wycinana skalpelem musi z absolutną bolesnością krzyczeć o luksusowej wizji produktu docelowego – tu pęka każda tolerancja na jakiekolwiek przedłużające się czy niewidoczne sceny, kuleje każdy moment zawieszenia braku rytmicznego ciosu basu.\n\nPrawdziwe arcydzieło cyfrowej inżynierii we wpompowywaniu ruchu na portale polega dziś nie tylko na byciu maszyną taśmociągową tworzącą setki bezdusznych treści tygodniowo dla brandu – lecz destylowaniu i miażdżeniu dekady perfekcjonizmu motion dla gigantycznych potęg z kinematografii kinowej do formatów ekranów telefonu trzymanego w dłoni na korytarzu miejskim - tak żeby było to niemiłosiernie oszałamiające optycznie i wizualnie."
       },
       approach: {
         en: "Years of After Effects work — automotive, travel, fashion, motion graphics — where technical obsession meets instant impact. Dozens of hours per composition, complex layer stacks, precise timing.\n\nEach category with its own visual language: automotive reels demand kinetic energy and metal textures. Travel content needs atmosphere and scale. Fashion requires rhythm and elegance. Pure motion design experiments push technique without client constraints.\n\nAll unified by the same production standard — the work speaks for itself.",
-        pl: "To po prostu suma obsesyjnego i dziesiątek tysięcy przepracowanych godzin nauki programów po stronie Adobe. To kreowanie graficzne dynamiki opierające się na perfekcyjnie zbudowanej siatce keyframe-ów.\n\nKażdy projekt rządzi się swoim rytmem i językiem wizualnym: formaty automotive wymagają bezbłędnego zgrania kinetycznej energii silnika i prędkości. Moda i beauty potrzebują balansu oświetlenia i absolutnej rytmiki i elegancji. Z kolei materiały pure-motion wymuszają z mojej strony absolutne sprawdzanie i limitów kreatywnych silnika na którym obrabiam pliki, tak bym bez polecenia klientów na zewnątrz nadal eksperymentował rozciągając wyznaczaną przez samego mnie poprzeczkę."
+        pl: "Suma przepalonych dziesiątków tysięcy żmudnych obsesyjnych godzin analizy każdego drgnięcia piksela na osi oprogramowania do efektów wizualnych po stronie Adobe. Prawdziwe motion rodzi się na styku brutalnego zderzenia graficznej i udrękowej analizy warstw krzywych klatek kluczowych w przestrzeni, maskowania obiektowego do klatek przemieszczających się o milimetry po soczewkach optyk kamery z żywym światłem środowiskowym i wektorów dynamicznie rozciąganej wektorowej przestrzeni loga nałożonego po torze pędzącego samochodu w zakręcie na zderzaku.\n\nKażda dziedzina posiada swoją niezależną dynamikę wektorową. Formaty komercyjno-samochodowe wymagają ode mnie precyzyjnego wgryzienia i idealnie sprzęgniętego uderzania rytmiki bitów ujęciami lśniącej blachy i kinetycznej eksplozji z obrotów silnikowych. Filmy związane z modą czy produktami beauty domagają się ode mnie wnikliwego rzemiosła pracy oświetleniowej, eleganckiego tempa zwolnienia z klatek (Time Remapping) jak również wręcz bezwzględnego wyrównywania estetyki wizualnej. Prawdziwa i surowa praca z motion to rzeźbienie i pchanie absolutnie najdalszych wektorowych wariantów i sprawdzania ostatecznych wydolności optycznych komputera oraz wizji z pominięciem dyktowania wymiarów przez zewnętrznych reżyserów – to brutalna praca na czystych żywych liniach granicznych wizji dewelopera kreacji obrazu."
       },
       result: {
         en: "Short-form isn't lesser production. It's production compressed to its essence. The range speaks to versatility; the quality speaks to craft.",
-        pl: "Ten cyfrowy content to nie 'błahostka po omacku', to profesjonalny warsztat audiowizualny, jednak ściśnięty w najpotężniejszą jego formę która rezonuje, zapada w pamięci oraz daje wprost genialne rezultaty retencyjne."
+        pl: "Cyfrowe formy contentu pionowego (Short-Form) to wcale nie podrzędny wizualny asortyment wyrzucany do kosza po zobaczeniu na streamie. To w stu procentach pełnowymiarowa i profesjonalna produkcja, tylko i wyłącznie drastycznie skondensowana i bezwzględna do swojej najbardziej gęstej ożywczej surowej czystości audiowizualnej – tam gdzie wybitny warsztat montażowy przemienia i napędza najbardziej oszałamiający efekt na końcu portalu wzrokowego klienta, rozgramiając doszczętnie wszelkie mizerne zbitki rzemieślniczej konkurencji o uwagę widza."
       },
       role: {
         en: "Motion Designer / Editor",
@@ -531,7 +531,7 @@ export const projects: Project[] = [
     ],
     description: {
       en: "TV commercial for Mazda MX-5 DriveTogether campaign. Full post-production pipeline: editing, color grading, sound design, and motion graphics integration.",
-      pl: "Reklama telewizyjna dla kampanii Mazda MX-5 DriveTogether. Pełny etap postprodukcyjny: montaż z koloryzacją, wsparty udźwiękowieniem z elementowym motion graphics integracji animacji 3d na żywym obrazie."
+      pl: "Pełny proces postprodukcyjny: od agresywnego i nienagannego montażu w rytm silnika, przez kinowy color grading nadający ostateczny obraz surowym pikselom z kamery cyfrowej – a kończąc na precyzyjnym udźwiękowieniu wraz z osadzeniem graficznych brył 3D wektorowego motion design."
     },
     tags: ["TV Commercial", "Post-Production", "Color Grading"],
     role: "Editor / Colorist",
@@ -557,7 +557,7 @@ export const projects: Project[] = [
     ],
     description: {
       en: "Full-cycle commercial production for a Lotus car dealership. Sketching, scripting, shooting direction, editing, sound design, and color correction — concept to final master.",
-      pl: "Cały lejek postprodukcji tej reklamy luksusowej motoryzacji dealera we Francji. Rozpoczynając pisaniem scenariusza w pre - po montaż i mistrzowską postprodukcję kolorów z korektą balansu."
+      pl: "Kompleksowa obsługa postprodukcji oraz reżyserii tego spotu reklamy luksusowych samochodów dla zachodniego francuskiego dealera motoryzacyjnego Daytona. Tworzenie pełnej wizji kreatywnej od rozpisania scenopisów (pre-production), poprzez fizyczny direct planów – po perfekcyjnie wyszlifowany mistrzowski montaż, sound design i zaawansowny i luksusowy color-correction doprowadzony z chirurgiczną ostrością kalibru balansu kinowego z masterem do ostatecznej dystrybucji."
     },
     tags: ["Full Production", "Directing", "Editing", "Sound Design"],
     role: "Director / Editor / Colorist / Sound Designer",
@@ -583,7 +583,7 @@ export const projects: Project[] = [
     ],
     description: {
       en: "Full production music video from concept through delivery. Directing, cinematography planning, editing, color grading, and VFX compositing.",
-      pl: "Reżyserowany przeze mnie teledysk, stworzony wizualnie od idei poprzez scenariusz wizyjny, oświetlenie z montażem ze złożoną koloryzacją post-processingu VFX."
+      pl: "W pełni autorsko wyreżyserowane, profesjonalne muzyczne teledyski u artysty muzycznego, skrojone ze starannością warsztatu wideo od czystego szkicu ołówkiem wizji reżyserskiej aż po ostateczne zblokowanie całej siatki logistycznej i oświetleniowej w czasie prawdziwego live-planu teledysku – wykreowane i podparte we wręcz absurdalnie złożonej siatce kompozycji wizualnej efektów specjalnych 3d i surowego agresywnego post-processingu VFX przy końcowej korekcie obrazu log."
     },
     tags: ["Music Video", "Full Production", "VFX", "Color"],
     role: "Director / Editor / Colorist / VFX",
@@ -609,7 +609,7 @@ export const projects: Project[] = [
     ],
     description: {
       en: "Animated promotional flyers and social content for events, music releases, and brands. Eye-catching motion design optimized for Instagram and TikTok engagement.",
-      pl: "Zanimowane potężne kreacje eventowe oraz zapowiedzi wideo marek dla branży muzycznej promujące w nowoczesnych designach wizualnych i wektorach."
+      pl: "Potężne, zapadające w percepcji animowane projekcje i zapowiedzi w formacie reklam wideo od największych agencji eventowych i dystrybutorów muzycznych i brandingów firm z całego świata. Skrajnie dynamiczne, wizualnie agresywne kreacje motion design idealnie wpompowujące zaangażowanie dla potęg wizualnego engagement'u w social mediach z platform Tik-Tok oraz Instagram."
     },
     tags: ["Motion Design", "Animation", "Social Media"],
     role: "Motion Designer / Animator",

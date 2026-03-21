@@ -87,12 +87,13 @@ export default function CaseStudyCard({
   }
 
   return (
-    <Link href={`/${locale}/projects/${project.slug}`} className="group block">
+    <Link href={`/${locale}/projects/${project.slug}`} className="group flex flex-col h-full">
       <div
         ref={ref}
         onMouseMove={supportsHover ? handleMouseMove : undefined}
         onMouseLeave={supportsHover ? handleCardMouseLeave : undefined}
         onMouseEnter={supportsHover ? handleCardMouseEnter : undefined}
+        className="flex flex-col flex-1"
       >
         {/* Hero media */}
         {hasRealThumbnail ? (
@@ -143,7 +144,7 @@ export default function CaseStudyCard({
         )}
 
         {/* Content */}
-        <div className="mt-4">
+        <div className="mt-4 flex flex-col flex-1">
           {/* Track badge */}
           <span
             className={cn(
@@ -163,13 +164,13 @@ export default function CaseStudyCard({
           <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1">
             {caseStudy.metrics.slice(0, 3).map((m) => (
               <span
-                key={m.label}
+                key={m.label.en}
                 className="font-mono text-sm text-text-secondary"
               >
                 <span className="font-semibold text-text-primary">
                   {m.value}
                 </span>{" "}
-                {m.label}
+                {m.label[locale]}
               </span>
             ))}
           </div>
@@ -184,7 +185,7 @@ export default function CaseStudyCard({
           </div>
 
           {/* CTA */}
-          <span className="mt-4 inline-block font-mono text-xs uppercase tracking-wider text-text-muted transition-colors group-hover:text-accent">
+          <span className="mt-auto pt-4 inline-block font-mono text-xs uppercase tracking-wider text-text-muted transition-colors group-hover:text-accent">
             {dict.projects.viewCaseStudy}
           </span>
         </div>

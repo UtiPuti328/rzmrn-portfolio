@@ -65,18 +65,18 @@ export default function Hero() {
             </FadeIn>
 
             <div
-              className="mt-12 flex items-center gap-4 transition-opacity duration-500"
+              className="mt-12 flex flex-row items-stretch sm:items-center gap-3 sm:gap-4 transition-opacity duration-500 w-full sm:w-auto"
               style={{ opacity: showCta ? 1 : 0 }}
             >
               <Link
                 href={`/${locale}#work`}
-                className="inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:bg-accent-hover"
+                className="inline-flex flex-1 sm:flex-none items-center justify-center bg-accent px-4 py-3 sm:px-6 sm:py-3 text-[11px] sm:text-sm font-medium uppercase tracking-widest text-text-primary transition-colors hover:bg-accent-hover text-center leading-tight"
               >
                 {dict.hero.viewWork}
               </Link>
               <Link
                 href={`/${locale}/contact`}
-                className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-medium uppercase tracking-wider text-text-primary transition-colors hover:border-text-muted"
+                className="inline-flex flex-1 sm:flex-none items-center justify-center border border-border px-4 py-3 sm:px-6 sm:py-3 text-[11px] sm:text-sm font-medium uppercase tracking-widest text-text-primary transition-colors hover:border-text-muted text-center leading-tight whitespace-pre-wrap sm:whitespace-nowrap"
               >
                 {dict.hero.getInTouch}
               </Link>
