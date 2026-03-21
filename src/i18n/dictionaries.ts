@@ -10,7 +10,7 @@ export const dictionaries = {
       contact: "Contact",
     },
     hero: {
-      subtitle: "Filmmaker & Creative Director — Motion / Post / AI",
+      subtitle: "Filmmaker & Creative Director",
       trackLabels: "Directing / Cinematography / Editing / Motion Design / Color Grading / AI Automation",
       viewWork: "View Work",
       getInTouch: "Get in Touch",
@@ -101,7 +101,7 @@ export const dictionaries = {
       contact: "Kontakt",
     },
     hero: {
-      subtitle: "Filmmaker & Creative Director \u2014 Motion / Post / AI",
+      subtitle: "Filmmaker & Creative Director",
       trackLabels: "Directing / Cinematography / Editing / Motion Design / Color / AI",
       viewWork: "Zobacz Portfolio",
       getInTouch: "Skontaktuj si\u0119",
