@@ -110,54 +110,54 @@ export default function MobileMenu() {
         </div>
       </button>
 
-      {/* Dim backdrop for the rest of the page */}
       {mounted && createPortal(
         <div
+          id={menuId}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
           className={cn(
-            "fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+            "fixed inset-0 z-40 transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            isOpen ? "visible opacity-100" : "invisible opacity-0"
           )}
-          onClick={() => setIsOpen(false)}
-          aria-hidden="true"
-        />,
+        >
+          {/* Gradient Glass Background */}
+          <div 
+            className="absolute inset-0 bg-background/95 backdrop-blur-md will-change-[opacity,transform]"
+            style={{ 
+              WebkitMaskImage: "linear-gradient(to bottom, black 35%, transparent 80%)",
+              maskImage: "linear-gradient(to bottom, black 35%, transparent 80%)",
+              transform: "translateZ(0)"
+            }}
+          />
+
+          <nav 
+            ref={menuRef}
+            className="relative flex h-full flex-col items-center justify-start pt-32 gap-10"
+          >
+            {NAV_LINKS.map((link, i) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "font-heading text-3xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  isOpen
+                    ? "translate-y-0 opacity-100"
+                    : "-translate-y-4 opacity-0",
+                  pathname === link.href
+                    ? "text-text-primary"
+                    : "text-text-muted hover:text-text-primary"
+                )}
+                style={{ transitionDelay: isOpen ? `${100 + i * 50}ms` : "0ms" }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>,
         document.body
       )}
-
-      <div
-        ref={menuRef}
-        id={menuId}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation menu"
-        className={cn(
-          "absolute left-0 top-full -z-10 w-full border-b border-border/40 bg-background/95 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isOpen
-            ? "translate-y-0 opacity-100 visible"
-            : "-translate-y-4 opacity-0 invisible"
-        )}
-      >
-        <nav className="flex flex-col items-center justify-center gap-8 py-10">
-          {NAV_LINKS.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className={cn(
-                "font-heading text-3xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                isOpen
-                  ? "translate-y-0 opacity-100 blur-none"
-                  : "-translate-y-4 opacity-0 blur-sm",
-                pathname === link.href
-                  ? "text-text-primary"
-                  : "text-text-muted hover:text-text-primary"
-              )}
-              style={{ transitionDelay: isOpen ? `${150 + i * 75}ms` : "0ms" }}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
     </div>
   );
 }
