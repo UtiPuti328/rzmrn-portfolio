@@ -119,7 +119,7 @@ export default function MobileMenu() {
           */}
           <div
             className={cn(
-              "fixed left-0 top-0 w-full h-[100dvh] z-40 pointer-events-none transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform",
+              "fixed left-0 top-0 w-full h-[100dvh] z-30 pointer-events-none transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform",
               isOpen ? "translate-y-0" : "-translate-y-full"
             )}
           >
@@ -142,7 +142,7 @@ export default function MobileMenu() {
             aria-modal="true"
             aria-label="Navigation menu"
             className={cn(
-              "fixed inset-0 z-50 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "fixed inset-0 z-40 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
               isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
             )}
           >
@@ -155,13 +155,17 @@ export default function MobileMenu() {
                   className={cn(
                     "font-heading text-4xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                     isOpen
-                      ? "translate-y-0"
-                      : "-translate-y-4",
+                      ? "translate-y-0 opacity-100"
+                      : "-translate-y-4 opacity-0",
                     pathname === link.href
                       ? "text-text-primary"
                       : "text-text-muted hover:text-text-primary"
                   )}
-                  style={{ transitionDelay: isOpen ? `${100 + i * 50}ms` : "0ms" }}
+                  style={{ 
+                    transitionDelay: isOpen ? `${100 + i * 50}ms` : "0ms",
+                    WebkitTransform: "translateZ(0)",
+                    transform: "translateZ(0)"
+                  }}
                 >
                   {link.label}
                 </Link>
