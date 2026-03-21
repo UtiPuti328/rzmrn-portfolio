@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -9,7 +8,6 @@ import { useI18n } from "@/i18n/provider";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { dict, locale } = useI18n();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -28,10 +26,6 @@ export default function MobileMenu() {
     setPrevPathname(pathname);
     setIsOpen(false);
   }
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Lock body scroll when open
   useEffect(() => {
@@ -110,40 +104,30 @@ export default function MobileMenu() {
         </div>
       </button>
 
-      {mounted && createPortal(
-        <div
+      <div
         ref={menuRef}
         id={menuId}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
         className={cn(
-          "fixed inset-0 z-40 transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "absolute left-0 top-full -z-10 w-full border-b border-border/40 bg-background/95 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isOpen
-            ? "visible opacity-100"
-            : "invisible opacity-0"
+            ? "translate-y-0 opacity-100 visible"
+            : "-translate-y-4 opacity-0 invisible"
         )}
       >
-        {/* Gradient Glass Background */}
-        <div 
-          className="absolute inset-0 bg-background/85 backdrop-blur-2xl"
-          style={{ 
-            WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 100%)",
-            maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)" 
-          }}
-        />
-
-        <nav className="relative flex h-full flex-col items-center justify-start pt-36 gap-10">
+        <nav className="flex flex-col items-center justify-center gap-8 py-10">
           {NAV_LINKS.map((link, i) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
               className={cn(
-                "font-heading text-4xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                "font-heading text-3xl font-semibold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                 isOpen
                   ? "translate-y-0 opacity-100 blur-none"
-                  : "translate-y-8 opacity-0 blur-sm",
+                  : "-translate-y-4 opacity-0 blur-sm",
                 pathname === link.href
                   ? "text-text-primary"
                   : "text-text-muted hover:text-text-primary"
@@ -154,9 +138,7 @@ export default function MobileMenu() {
             </Link>
           ))}
         </nav>
-        </div>,
-        document.body
-      )}
+      </div>
     </div>
   );
 }
