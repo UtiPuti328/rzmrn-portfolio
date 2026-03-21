@@ -37,7 +37,7 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "RZMRN",
-              jobTitle: "Filmmaker & Creative Director — Motion, Post-Production & AI",
+              jobTitle: "Filmmaker & Creative Director",
               url: "https://rzmrn.com",
               sameAs: [],
               knowsAbout: [
