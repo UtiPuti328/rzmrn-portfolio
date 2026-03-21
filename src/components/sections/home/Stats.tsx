@@ -55,8 +55,16 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 
   return (
     <span ref={ref}>
-      {prefersReduced ? target : count}
-      {suffix}
+      {/* Screen reader & SEO text, fully rendered on server */}
+      <span className="sr-only">
+        {target}
+        {suffix}
+      </span>
+      {/* Visual animated text */}
+      <span aria-hidden="true">
+        {prefersReduced ? target : count}
+        {suffix}
+      </span>
     </span>
   );
 }
