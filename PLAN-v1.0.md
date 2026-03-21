@@ -32,10 +32,8 @@
 
 ## Задачи требующие участия Макса
 
-### ⚠️ КРИТИЧНО: Formspree URL сломан
-Текущий URL: `https://formspree.io/f/hello@rzmrn.com` — это **НЕ валидный Formspree endpoint**.
-Формат должен быть: `https://formspree.io/f/{FORM_ID}` (например `f/xwkgveld`).
-**Действие:** зарегистрироваться на formspree.io, создать форму, получить ID, заменить URL в `ContactForm.tsx:30`.
+### ✅ Formspree URL обновлен
+ID `maqpodvw` успешно добавлен в `ContactForm.tsx`.
 
 ### Контент (v0.4 — проекты)
 - [ ] Подготовить 4-6 реальных проектов (hero image/video, описание, теги)

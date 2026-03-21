@@ -8,6 +8,7 @@ import CaseResult from "@/components/sections/case-study/CaseResult";
 import CaseNav from "@/components/sections/case-study/CaseNav";
 import CaseStudyLayout from "@/components/sections/case-study/CaseStudyLayout";
 import InteractiveSlot from "@/components/interactive/InteractiveSlot";
+import VideoPlayer from "@/components/ui/VideoPlayer";
 import { getCaseStudy, getCaseStudySlugs } from "@/lib/mdx";
 import {
   getProjectBySlug,
@@ -80,7 +81,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         caseStudy={project.caseStudy}
         prev={prev}
         next={next}
-        interactiveComponent={<InteractiveSlot slug={slug} />}
+        interactiveComponent={<InteractiveSlot slug={slug} project={project} />}
         tagline={SLUG_TAGLINES[slug]}
       />
     );
@@ -105,7 +106,20 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     <article>
       {/* Hero */}
       <section className="relative flex min-h-[70vh] items-end pb-16 pt-32">
-        {project?.thumbnail && (
+        {project?.videoLoop ? (
+          <div className="absolute inset-0 -z-10">
+            <VideoPlayer
+              src={project.videoLoop}
+              poster={project.thumbnail}
+              alt={title}
+              className="h-full w-full"
+              sizes="100vw"
+              priority
+              mobileAutoplayOnly={false}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+          </div>
+        ) : project?.thumbnail && (
           <div className="absolute inset-0 -z-10">
             <Image
               src={project.thumbnail}
@@ -180,27 +194,46 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               )}
             </div>
 
-            {/* Video or thumbnail */}
-            <div className="mt-16 relative aspect-video overflow-hidden bg-surface">
-              {project.videoLoop ? (
-                <video
-                  src={project.videoLoop}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={project.thumbnail}
-                  alt={title}
-                  fill
-                  sizes="100vw"
-                  className="object-cover"
-                />
-              )}
-            </div>
+            {/* Videos or fallback */}
+            {project.videos && project.videos.length > 0 ? (
+              <div className="mt-16 space-y-6">
+                {project.videos.map((vid, i) => (
+                  <div key={i} className="relative aspect-video overflow-hidden bg-surface">
+                    <video
+                      src={vid.src}
+                      autoPlay={i === 0}
+                      loop
+                      muted
+                      playsInline
+                      controls
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="mt-16 relative aspect-video overflow-hidden bg-surface">
+                {project.videoLoop ? (
+                  <video
+                    src={project.videoLoop}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <Image
+                    src={project.thumbnail}
+                    alt={title}
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+            )}
+
           </Container>
         </section>
       )}

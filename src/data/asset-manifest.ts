@@ -1,55 +1,51 @@
-// ASSET MANIFEST — Status of visual assets per case study
-// Max: update paths as you provide files. Place in /public/images/projects/
+// ASSET MANIFEST — active V1 runtime inventory for Chronicle/runtime summaries.
+// This file is not used by the app directly. Keep only assets that exist in production.
+// Non-blocking post-V1 polish belongs in roadmap/status docs, not here.
 
 export const assetManifest = {
   "ai-content-pipeline": {
-    thumbnail: "/images/projects/kce-thumbnail.webm", // STATUS: Max providing Kling animation
-    hero: null, // STATUS: Same as thumbnail, larger
-    pipeline_demo: null, // STATUS: Max recreating n8n b-roll output
+    thumbnail: "/images/projects/ai-content-pipeline-poster.jpg",
+    hero: "/videos/covers/loop-ai-content-pipeline.mp4",
+    pipeline_demo: "/videos/covers/loop-ai-content-pipeline.mp4",
   },
   "production-studio": {
-    thumbnail: "/images/projects/fiverr-thumbnail.webm", // STATUS: Max providing Kling animation (video wall)
-    hero: null,
-    work_samples: [] as string[], // STATUS: Max selecting best Fiverr work
+    thumbnail: "/images/projects/production-studio-poster.jpg",
+    hero: "/videos/covers/loop-production-studio.mp4",
+    work_samples: ["/images/projects/production-studio.png"] as string[],
   },
   "programmatic-video": {
-    thumbnail: null, // STATUS: Max rendering + Kling processing
-    hero: null,
-    live_embed: null, // STATUS: Agent investigating standalone React potential
+    thumbnail: "/images/projects/programmatic-video-poster.jpg",
+    hero: "/videos/covers/loop-programmatic-video.mp4",
+    live_embed: "/videos/covers/loop-programmatic-video.mp4",
   },
   "multi-agent-system": {
-    thumbnail: null, // STATUS: Midjourney neural network render OR static network graph
-    hero: null,
+    thumbnail: "/images/projects/multi-agent-thumb.jpg",
+    hero: "/images/projects/multi-agent.png",
   },
   "archive-automation": {
-    thumbnail: null, // STATUS: Max creating Kling "chaos → order" animation
-    hero: null,
+    thumbnail: "/images/projects/archive.png",
+    hero: "/images/projects/archive.png",
   },
   "live-production": {
-    thumbnail: null, // STATUS: Max providing real concert photo from local disk
-    hero_video: null, // STATUS: Max providing Mazowsze hero video
-    gallery: [] as string[], // STATUS: Max providing metro animation, station screen, concert photos
+    thumbnail: "/images/projects/live-production-poster.jpg",
+    hero_video: "/videos/covers/loop-live-production.mp4",
+    gallery: ["/images/projects/mazowsze.jpg"] as string[],
   },
   "rzmrn-platform": {
-    thumbnail: null, // STATUS: Agent can generate from screenshots
-    hero: null,
+    thumbnail: "/images/projects/rzmrn-platform.png",
+    hero: "/images/projects/rzmrn-platform.png",
   },
   "short-form-reels": {
-    thumbnail: null, // STATUS: Assembled from reel frames once provided
-    videos: [] as string[], // STATUS: Max collecting 4-6 best reels
+    thumbnail: "/images/projects/short-form-reels-poster.jpg",
+    videos: [
+      "/videos/content/yarik-edit.mp4",
+      "/videos/content/motocross-reel.mp4",
+      "/videos/content/maveric-ride-reel.mp4",
+      "/videos/content/lambo-reel.mp4",
+      "/videos/content/insta-bakalova.mp4",
+      "/videos/content/ferrari-sf90.mp4",
+    ] as string[],
   },
 } as const;
 
-// TODO: OG images needed for each page:
-// - /public/og/home.jpg (1200x630)
-// - /public/og/ai-content-pipeline.jpg
-// - /public/og/production-studio.jpg
-// - /public/og/programmatic-video.jpg
-// - /public/og/multi-agent-system.jpg
-// - /public/og/archive-automation.jpg
-// - /public/og/live-production.jpg
-// - /public/og/rzmrn-platform.jpg
-// - /public/og/short-form-reels.jpg
-// - /public/og/about.jpg
-// - /public/og/contact.jpg
-// - /public/og/projects.jpg
+// Dedicated custom OG artwork is a post-V1 enhancement, not a release blocker.

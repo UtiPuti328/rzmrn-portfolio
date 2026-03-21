@@ -15,6 +15,11 @@ export type ProjectCategory =
 
 export type ProjectTrack = "production" | "systems" | "hybrid";
 
+export interface ProjectVideo {
+  src: string;
+  label: string;
+}
+
 interface ProjectBase {
   slug: string;
   title: string;
@@ -24,6 +29,7 @@ interface ProjectBase {
   thumbnail: string;
   hero?: string;
   videoLoop?: string;
+  videos?: ProjectVideo[];
   description: string;
   tags: string[];
   featured: boolean;

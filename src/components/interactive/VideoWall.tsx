@@ -9,8 +9,7 @@ import { cn } from "@/lib/utils";
 
 interface VideoItem {
   src?: string;
-  poster?: string;
-  category: string;
+  label: string;
 }
 
 interface VideoWallProps {
@@ -18,17 +17,18 @@ interface VideoWallProps {
 }
 
 // ---------------------------------------------------------------------------
-// Default data
+// Default data (fallback placeholders when no real videos provided)
 // ---------------------------------------------------------------------------
 
 const DEFAULT_VIDEOS: VideoItem[] = [
-  { category: "AUTOMOTIVE" },
-  { category: "TRAVEL" },
-  { category: "FASHION" },
-  { category: "MOTION DESIGN" },
-  { category: "LIFESTYLE" },
-  { category: "EXPERIMENTAL" },
+  { label: "AUTOMOTIVE" },
+  { label: "TRAVEL" },
+  { label: "FASHION" },
+  { label: "MOTION DESIGN" },
+  { label: "LIFESTYLE" },
+  { label: "EXPERIMENTAL" },
 ];
+
 
 // ---------------------------------------------------------------------------
 // Hook: useReducedMotion
@@ -140,7 +140,6 @@ function PhoneFrame({ video, prefersReducedMotion }: PhoneFrameProps) {
             <video
               ref={videoRef}
               src={video.src}
-              poster={video.poster}
               autoPlay
               muted
               loop
@@ -193,7 +192,7 @@ function PhoneFrame({ video, prefersReducedMotion }: PhoneFrameProps) {
           color: "var(--color-text-muted)",
         }}
       >
-        {video.category}
+        {video.label}
       </figcaption>
     </figure>
   );
@@ -239,7 +238,7 @@ export function VideoWall({ videos = DEFAULT_VIDEOS }: VideoWallProps) {
     >
       {videos.map((video, index) => (
         <div
-          key={`${video.category}-${index}`}
+          key={`${video.label}-${index}`}
           onMouseEnter={prefersReducedMotion ? undefined : handleHoverEnter}
           onMouseLeave={prefersReducedMotion ? undefined : handleHoverLeave}
         >

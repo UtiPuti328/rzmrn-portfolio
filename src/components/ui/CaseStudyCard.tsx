@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Badge from "@/components/ui/Badge";
 import ProjectPlaceholder from "@/components/ui/ProjectPlaceholder";
 import { useParallaxTilt } from "@/hooks/useParallaxTilt";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import type { Project, CaseStudyData } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +31,8 @@ export default function CaseStudyCard({
   project,
   caseStudy,
 }: CaseStudyCardProps) {
+  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const supportsHover = useMediaQuery("(hover: hover) and (pointer: fine)");
   const { ref, handleMouseMove, handleMouseLeave } = useParallaxTilt({
     maxTilt: 4,
     maxShift: 6,
@@ -39,18 +42,49 @@ export default function CaseStudyCard({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoReady, setVideoReady] = useState(false);
 
-  const hasRealThumbnail = !!project.thumbnail && !project.thumbnail.includes("placeholder");
+  const hasRealThumbnail =
+    !!project.thumbnail && !project.thumbnail.includes("placeholder");
   const hasVideo = !!project.videoLoop;
+  const shouldAutoplayInView =
+    hasVideo && !supportsHover && !prefersReducedMotion;
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video || !shouldAutoplayInView) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {
+            /* autoplay blocked */
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, [shouldAutoplayInView]);
 
   function handleCardMouseEnter() {
-    if (videoRef.current && hasVideo) {
+    if (videoRef.current && hasVideo && supportsHover) {
       videoRef.current.play().catch(() => {});
     }
   }
 
-  function handleCardMouseLeave(_e: React.MouseEvent<HTMLDivElement>) {
+  function handleCardMouseLeave() {
     handleMouseLeave();
-    if (videoRef.current) {
+    if (videoRef.current && supportsHover) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
@@ -60,26 +94,26 @@ export default function CaseStudyCard({
     <Link href={`/projects/${project.slug}`} className="group block">
       <div
         ref={ref}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleCardMouseLeave}
-        onMouseEnter={handleCardMouseEnter}
+        onMouseMove={supportsHover ? handleMouseMove : undefined}
+        onMouseLeave={supportsHover ? handleCardMouseLeave : undefined}
+        onMouseEnter={supportsHover ? handleCardMouseEnter : undefined}
       >
         {/* Hero media */}
         {hasRealThumbnail ? (
           <div className="relative aspect-video overflow-hidden border border-border bg-surface transition-shadow duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]">
             {/* Static thumbnail */}
             <Image
-              src={project.thumbnail}
-              alt={caseStudy.headline}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={cn(
-                "object-cover transition-opacity duration-500",
-                videoReady && hasVideo ? "opacity-0" : "opacity-100"
-              )}
-            />
+                src={project.thumbnail}
+                alt={caseStudy.headline}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className={cn(
+                  "object-cover transition-opacity duration-500",
+                  videoReady && hasVideo ? "opacity-0" : "opacity-100"
+                )}
+              />
 
-            {/* Video loop on hover (webm only) */}
+            {/* Hover preview on desktop, viewport autoplay on touch devices */}
             {hasVideo && (
               <video
                 ref={videoRef}
@@ -87,7 +121,7 @@ export default function CaseStudyCard({
                 muted
                 loop
                 playsInline
-                preload="none"
+                preload={shouldAutoplayInView ? "metadata" : "none"}
                 onCanPlay={() => setVideoReady(true)}
                 className={cn(
                   "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",

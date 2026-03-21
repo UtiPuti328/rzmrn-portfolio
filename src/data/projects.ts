@@ -9,8 +9,8 @@ export const projects: Project[] = [
     category: "content-pipeline",
     type: "system",
     year: 2024,
-    thumbnail: "/images/projects/kce-thumbnail.webp",
-    videoLoop: "/images/projects/kce-thumbnail.webm",
+    thumbnail: "/images/projects/ai-content-pipeline-poster.jpg",
+    videoLoop: "/videos/covers/loop-ai-content-pipeline.mp4",
     description:
       "AI-augmented production pipeline for a major education platform.",
     tags: ["AI Pipeline", "Production", "Automation"],
@@ -57,9 +57,11 @@ export const projects: Project[] = [
     category: "commercial",
     type: "visual",
     year: 2024,
-    thumbnail: "/images/projects/production-studio.png",
+    thumbnail: "/images/projects/production-studio-poster.jpg",
+    videoLoop: "/videos/covers/loop-production-studio.mp4",
     description:
       "A one-person production studio that scaled to $50/hr through systems, not headcount.",
+
     tags: ["Production", "Freelance", "Scale"],
     role: "Independent Producer",
     deliverable: "250+ video projects across all formats",
@@ -101,9 +103,11 @@ export const projects: Project[] = [
     category: "motion-design",
     type: "system",
     year: 2025,
-    thumbnail: "/images/projects/remotion.png",
+    thumbnail: "/images/projects/programmatic-video-poster.jpg",
+    videoLoop: "/videos/covers/loop-programmatic-video.mp4",
     description:
       "React components that render to video. Where creative meets programmatic.",
+
     tags: ["Remotion", "React", "Programmatic Video"],
     architecture: "Remotion component pipeline",
     metrics: "<1min per render, infinite variations",
@@ -138,7 +142,7 @@ export const projects: Project[] = [
     type: "system",
     year: 2025,
     thumbnail: "/images/projects/multi-agent-thumb.jpg",
-    videoLoop: "/images/projects/multi-agent-loop-v3.webm",
+    videoLoop: "/images/projects/multi-agent-loop-v2.webm",
     description:
       "Multi-model agent architecture for automated research, content generation, and monitoring.",
     tags: ["Multi-Agent", "AI", "Automation"],
@@ -228,9 +232,11 @@ export const projects: Project[] = [
     category: "live-production",
     type: "visual",
     year: 2021,
-    thumbnail: "/images/projects/mazowsze.webp",
+    thumbnail: "/images/projects/live-production-poster.jpg",
+    videoLoop: "/videos/covers/loop-live-production.mp4",
     description:
       "Comprehensive production for Poland's national folk ensemble — from hero video to metro advertising.",
+
     tags: ["Live Production", "Multi-cam", "Broadcast", "Advertising"],
     role: "Lead Camera / Editor",
     deliverable: "Live broadcasts, hero video, metro advertising, promotional content",
@@ -319,6 +325,14 @@ export const projects: Project[] = [
     type: "visual",
     year: 2024,
     thumbnail: "/images/projects/short-form.png",
+    videos: [
+      { src: "/videos/content/yarik-edit.mp4", label: "Yarik Edit" },
+      { src: "/videos/content/motocross-reel.mp4", label: "Motocross Reel" },
+      { src: "/videos/content/maveric-ride-reel.mp4", label: "Maveric Ride Reel" },
+      { src: "/videos/content/lambo-reel.mp4", label: "Lambo Reel" },
+      { src: "/videos/content/insta-bakalova.mp4", label: "Insta Bakalova" },
+      { src: "/videos/content/ferrari-sf90.mp4", label: "Ferrari SF90" },
+    ],
     description:
       "Short-form content where production craft meets attention economy.",
     tags: ["Short-Form", "Motion Design", "After Effects"],
@@ -359,6 +373,10 @@ export const projects: Project[] = [
     type: "visual",
     year: 2023,
     thumbnail: "/images/projects/mazda.webp",
+    videoLoop: "/videos/content/mazda-drivetogether.mp4",
+    videos: [
+      { src: "/videos/content/mazda-drivetogether.mp4", label: "Mazda DriveTogether MX-5" },
+    ],
     description:
       "TV commercial for Mazda MX-5 DriveTogether campaign. Full post-production pipeline: editing, color grading, sound design, and motion graphics integration.",
     tags: ["TV Commercial", "Post-Production", "Color Grading"],
@@ -376,6 +394,10 @@ export const projects: Project[] = [
     type: "visual",
     year: 2023,
     thumbnail: "/images/projects/lotus.webp",
+    videoLoop: "/videos/content/lotus-car-commercial.mp4",
+    videos: [
+      { src: "/videos/content/lotus-car-commercial.mp4", label: "Daytona Lotus Car Commercial" },
+    ],
     description:
       "Full-cycle commercial production for a Lotus car dealership. Sketching, scripting, shooting direction, editing, sound design, and color correction — concept to final master.",
     tags: ["Full Production", "Directing", "Editing", "Sound Design"],
@@ -385,57 +407,11 @@ export const projects: Project[] = [
     order: 11,
     status: "completed",
   },
-  {
-    slug: "heineken-presentation",
-    title: "Heineken Presentation Animation",
-    client: "Heineken",
-    category: "motion-design",
-    type: "visual",
-    year: 2023,
-    thumbnail: "/images/projects/heineken.webp",
-    description:
-      "Animated presentation for Heineken corporate event. Complex motion graphics with brand-consistent design, data visualization, and kinetic typography.",
-    tags: ["Motion Graphics", "Animation", "Brand Design"],
-    role: "Motion Designer / Animator",
-    deliverable: "Animated presentation, brand assets",
-    featured: false,
-    order: 12,
-    status: "completed",
-  },
-  {
-    slug: "automotive-reels",
-    title: "Automotive Reels Collection",
-    client: "Multiple Clients",
-    category: "commercial",
-    type: "visual",
-    year: 2024,
-    thumbnail: "/images/projects/lambo.webp",
-    description:
-      "Dynamic short-form content for luxury automotive brands. High-energy editing, cinematic color grading, and precision sound design for Lamborghini, Ferrari SF90, Ford Raptor, and more.",
-    tags: ["Short-Form", "Dynamic Editing", "Color Grading"],
-    role: "Editor / Motion Designer / Colorist",
-    deliverable: "Reels, social cuts, dealer content",
-    featured: false,
-    order: 13,
-    status: "ongoing",
-  },
-  {
-    slug: "art-gallery-cinematic",
-    title: "Art Gallery Cinematic Tour",
-    client: "Private Gallery",
-    category: "commercial",
-    type: "visual",
-    year: 2024,
-    thumbnail: "/images/projects/art-gallery.webp",
-    description:
-      "Cinematic walkthrough of an art gallery space. Smooth camera movement, atmospheric grading, and architectural storytelling through precise editing and pacing.",
-    tags: ["Cinematic", "Real Estate", "Architectural"],
-    role: "Editor / Colorist",
-    deliverable: "Cinematic tour, social content",
-    featured: false,
-    order: 14,
-    status: "completed",
-  },
+  // ── Removed entries ──────────────────────────────────────────────
+  // heineken-presentation — removed per request (пункт 8)
+  // automotive-reels — removed per request (пункт 9, duplicate of short-form)
+  // art-gallery-cinematic — removed per request (пункт 10)
+
   {
     slug: "kurish-gorod-music-video",
     title: 'Music Video — Kurish "Gorod"',
@@ -461,6 +437,10 @@ export const projects: Project[] = [
     type: "visual",
     year: 2024,
     thumbnail: "/images/projects/party-promo.webp",
+    videoLoop: "/videos/content/party-promo.mp4",
+    videos: [
+      { src: "/videos/content/party-promo.mp4", label: "Party Promo" },
+    ],
     description:
       "Animated promotional flyers and social content for events, music releases, and brands. Eye-catching motion design optimized for Instagram and TikTok engagement.",
     tags: ["Motion Design", "Animation", "Social Media"],

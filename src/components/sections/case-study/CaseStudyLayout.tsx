@@ -3,6 +3,7 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import ProjectPlaceholder from "@/components/ui/ProjectPlaceholder";
+import VideoPlayer from "@/components/ui/VideoPlayer";
 import CaseNav from "@/components/sections/case-study/CaseNav";
 import type { Project, CaseStudyData } from "@/types";
 import { cn } from "@/lib/utils";
@@ -86,7 +87,20 @@ export default function CaseStudyLayout({
 
           {/* Hero visual */}
           <div className="mt-10">
-            {project.thumbnail && !project.thumbnail.includes("placeholder") ? (
+            {project.videoLoop ? (
+              <div className="relative aspect-[21/9] overflow-hidden border border-border bg-surface">
+                <VideoPlayer
+                  src={project.videoLoop}
+                  poster={project.thumbnail}
+                  alt={caseStudy.headline}
+                  className="h-full w-full"
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  priority
+                  mobileAutoplayOnly={false}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+              </div>
+            ) : project.thumbnail && !project.thumbnail.includes("placeholder") ? (
               <div className="relative aspect-[21/9] overflow-hidden border border-border bg-surface">
                 <Image
                   src={project.thumbnail}

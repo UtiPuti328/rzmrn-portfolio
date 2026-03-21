@@ -8,12 +8,14 @@ import { ScrollTimeline } from "@/components/interactive/ScrollTimeline";
 import { LiveFeedHUD } from "@/components/interactive/LiveFeedHUD";
 import { EcosystemDiagram } from "@/components/interactive/EcosystemDiagram";
 import { VideoWall } from "@/components/interactive/VideoWall";
+import type { Project } from "@/types";
 
 interface InteractiveSlotProps {
   slug: string;
+  project?: Project;
 }
 
-export default function InteractiveSlot({ slug }: InteractiveSlotProps) {
+export default function InteractiveSlot({ slug, project }: InteractiveSlotProps) {
   switch (slug) {
     case "ai-content-pipeline":
       return <AnimatedPipeline />;
@@ -33,7 +35,7 @@ export default function InteractiveSlot({ slug }: InteractiveSlotProps) {
     case "rzmrn-platform":
       return <EcosystemDiagram />;
     case "short-form-reels":
-      return <VideoWall />;
+      return <VideoWall videos={project?.videos} />;
     default:
       return null;
   }

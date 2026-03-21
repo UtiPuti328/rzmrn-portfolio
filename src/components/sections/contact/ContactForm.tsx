@@ -30,7 +30,7 @@ export default function ContactForm() {
       // TODO: Max — add your Formspree form ID here
       // 1. Sign up at formspree.io → Create form → Copy endpoint ID
       // 2. Replace "FORMSPREE_ID_HERE" below with the actual ID (e.g., "xpwzaqlk")
-      const res = await fetch("https://formspree.io/f/FORMSPREE_ID_HERE", {
+      const res = await fetch("https://formspree.io/f/maqpodvw", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
