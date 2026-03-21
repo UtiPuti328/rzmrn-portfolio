@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useSyncExternalStore, useState } from "react";
 import { cn } from "@/lib/utils";
+import { VideoModal } from "@/components/ui/VideoModal";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -226,28 +227,40 @@ function handleHoverLeave(e: React.MouseEvent<HTMLElement>) {
 
 export function VideoWall({ videos = DEFAULT_VIDEOS }: VideoWallProps) {
   const prefersReducedMotion = useReducedMotion();
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
 
   return (
-    <section
-      aria-label="Short-form video showcase"
-      className={cn(
-        "grid gap-8",
-        /* 1 col on small mobile, 2 cols on larger mobile (>425px), 2 on tablet, 3 on desktop */
-        "grid-cols-1 min-[425px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3",
-      )}
-    >
-      {videos.map((video, index) => (
-        <div
-          key={`${video.label}-${index}`}
-          onMouseEnter={prefersReducedMotion ? undefined : handleHoverEnter}
-          onMouseLeave={prefersReducedMotion ? undefined : handleHoverLeave}
-        >
-          <PhoneFrame
-            video={video}
-            prefersReducedMotion={prefersReducedMotion}
-          />
-        </div>
-      ))}
-    </section>
+    <>
+      <section
+        aria-label="Short-form video showcase"
+        className={cn(
+          "grid gap-8",
+          /* 1 col on small mobile, 2 cols on larger mobile (>425px), 2 on tablet, 3 on desktop */
+          "grid-cols-1 min-[425px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3",
+        )}
+      >
+        {videos.map((video, index) => (
+          <div
+            key={`${video.label}-${index}`}
+            className="cursor-pointer"
+            onClick={() => setSelectedVideo(video)}
+            onMouseEnter={prefersReducedMotion ? undefined : handleHoverEnter}
+            onMouseLeave={prefersReducedMotion ? undefined : handleHoverLeave}
+          >
+            <PhoneFrame
+              video={video}
+              prefersReducedMotion={prefersReducedMotion}
+            />
+          </div>
+        ))}
+      </section>
+
+      <VideoModal
+        isOpen={selectedVideo !== null}
+        onClose={() => setSelectedVideo(null)}
+        src={selectedVideo?.src}
+        label={selectedVideo?.label}
+      />
+    </>
   );
 }
