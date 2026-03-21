@@ -117,7 +117,7 @@ function PhoneFrame({ video, prefersReducedMotion }: PhoneFrameProps) {
       <div
         className={cn(
           "phone-bezel",
-          "relative overflow-hidden",
+          "relative overflow-hidden w-full max-w-[280px]",
           "border-4 border-[#1a1a1a]",
           "rounded-[24px]",
         )}
