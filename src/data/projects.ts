@@ -328,7 +328,8 @@ export const projects: Project[] = [
     category: "live-production",
     type: "visual",
     year: 2021,
-    thumbnail: "/images/projects/live-production-poster.jpg",
+    thumbnail: "/images/projects/live-production-hero.jpg",
+    hero: "/images/projects/live-production-hero.jpg",
     videoLoop: "/videos/covers/loop-live-production.mp4",
     description: {
       en: "Comprehensive production for Poland's national folk ensemble — from hero video to metro advertising.",
