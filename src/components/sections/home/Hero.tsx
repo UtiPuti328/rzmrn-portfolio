@@ -81,6 +81,17 @@ export default function Hero() {
                 {dict.hero.getInTouch}
               </Link>
             </div>
+            <a
+              href="https://www.fiverr.com/maksbeiev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ opacity: showCta ? 1 : 0 }}
+              className="mt-3 inline-flex w-full sm:w-auto items-center justify-center gap-2.5 border border-[#1DBF73]/25 px-4 py-3 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1DBF73]/60 transition-all hover:border-[#1DBF73]/50 hover:text-[#1DBF73]"
+            >
+              <span className="flex h-[14px] w-[14px] shrink-0 items-center justify-center rounded-[2px] bg-[#1DBF73] font-sans text-[8px] font-black leading-none text-white">fi</span>
+              Fiverr Profile
+              <span className="ml-auto opacity-50">↗</span>
+            </a>
           </div>
 
           {/* Right column (desktop) / Below CTA (mobile): terminal */}

@@ -29,22 +29,7 @@ export default function InteractiveSlot({ slug, project }: InteractiveSlotProps)
         { value: 50, prefix: "$", suffix: "/hr", label: dict.bentoGrid.event, category: "EVENT" },
         { value: 5, suffix: "★", label: dict.bentoGrid.motion, category: "MOTION" },
       ];
-      return (
-        <div className="space-y-6">
-          <BentoGrid cells={productionCells} />
-          <a
-            href="https://www.fiverr.com/maksbeiev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-md border border-[#1DBF73]/20 bg-[#1DBF73]/5 px-4 py-3 font-mono text-sm text-[#1DBF73]/70 transition-all duration-200 hover:border-[#1DBF73]/50 hover:bg-[#1DBF73]/10 hover:text-[#1DBF73]"
-          >
-            <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-[3px] bg-[#1DBF73] font-sans text-[10px] font-black leading-none text-white">fi</span>
-            <span>View full portfolio on Fiverr</span>
-            <span className="font-normal text-[#1DBF73]/40">— fiverr.com/maksbeiev</span>
-            <span className="ml-auto opacity-50 transition-transform duration-200 group-hover:translate-x-0.5">↗</span>
-          </a>
-        </div>
-      );
+      return <BentoGrid cells={productionCells} />;
     case "multi-agent-system":
       return (
         <div className="space-y-10">
