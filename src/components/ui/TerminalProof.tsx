@@ -99,19 +99,6 @@ export default function TerminalProof() {
                   </div>
                 ))}
               </div>
-
-              <div className="mt-4 border-t border-border/20 pt-3">
-                <a
-                  href="https://www.fiverr.com/maksbeiev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex w-full items-center gap-2.5 rounded-md border border-[#1DBF73]/20 bg-[#1DBF73]/5 px-3 py-2 font-mono text-[12px] text-[#1DBF73]/70 transition-all duration-200 hover:border-[#1DBF73]/50 hover:bg-[#1DBF73]/10 hover:text-[#1DBF73]"
-                >
-                  <span className="flex h-[15px] w-[15px] shrink-0 items-center justify-center rounded-[3px] bg-[#1DBF73] font-sans text-[9px] font-black leading-none text-white">fi</span>
-                  <span>fiverr.com/maksbeiev</span>
-                  <span className="ml-auto transition-transform duration-200 group-hover:translate-x-0.5 opacity-50">↗</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>
