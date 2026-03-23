@@ -344,7 +344,7 @@ export const projects: Project[] = [
     caseStudy: {
       track: "production",
       headline: {
-        en: "Head of Content. Poland's National Institute of Culture",
+        en: "Head of Content at Poland's National Institute of Culture",
         pl: "Head of Content. Państwowy Instytut Kultury"
       },
       subtitle: {
