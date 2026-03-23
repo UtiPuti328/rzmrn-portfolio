@@ -48,7 +48,7 @@ export default function Header() {
           <LanguageSwitcher />
         </div>
 
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="ml-auto flex items-center gap-4 md:hidden">
           <LanguageSwitcher />
           <MobileMenu />
         </div>
