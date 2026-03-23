@@ -458,6 +458,8 @@ export const projects: Project[] = [
     type: "visual",
     year: 2024,
     thumbnail: "/images/projects/short-form-reels-poster.png",
+    hero: "/images/projects/short-form-reels-poster.png",
+    videoLoop: "/videos/covers/loop-short-form-reels.mp4",
     videos: [
       { src: "/videos/content/yarik-edit.mp4", label: "Bangkok Reel" },
       { src: "/videos/content/motocross-reel.mp4", label: "Motocross Reel" },

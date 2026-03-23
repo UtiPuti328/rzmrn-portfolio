@@ -85,7 +85,19 @@ export default function CaseStudyLayout({
 
           {/* Hero visual */}
           <div className="mt-10">
-            {project.videoLoop ? (
+            {project.hero ? (
+              <div className="relative aspect-[21/9] overflow-hidden border border-border bg-surface">
+                <Image
+                  src={project.hero}
+                  alt={caseStudy.headline[locale]}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+              </div>
+            ) : project.videoLoop ? (
               <div className="relative aspect-[21/9] overflow-hidden border border-border bg-surface">
                 <VideoPlayer
                   src={project.videoLoop}
