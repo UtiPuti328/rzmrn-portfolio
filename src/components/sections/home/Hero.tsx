@@ -84,10 +84,12 @@ export default function Hero() {
                 href="https://www.fiverr.com/maksbeiev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-border px-4 py-3 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-text-primary transition-colors hover:border-text-muted text-center leading-tight"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-[#1DBF73]/25 sm:border-border px-4 py-3 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1DBF73]/70 sm:text-text-primary transition-colors hover:border-[#1DBF73]/50 sm:hover:border-text-muted hover:text-[#1DBF73] sm:hover:text-text-primary text-center leading-tight"
               >
                 <span className="flex h-[13px] w-[13px] shrink-0 items-center justify-center rounded-[2px] bg-[#1DBF73] font-sans text-[7px] font-black leading-none text-white">fi</span>
-                Fiverr
+                <span className="sm:hidden">fiverr.com/maksbeiev</span>
+                <span className="hidden sm:inline">Fiverr</span>
+                <span className="sm:hidden ml-auto opacity-40">↗</span>
               </a>
             </div>
           </div>
