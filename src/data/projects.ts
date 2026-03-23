@@ -27,12 +27,12 @@ export const projects: Project[] = [
     caseStudy: {
       track: "hybrid",
       headline: {
-        en: "40% Faster Releases at 5,000-Client Scale",
-        pl: "40% Szybsze Wdrożenia przy Skali 5000+ Klientów"
+        en: "Head of Production for 5,000-Client Edtech. 40% Faster Pipeline.",
+        pl: "Szef Produkcji w Edtechu dla 5,000 Klientów. Pipeline 40% Szybszy."
       },
       subtitle: {
-        en: "AI-augmented production pipeline for a major education platform.",
-        pl: "Wsparty przez AI pipeline produkcyjny dla dużej platformy edukacyjnej."
+        en: "Led content production at Poland's major education platform as Head of Pipeline — then automated it end to end with AI.",
+        pl: "Prowadziłem produkcję treści w czołowej polskiej platformie edukacyjnej jako Head of Pipeline — a następnie zautomatyzowałem ją end-to-end za pomocą AI."
       },
       metrics: [
         { value: "5,000+", label: { en: "Active clients", pl: "Aktywnych Klientów" } },
@@ -94,12 +94,12 @@ export const projects: Project[] = [
     caseStudy: {
       track: "production",
       headline: {
-        en: "250+ Projects. 120 US Clients. One Person.",
-        pl: "250+ Projektów. 120 Klientów w USA. Jedna Osoba."
+        en: "250+ Fiverr Orders. 120 US Clients. One Person.",
+        pl: "250+ Zamówień na Fiverr. 120 Klientów z USA. Jedna Osoba."
       },
       subtitle: {
-        en: "A one-person production studio that scaled to $50/hr through systems, not headcount.",
-        pl: "Jednoosobowe studio produkcyjne, które przeskalowało stawki do $50/h dzięki systemom, a nie nowym pracownikom."
+        en: "A one-person studio that became Top Rated on Fiverr — scaling to $50/hr through systems, not headcount.",
+        pl: "Jednoosobowe studio, które zdobyło status Top Rated na Fiverr — skalując stawki do $50/h dzięki systemom, nie nowym pracownikom."
       },
       metrics: [
         { value: "250+", label: { en: "Completed projects", pl: "Zrealizowane Projekty" } },
@@ -344,12 +344,12 @@ export const projects: Project[] = [
     caseStudy: {
       track: "production",
       headline: {
-        en: "Full-Service Production for a National Cultural Institution",
-        pl: "Kompleksowa Produkcja dla Państwowej Instytucji Kultury"
+        en: "Creative Director & Head of Content — Poland's National Folk Ensemble",
+        pl: "Reżyser i Head of Content — Państwowy Zespół Ludowy Mazowsze"
       },
       subtitle: {
-        en: "Comprehensive production for Poland's national folk ensemble — from hero video to metro advertising.",
-        pl: "Kompleksowa kampania wizerunkowa dla zespołu \"Mazowsze\" — od głównego filmu promocyjnego po kampanie w warszawskim metrze."
+        en: "Directed full production for Mazowsze — Poland's national institute of song and dance. From hero film to metro advertising campaign.",
+        pl: "Reżyserowałem kompleksową produkcję dla Mazowsza — Państwowego Zespołu Pieśni i Tańca. Od głównego filmu promocyjnego po kampanię w warszawskim metrze."
       },
       metrics: [
         { value: "540-seat", label: { en: "Concert hall", pl: "Sala Koncertowa" } },
@@ -482,12 +482,12 @@ export const projects: Project[] = [
     caseStudy: {
       track: "production",
       headline: {
-        en: "Years of After Effects Obsession — Distilled Into Seconds",
-        pl: "Lata Obsesji na Puncie After Effects — Skondensowane do Złotych Sekund"
+        en: "After Effects × Instagram Reels. Years of Craft in Seconds.",
+        pl: "After Effects × Instagram Reels. Lata Rzemiosła w Sekundach."
       },
       subtitle: {
-        en: "Short-form content where production craft meets attention economy.",
-        pl: "Treści formacie krókich wideo, gdzie czysty rzemieślniczy kunszt spotyka się z wojną o atencję we współczesnych kanałach SoMe."
+        en: "Short-form content where After Effects obsession meets the attention economy of Instagram Reels.",
+        pl: "Treści krótkoformatowe, w których obsesja na punkcie After Effects spotyka się z walką o atencję w świecie Instagram Reels."
       },
       metrics: [],
       challenge: {
