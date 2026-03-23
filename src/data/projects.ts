@@ -344,8 +344,8 @@ export const projects: Project[] = [
     caseStudy: {
       track: "production",
       headline: {
-        en: "Head of Content — Poland's National Folk Ensemble",
-        pl: "Head of Content — Państwowy Zespół Ludowy Mazowsze"
+        en: "Head of Content. Poland's National Institute of Culture",
+        pl: "Head of Content. Państwowy Instytut Kultury"
       },
       subtitle: {
         en: "Directed full production for Mazowsze — Poland's national institute of song and dance. From hero film to metro advertising campaign.",
