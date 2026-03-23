@@ -153,7 +153,7 @@ export const projects: Project[] = [
     architecture: "Remotion component pipeline",
     metrics: "<1min per render, infinite variations",
     featured: true,
-    order: 3,
+    order: 4,
     status: "ongoing",
     caseStudy: {
       track: "hybrid",
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     architecture: "Multi-model orchestrated agent system",
     metrics: "30+ daily automated tasks",
     featured: true,
-    order: 4,
+    order: 5,
     status: "ongoing",
     caseStudy: {
       track: "systems",
@@ -274,7 +274,7 @@ export const projects: Project[] = [
     architecture: "5-phase automated pipeline",
     metrics: "221 lectures, 22 courses, zero data loss",
     featured: true,
-    order: 5,
+    order: 6,
     status: "completed",
     caseStudy: {
       track: "systems",
@@ -338,7 +338,7 @@ export const projects: Project[] = [
     role: "Lead Camera / Editor",
     deliverable: "Live broadcasts, hero video, metro advertising, promotional content",
     featured: true,
-    order: 6,
+    order: 7,
     status: "completed",
     caseStudy: {
       track: "production",
@@ -401,7 +401,7 @@ export const projects: Project[] = [
     architecture: "Dual-product AI-first ecosystem",
     metrics: "60+ sources, 15+ categories, 2 live products",
     featured: true,
-    order: 7,
+    order: 8,
     status: "ongoing",
     caseStudy: {
       track: "hybrid",
@@ -457,7 +457,8 @@ export const projects: Project[] = [
     category: "motion-design",
     type: "visual",
     year: 2024,
-    thumbnail: "/images/projects/short-form-reels-poster.jpg",
+    thumbnail: "/images/projects/short-form-reels-poster.png",
+    videoLoop: "/videos/covers/loop-short-form-reels.mp4",
     videos: [
       { src: "/videos/content/yarik-edit.mp4", label: "Bangkok Reel" },
       { src: "/videos/content/motocross-reel.mp4", label: "Motocross Reel" },
@@ -474,7 +475,7 @@ export const projects: Project[] = [
     role: "Motion Designer / Editor",
     deliverable: "Short-form reels and motion content",
     featured: true,
-    order: 8,
+    order: 3,
     status: "ongoing",
     caseStudy: {
       track: "production",
