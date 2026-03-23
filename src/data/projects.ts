@@ -153,7 +153,7 @@ export const projects: Project[] = [
     architecture: "Remotion component pipeline",
     metrics: "<1min per render, infinite variations",
     featured: true,
-    order: 4,
+    order: 5,
     status: "ongoing",
     caseStudy: {
       track: "hybrid",
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     architecture: "Multi-model orchestrated agent system",
     metrics: "30+ daily automated tasks",
     featured: true,
-    order: 5,
+    order: 6,
     status: "ongoing",
     caseStudy: {
       track: "systems",
@@ -274,7 +274,7 @@ export const projects: Project[] = [
     architecture: "5-phase automated pipeline",
     metrics: "221 lectures, 22 courses, zero data loss",
     featured: true,
-    order: 6,
+    order: 7,
     status: "completed",
     caseStudy: {
       track: "systems",
@@ -338,7 +338,7 @@ export const projects: Project[] = [
     role: "Lead Camera / Editor",
     deliverable: "Live broadcasts, hero video, metro advertising, promotional content",
     featured: true,
-    order: 7,
+    order: 4,
     status: "completed",
     caseStudy: {
       track: "production",
