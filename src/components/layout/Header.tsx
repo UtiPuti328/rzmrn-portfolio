@@ -18,7 +18,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-sm" style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}>
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-sm" style={{ paddingTop: "env(safe-area-inset-top, 0px)", transform: "translateZ(0)" }}>
       <div className="relative mx-auto flex max-w-[1440px] items-center px-6 py-5 md:px-10">
         <Link
           href={`/${locale}`}
